@@ -11,7 +11,7 @@ namespace KeyboardSmasher.ExerciseMachine
 
     }
 
-    class SymbolStream : ExerciseMachine
+    class SymbolStream// : ExerciseMachine
     {
         //наборы символов для каждого уровня сложности
         private static Dictionary<Difficulty, char[]> symbol_sets = null;
@@ -37,9 +37,9 @@ namespace KeyboardSmasher.ExerciseMachine
         }
 
         //сам словарь формируется где-нибудь в main и сюда передается
-        public static void Init(Dictionary<Difficulty, char[]> symbol_sets);
+        //public static void Init(Dictionary<Difficulty, char[]> symbol_sets);
 
 
-        public override bool start(out object statistic);
+        //public override bool start(out object statistic);
     }
 }
