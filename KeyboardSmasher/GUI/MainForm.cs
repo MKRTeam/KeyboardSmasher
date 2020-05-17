@@ -30,12 +30,16 @@ namespace KeyboardSmasher.GUI
         {
             main_menu = new MainMenu();
             main_menu.Visible = false;
+            this.Controls.Add(main_menu);
             pause_menu = new PauseMenu();
             pause_menu.Visible = false;
+            this.Controls.Add(pause_menu);
             symbol_stream_control = new SymbolStreamControl();
             symbol_stream_control.Visible = false;
+            this.Controls.Add(symbol_stream_control);
             event_control = new EventControl();
             event_control.Visible = false;
+            this.Controls.Add(event_control);
         }
 
         private void showControl(Control control)

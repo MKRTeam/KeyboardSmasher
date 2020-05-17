@@ -3,6 +3,7 @@ using KeyboardSmasher.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,7 +43,8 @@ namespace KeyboardSmasher
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm main_form = new MainForm();
             main_form.showMainMenu();
-            Application.Run(main_form);
+            main_form.ShowDialog();
+            
         }
     }
 }
