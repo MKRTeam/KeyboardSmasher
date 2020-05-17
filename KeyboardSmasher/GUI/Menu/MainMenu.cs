@@ -21,7 +21,7 @@ namespace KeyboardSmasher.GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            parentForm.showSettings();
+            parentForm.showSettingsMenu();
         }
 
         private void button1_Click(object sender, EventArgs e)
