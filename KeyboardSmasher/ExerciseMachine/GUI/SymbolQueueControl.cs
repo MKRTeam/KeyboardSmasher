@@ -56,13 +56,5 @@ namespace KeyboardSmasher.ExerciseMachine.GUI {
             // TODO: Задаём координату Y буквы рандомно - чтоб они шли зигзагом
             LettersQueue.Enqueue(new Letter(letter, new PointF(Width + 10, Height / 2)));
         }
-
-        // Изменение размеров контрола
-        private void SymbolQueueControl_Resize(object sender, EventArgs e) {
-            // Задаём изображение с новым размером
-            Image = new Bitmap(Width, Height);
-            // Отрисовываем содержимое
-            DrawContent();
-        }
     }
 }

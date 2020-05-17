@@ -25,10 +25,6 @@
         private void InitializeComponent() {
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
-            // 
-            // SymbolQueueControl
-            // 
-            this.Resize += new System.EventHandler(this.SymbolQueueControl_Resize);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
