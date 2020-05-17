@@ -6,12 +6,40 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace KeyboardSmasher.ExerciseMachine.GUI {
     public partial class SymbolQueueControl : PictureBox {
+        // Структура для хранения буквы в очереди
+        private struct Letter {
+            public readonly char letter; // символ буквы
+            public PointF position; // позиция рисования буквы
+
+            // Конструктор
+            public Letter(char letter, PointF position) {
+                this.letter = letter;
+                this.position = position;
+            }
+        }
+
+        // Очередь отображаемых букв
+        private Queue<Letter> LettersQueue { get; set; }
+
+        // Конструктор
         public SymbolQueueControl() {
+            // TODO: скорость движения букв?
             InitializeComponent();
+            // Инициализируем изображение, отображаемое контролом
+            Image = new Bitmap(Width, Height);
+            // Рисуем кольцо в левом конце 
+            int circleDiametr = Height; // диаметр кольца равен высоте полосы контрола
+            Color circleColor = Color.Red; // цвет кольца
+            Graphics g = Graphics.FromImage(Image);
+            g.Clear(Color.White);
+            g.DrawEllipse(new Pen(circleColor, 10), 0, 0, circleDiametr, circleDiametr);
+            // Инициализируем пустую очередь отображаемых букв
+            LettersQueue = new Queue<Letter>();
         }
     }
 }
