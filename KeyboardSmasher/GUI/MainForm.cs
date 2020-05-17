@@ -28,18 +28,22 @@ namespace KeyboardSmasher.GUI
 
         private void InitControls()
         {
+            //main_menu
             main_menu = new MainMenu();
             main_menu.Visible = false;
             main_menu.Dock = DockStyle.Fill;
             this.Controls.Add(main_menu);
+            //pause_menu
             pause_menu = new PauseMenu();
             pause_menu.Visible = false;
             pause_menu.Dock = DockStyle.Fill;
             this.Controls.Add(pause_menu);
+            //symbol_stream_comtrol
             symbol_stream_control = new SymbolStreamControl();
             symbol_stream_control.Visible = false;
             symbol_stream_control.Dock = DockStyle.Fill;
             this.Controls.Add(symbol_stream_control);
+            //event_control
             event_control = new EventControl();
             event_control.Visible = false;
             event_control.Dock = DockStyle.Fill;

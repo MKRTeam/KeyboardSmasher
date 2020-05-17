@@ -27,7 +27,7 @@ namespace KeyboardSmasher.ExerciseMachine.GUI {
         private Queue<Letter> LettersQueue { get; set; }
 
         // Отобразить содержимое контрола
-        private void DrawPicture() {
+        private void DrawContent() {
             // Рисуем кольцо в левом конце 
             int circleDiametr = Height; // диаметр кольца равен высоте полосы контрола
             Color circleColor = Color.Red; // цвет кольца
@@ -45,7 +45,7 @@ namespace KeyboardSmasher.ExerciseMachine.GUI {
             // Инициализируем пустую очередь отображаемых букв
             LettersQueue = new Queue<Letter>();
             // Отображаем
-            DrawPicture();
+            DrawContent();
         }
 
         /// <summary>
@@ -55,6 +55,14 @@ namespace KeyboardSmasher.ExerciseMachine.GUI {
         public void EnqueueLetter(char letter) {
             // TODO: Задаём координату Y буквы рандомно - чтоб они шли зигзагом
             LettersQueue.Enqueue(new Letter(letter, new PointF(Width + 10, Height / 2)));
+        }
+
+        // Изменение размеров контрола
+        private void SymbolQueueControl_Resize(object sender, EventArgs e) {
+            // Задаём изображение с новым размером
+            Image = new Bitmap(Width, Height);
+            // Отрисовываем содержимое
+            DrawContent();
         }
     }
 }
