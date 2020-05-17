@@ -27,7 +27,6 @@ namespace KeyboardSmasher
 
     static class Program
     {
-
         private static void Initilize()
         {
             
@@ -39,13 +38,12 @@ namespace KeyboardSmasher
         [STAThread]
         static void Main()
         {
-            //здесь происходит загрузка всех ресурсов
-
-            Initilize();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            MainForm main_form = new MainForm();
+            Application.Run(main_form);
+
+            main_form.showMainMenu();
         }
     }
 }
