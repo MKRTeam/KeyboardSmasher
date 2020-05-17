@@ -11,6 +11,6 @@ namespace KeyboardSmasher.Gameplay
         public string Name { get; }
         public string Description { get; }
 
-        public Biom(string name, string desctiption);
+        public Biom(string name, string description);
     }
 }
