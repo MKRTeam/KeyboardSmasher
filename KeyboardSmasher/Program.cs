@@ -41,9 +41,8 @@ namespace KeyboardSmasher
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm main_form = new MainForm();
-            Application.Run(main_form);
-
             main_form.showMainMenu();
+            Application.Run(main_form);
         }
     }
 }

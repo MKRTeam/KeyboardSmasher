@@ -23,6 +23,7 @@ namespace KeyboardSmasher.GUI
         public MainForm()
         {
             InitializeComponent();
+            InitControls();
         }
 
         private void InitControls()
