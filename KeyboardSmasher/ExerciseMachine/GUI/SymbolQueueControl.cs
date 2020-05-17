@@ -26,20 +26,26 @@ namespace KeyboardSmasher.ExerciseMachine.GUI {
         // Очередь отображаемых букв
         private Queue<Letter> LettersQueue { get; set; }
 
+        // Отобразить содержимое контрола
+        private void DrawPicture() {
+            // Рисуем кольцо в левом конце 
+            int circleDiametr = Height; // диаметр кольца равен высоте полосы контрола
+            Color circleColor = Color.Red; // цвет кольца
+            Graphics g = Graphics.FromImage(Image);
+            g.Clear(Color.White);
+            g.DrawEllipse(new Pen(circleColor, 5), 0, 0, circleDiametr, circleDiametr);
+        }
+
         // Конструктор
         public SymbolQueueControl() {
             // TODO: скорость движения букв?
             InitializeComponent();
             // Инициализируем изображение, отображаемое контролом
             Image = new Bitmap(Width, Height);
-            // Рисуем кольцо в левом конце 
-            int circleDiametr = Height; // диаметр кольца равен высоте полосы контрола
-            Color circleColor = Color.Red; // цвет кольца
-            Graphics g = Graphics.FromImage(Image);
-            g.Clear(Color.White);
-            g.DrawEllipse(new Pen(circleColor, 10), 0, 0, circleDiametr, circleDiametr);
             // Инициализируем пустую очередь отображаемых букв
             LettersQueue = new Queue<Letter>();
+            // Отображаем
+            DrawPicture();
         }
 
         /// <summary>
