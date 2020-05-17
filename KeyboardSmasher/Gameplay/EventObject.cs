@@ -12,6 +12,16 @@ namespace KeyboardSmasher.Gameplay
         string Name { get; }
         string Description { get; }
 
-        public EventObject(string name, string description, Biom biom);
+        public EventObject(string name, string description, Biom biom)
+        {
+            if (name != "" || description != "" || biom !=null)
+            {
+                new _Exception("Имя или описание не задано(24 строка, EventObject.cs)");
+                return;
+            }
+            Biom = biom;
+            Name = name;
+            Description = description;
+        }
     }
 }
