@@ -53,6 +53,12 @@
     <Compile Include="ExerciseMachine\GUI\MistakeCountControl.Designer.cs">
       <DependentUpon>MistakeCountControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExerciseMachine\GUI\SymbolQueueControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExerciseMachine\GUI\SymbolQueueControl.Designer.cs">
+      <DependentUpon>SymbolQueueControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExerciseMachine\GUI\SymbolStreamControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
