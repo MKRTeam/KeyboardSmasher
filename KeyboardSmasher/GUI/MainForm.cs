@@ -1,5 +1,6 @@
 ﻿using KeyboardSmasher.ExerciseMachine.GUI;
 using KeyboardSmasher.Gameplay.GUI;
+using KeyboardSmasher.GUI.Menu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace KeyboardSmasher.GUI
         PauseMenu pause_menu;
         SymbolStreamControl symbol_stream_control;
         EventControl event_control;
+        SettingControl setting_control;
         Control currentVisibleControl = null;
 
         public MainForm()
@@ -29,10 +31,15 @@ namespace KeyboardSmasher.GUI
         private void InitControls()
         {
             //main_menu
-            main_menu = new MainMenu();
+            main_menu = new MainMenu(this);
             main_menu.Visible = false;
             main_menu.Dock = DockStyle.Fill;
             this.Controls.Add(main_menu);
+            //settingControl
+            setting_control = new SettingControl(this);
+            setting_control.Visible = false;
+            setting_control.Dock = DockStyle.Fill;
+            this.Controls.Add(setting_control);
             //pause_menu
             pause_menu = new PauseMenu();
             pause_menu.Visible = false;
@@ -61,6 +68,11 @@ namespace KeyboardSmasher.GUI
         public void showMainMenu()
         {
             showControl(main_menu);
+        }
+
+        public void showSettingsMenu()
+        {
+            showControl(setting_control);
         }
 
         public void showPauseMenu()
