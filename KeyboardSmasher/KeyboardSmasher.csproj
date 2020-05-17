@@ -83,11 +83,11 @@
     <Compile Include="Gameplay\GUI\EventControl.Designer.cs">
       <DependentUpon>EventControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Menu\ControlSetting.cs">
+    <Compile Include="GUI\Menu\SettingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Menu\ControlSetting.Designer.cs">
-      <DependentUpon>ControlSetting.cs</DependentUpon>
+    <Compile Include="GUI\Menu\SettingControl.Designer.cs">
+      <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Menu\MainMenu.cs">
       <SubType>UserControl</SubType>
@@ -115,8 +115,8 @@
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Menu\ControlSetting.resx">
-      <DependentUpon>ControlSetting.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Menu\SettingControl.resx">
+      <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Menu\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

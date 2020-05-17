@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace KeyboardSmasher.GUI.Menu
 {
-    public partial class ControlSetting : UserControl
+    public partial class SettingControl : UserControl
     {
-        public ControlSetting()
+        MainForm parentForm;
+        public SettingControl(MainForm form)
         {
+            
             InitializeComponent();
+            parentForm = form;
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            parentForm.showMainMenu();
         }
     }
 }

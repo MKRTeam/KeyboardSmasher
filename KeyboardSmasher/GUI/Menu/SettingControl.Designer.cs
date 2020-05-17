@@ -1,6 +1,6 @@
 ﻿namespace KeyboardSmasher.GUI.Menu
 {
-    partial class ControlSetting
+    partial class SettingControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlSetting));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingControl));
             this.buttonBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +50,7 @@
             this.buttonBack.TabIndex = 12;
             this.buttonBack.Text = "НАЗАД";
             this.buttonBack.UseVisualStyleBackColor = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // label1
             // 
@@ -108,7 +109,7 @@
             this.comboBoxLanguage.Size = new System.Drawing.Size(130, 21);
             this.comboBoxLanguage.TabIndex = 16;
             // 
-            // ControlSetting
+            // SettingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,7 +120,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label1);
-            this.Name = "ControlSetting";
+            this.Name = "SettingControl";
             this.Size = new System.Drawing.Size(460, 430);
             this.ResumeLayout(false);
             this.PerformLayout();
