@@ -29,6 +29,11 @@ namespace KeyboardSmasher
         //список тренажеров
         private static Dictionary<ExerciseType, ExerciseMachine.ExerciseMachine> machines = null;
 
+        private static void Initilize()
+        {
+
+        }
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -36,6 +41,8 @@ namespace KeyboardSmasher
         static void Main()
         {
             //здесь происходит загрузка всех ресурсов
+
+            Initilize();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

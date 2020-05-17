@@ -13,7 +13,10 @@ namespace KeyboardSmasher.ExerciseMachine
 
     class MistakeCount : ExerciseMachine
     {
-        public MistakeCount()
+        //текст который дадим писать пользователю
+        public string Text { get; }//зависит от сложности
+        
+        public MistakeCount(Difficulty difficulty)
         {
 
         }

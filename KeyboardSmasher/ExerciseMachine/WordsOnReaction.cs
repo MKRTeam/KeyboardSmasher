@@ -13,7 +13,13 @@ namespace KeyboardSmasher.ExerciseMachine
 
     class WordsOnReaction : ExerciseMachine
     {
-        public WordsOnReaction()
+        //текст, который дадим писать пользователю
+        public string Text { get; }
+
+        //Время на все испытание
+        public TimeSpan Time { get; }
+
+        public WordsOnReaction(Difficulty difficulty)
         {
 
         }

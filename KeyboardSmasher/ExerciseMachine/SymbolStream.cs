@@ -13,15 +13,25 @@ namespace KeyboardSmasher.ExerciseMachine
 
     class SymbolStream : ExerciseMachine
     {
+        //наборы символов для каждого уровня сложности
         private static Dictionary<Difficulty, char[]> symbol_sets = null;
+        //размер очереди букв
+        private const uint symbols_queue_size = 5;
 
+        //кол-во букв в испытании. зависит от сложности
+        public uint SymbolsCount { get; }
 
-        private uint general_symbols_count;//это зависит от сложности
-        private const uint symbols_queue_size = 5;//можно изменить
+        //выбранный набор букв. зависит от сложности
+        public char[] SymbolsSet { get; }
 
-        public SymbolStream(Difficulty level)
+        //время на одну букву. зависит от сложности
+        public TimeSpan TimePerSymbol { get; }
+
+        public SymbolStream(Difficulty difficulty)
         {
             //если не выполнена инициализация symbol_sets то выкинуть исключение и не дать создать объект!!
+
+            //здесь происходит определение того, какой набор букв будет в испытании, сколько символов будет
         }
 
         //сам словарь формируется где-нибудь в main и сюда передается
