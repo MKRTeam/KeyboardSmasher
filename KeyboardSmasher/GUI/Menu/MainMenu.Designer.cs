@@ -77,10 +77,11 @@
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.AutoEllipsis = true;
             this.button3.BackColor = System.Drawing.Color.FloralWhite;
             this.button3.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(165, 330);
+            this.button3.Location = new System.Drawing.Point(188, 325);
             this.button3.Margin = new System.Windows.Forms.Padding(8);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(222, 40);
@@ -98,7 +99,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "MainMenu";
-            this.Size = new System.Drawing.Size(463, 436);
+            this.Size = new System.Drawing.Size(460, 430);
             this.ResumeLayout(false);
             this.PerformLayout();
 
