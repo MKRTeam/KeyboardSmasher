@@ -1,0 +1,4 @@
+D:\C#\KeyboardSmasher\obj\Debug\KeyboardSmasher.csprojAssemblyReference.cache
+D:\C#\KeyboardSmasher\obj\Debug\KeyboardSmasher.GUI.MainMenu.resources
+D:\C#\KeyboardSmasher\obj\Debug\KeyboardSmasher.Properties.Resources.resources
+D:\C#\KeyboardSmasher\obj\Debug\KeyboardSmasher.csproj.GenerateResource.cache
