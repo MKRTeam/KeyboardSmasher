@@ -71,6 +71,12 @@
     <Compile Include="Gameplay\Biom.cs" />
     <Compile Include="Gameplay\Event.cs" />
     <Compile Include="Gameplay\EventObject.cs" />
+    <Compile Include="Gameplay\GUI\EventControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gameplay\GUI\EventControl.Designer.cs">
+      <DependentUpon>EventControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Menu\MainMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,8 +97,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Gameplay\GUI\EventControl.resx">
+      <DependentUpon>EventControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Menu\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Menu\PauseMenu.resx">
+      <DependentUpon>PauseMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,8 +128,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Gameplay\GUI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
