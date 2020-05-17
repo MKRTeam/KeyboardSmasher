@@ -11,7 +11,17 @@ namespace KeyboardSmasher.Gameplay
         public string Description { get; }
         public ExerciseType execise_code { get; }
 
-        public EventAction(string desctiprion, ExerciseType exercise_code);
+        public EventAction(string desctiprion, ExerciseType exercise_code)
+        {
+            if (desctiprion == "" || desctiprion == null)
+            {
+                new _Exception("Описание пустое, структура EventAction");
+
+            }
+            Description = desctiprion;
+            this.execise_code = exercise_code;
+
+        }
     }
 
     class Event
@@ -21,10 +31,30 @@ namespace KeyboardSmasher.Gameplay
         public string Description { get; }
         //сюда можно добавить картинку какую-то или звук
 
-        public Event(string description, EventObject event_object, EventAction[] actions);
+        public Event(string description, EventObject event_object, EventAction[] actions)
+        {
+            Description = description;
+            this.event_object = event_object;
+            this.actions = actions;
 
-        public string[] getActions();
+        }
 
-        public ExerciseType getActionResult(uint action_index);
+        public string[] getActions()
+        {
+            /*Получить список описаний*/
+            string[] arr_name_action = new string[actions.Length];
+            for (int i = 0; i < actions.Length; i++)
+            {
+                arr_name_action[i] = actions[i].Description;
+            }
+            return arr_name_action;
+        }
+
+        public ExerciseType getActionResult(uint action_index)
+        {
+            if(action_index>=actions.Length)
+                new _Exception("Выход за пределы массива, класс Event");
+            return actions[action_index].execise_code;
+        }
     }
 }

@@ -29,7 +29,9 @@ namespace KeyboardSmasher.ExerciseMachine
 
         public SymbolStream(Difficulty difficulty)
         {
+
             //если не выполнена инициализация symbol_sets то выкинуть исключение и не дать создать объект!!
+
 
             //здесь происходит определение того, какой набор букв будет в испытании, сколько символов будет
         }
