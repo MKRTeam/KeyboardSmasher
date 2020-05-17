@@ -11,7 +11,7 @@ namespace KeyboardSmasher.ExerciseMachine
 
     }
 
-    class MistakeCount : ExerciseMachine
+    class MistakeCount// : ExerciseMachine
     {
         //текст который дадим писать пользователю
         public string Text { get; }//зависит от сложности
@@ -21,6 +21,6 @@ namespace KeyboardSmasher.ExerciseMachine
 
         }
 
-        public override bool start(out object statistic);
+        //public override bool start(out object statistic);
     }
 }

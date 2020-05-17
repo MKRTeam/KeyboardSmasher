@@ -11,7 +11,7 @@ namespace KeyboardSmasher.ExerciseMachine
 
     }
 
-    class WordsOnReaction : ExerciseMachine
+    class WordsOnReaction// : ExerciseMachine
     {
         //текст, который дадим писать пользователю
         public string Text { get; }
@@ -24,6 +24,6 @@ namespace KeyboardSmasher.ExerciseMachine
 
         }
 
-        public override bool start(out object statistic);
+        //public override bool start(out object statistic);
     }
 }
