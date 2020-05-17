@@ -30,15 +30,19 @@ namespace KeyboardSmasher.GUI
         {
             main_menu = new MainMenu();
             main_menu.Visible = false;
+            main_menu.Dock = DockStyle.Fill;
             this.Controls.Add(main_menu);
             pause_menu = new PauseMenu();
             pause_menu.Visible = false;
+            pause_menu.Dock = DockStyle.Fill;
             this.Controls.Add(pause_menu);
             symbol_stream_control = new SymbolStreamControl();
             symbol_stream_control.Visible = false;
+            symbol_stream_control.Dock = DockStyle.Fill;
             this.Controls.Add(symbol_stream_control);
             event_control = new EventControl();
             event_control.Visible = false;
+            event_control.Dock = DockStyle.Fill;
             this.Controls.Add(event_control);
         }
 
@@ -69,6 +73,11 @@ namespace KeyboardSmasher.GUI
         public void showSymbolStreamControl()
         {
             showControl(symbol_stream_control);
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
