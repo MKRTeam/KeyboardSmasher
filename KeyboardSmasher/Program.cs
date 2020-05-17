@@ -1,4 +1,5 @@
-﻿using KeyboardSmasher.GUI;
+﻿using KeyboardSmasher.ExerciseMachine;
+using KeyboardSmasher.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,10 @@ namespace KeyboardSmasher
 
     static class Program
     {
-        //список тренажеров
-        private static Dictionary<ExerciseType, ExerciseMachine.ExerciseMachine> machines = null;
 
         private static void Initilize()
         {
-
+            
         }
 
         /// <summary>
