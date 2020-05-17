@@ -35,7 +35,10 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
+            this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.ResumeLayout(false);
 
         }
