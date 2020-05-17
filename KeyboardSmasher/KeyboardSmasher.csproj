@@ -109,6 +109,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ExerciseMachine\GUI\SymbolQueueControl.resx">
+      <DependentUpon>SymbolQueueControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gameplay\GUI\EventControl.resx">
       <DependentUpon>EventControl.cs</DependentUpon>
     </EmbeddedResource>
