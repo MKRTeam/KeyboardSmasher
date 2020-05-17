@@ -18,11 +18,15 @@ namespace KeyboardSmasher.GUI.Menu
             
             InitializeComponent();
             parentForm = form;
+            comboBoxDifficult.SelectedIndex = 0;
+            comboBoxLanguage.SelectedIndex = 0;
+
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
             parentForm.showMainMenu();
+
         }
     }
 }
