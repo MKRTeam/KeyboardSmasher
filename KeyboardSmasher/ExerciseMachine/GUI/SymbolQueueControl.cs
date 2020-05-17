@@ -41,5 +41,14 @@ namespace KeyboardSmasher.ExerciseMachine.GUI {
             // Инициализируем пустую очередь отображаемых букв
             LettersQueue = new Queue<Letter>();
         }
+
+        /// <summary>
+        /// Добавление буквы в очередь
+        /// </summary>
+        /// <param name="letter">Добавляемая буква</param>
+        public void EnqueueLetter(char letter) {
+            // TODO: Задаём координату Y буквы рандомно - чтоб они шли зигзагом
+            LettersQueue.Enqueue(new Letter(letter, new PointF(Width + 10, Height / 2)));
+        }
     }
 }
