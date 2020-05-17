@@ -12,14 +12,16 @@ namespace KeyboardSmasher.GUI
 {
     public partial class MainMenu : UserControl
     {
-        public MainMenu()
+        MainForm parentForm;
+        public MainMenu(MainForm parentForm)
         {
             InitializeComponent();
+            this.parentForm = parentForm;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            parentForm.showSettings();
         }
 
         private void button1_Click(object sender, EventArgs e)
