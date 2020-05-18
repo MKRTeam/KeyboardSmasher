@@ -3,10 +3,12 @@ using KeyboardSmasher.Gameplay;
 using KeyboardSmasher.GUI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace KeyboardSmasher
 {
@@ -36,8 +38,8 @@ namespace KeyboardSmasher
     static class Program
     {
         private static Dictionary<Language, string> localization_paths;
+        [XmlElement]
         private static Biom[] bioms;
-        private static int bioms_count = 1;
         private static void Initialize()
         {
             #region localization
@@ -45,14 +47,16 @@ namespace KeyboardSmasher
             localization_paths.Add(Language.RUSSIAN, "russian.xml");
             localization_paths.Add(Language.ENGLISH, "english.xml");
             #endregion
-            #region bioms
-            bioms = new Biom[bioms_count];
-            #region biom1
-            const int objects_count = 5;
-            EventObject[] objects = new EventObject[objects_count];
-            bioms[0] = new Biom("Тайга", "Описание", objects);
-            #endregion
-            #endregion
+            bioms = DeserializeGameData("gamedata.xml");
+        }
+
+        private static Biom[] DeserializeGameData(string gamedata_path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Biom[]));
+            using (Stream reader = new FileStream(gamedata_path, FileMode.Open))
+            {
+                return (Biom[])serializer.Deserialize(reader);
+            }
         }
 
         /// <summary>
