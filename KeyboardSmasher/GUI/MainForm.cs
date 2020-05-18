@@ -1,5 +1,4 @@
-﻿using Gameplay;
-using KeyboardSmasher.ExerciseMachine.GUI;
+﻿using KeyboardSmasher.ExerciseMachine.GUI;
 using KeyboardSmasher.Gameplay;
 using KeyboardSmasher.Gameplay.GUI;
 using KeyboardSmasher.GUI.Menu;
