@@ -52,7 +52,7 @@ namespace KeyboardSmasher.Gameplay.GUI
         }
         void OnClickButton_Action(object sender, EventArgs e)
         {
-            Result = int.Parse(((Button)sender).Tag.ToString());
+            Result = (int)((Button)sender).Tag;
         }
         
     }
