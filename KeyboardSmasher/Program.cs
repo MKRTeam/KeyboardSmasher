@@ -44,7 +44,6 @@ namespace KeyboardSmasher
             MainForm main_form = new MainForm();
             main_form.showMainMenu();
             main_form.ShowDialog();
-            
         }
     }
 }

@@ -19,7 +19,7 @@ namespace KeyboardSmasher.GUI
         PauseMenu pause_menu;
         SymbolStreamControl symbol_stream_control;
         EventControl event_control;
-        SettingControl setting_control;
+        SettingsControl setting_control;
         Control currentVisibleControl = null;
 
         public MainForm()
@@ -30,38 +30,45 @@ namespace KeyboardSmasher.GUI
 
         private void InitControls()
         {
-            //main_menu
-            main_menu = new MainMenu(this);
+            #region main_menu
+            main_menu = new MainMenu(OnMainMenuResultChanged);
             main_menu.Visible = false;
             main_menu.Dock = DockStyle.Fill;
             this.Controls.Add(main_menu);
-            //settingControl
-            setting_control = new SettingControl(this);
+            #endregion
+            #region setting_control
+            setting_control = new SettingsControl(OnSettingsConrolResultChanged);
             setting_control.Visible = false;
             setting_control.Dock = DockStyle.Fill;
             this.Controls.Add(setting_control);
-            //pause_menu
+            #endregion
+            #region pause_menu
             pause_menu = new PauseMenu();
             pause_menu.Visible = false;
             pause_menu.Dock = DockStyle.Fill;
             this.Controls.Add(pause_menu);
-            //symbol_stream_comtrol
+            #endregion
+            #region symbol_stream_comtrol
             symbol_stream_control = new SymbolStreamControl();
             symbol_stream_control.Visible = false;
             symbol_stream_control.Dock = DockStyle.Fill;
             this.Controls.Add(symbol_stream_control);
-            //event_control
+            #endregion
+            #region event_control
             event_control = new EventControl();
             event_control.Visible = false;
             event_control.Dock = DockStyle.Fill;
             this.Controls.Add(event_control);
+            #endregion
         }
 
         private void showControl(Control control)
         {
             if (currentVisibleControl != null)
                 currentVisibleControl.Visible = false;
-            control.Visible = true;
+            if (control != null)
+                control.Visible = true;
+            else throw new Exception("Визуализируемый контрол был null");
             currentVisibleControl = control;
         }
 
@@ -70,30 +77,29 @@ namespace KeyboardSmasher.GUI
             showControl(main_menu);
         }
 
-        public void showSettingsMenu()
+        private void OnMainMenuResultChanged(MainMenuResult new_result)
         {
-            showControl(setting_control);
+            switch(new_result)
+            {
+                case MainMenuResult.START_GAME: { MessageBox.Show("Игра начинается"); } break;
+                case MainMenuResult.OPEN_SETTINGS: {
+                        setting_control.LastControl = main_menu;
+                        showControl(setting_control);
+                    }break;
+                case MainMenuResult.EXIT: this.Close(); break;
+                default: { } break;
+            }
         }
 
-        public void showPauseMenu()
+        private void OnSettingsConrolResultChanged(SettingsControlResult new_result)
         {
-            showControl(pause_menu);
-        }
-
-        public void showEventControl(string event_text)
-        {
-            showControl(event_control);
-            //здесь настройка контрола
-        }
-
-        public void showSymbolStreamControl()
-        {
-            showControl(symbol_stream_control);
-        }
-
-        private void MainForm_SizeChanged(object sender, EventArgs e)
-        {
-
+            switch(new_result)
+            {
+                case SettingsControlResult.BACK: {
+                        showControl(setting_control.LastControl); 
+                    } break;
+                default: { } break;
+            }
         }
     }
 }

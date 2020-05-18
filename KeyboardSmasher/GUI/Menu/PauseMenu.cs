@@ -12,6 +12,7 @@ namespace KeyboardSmasher.GUI
 {
     public partial class PauseMenu : UserControl
     {
+
         public PauseMenu()
         {
             InitializeComponent();
