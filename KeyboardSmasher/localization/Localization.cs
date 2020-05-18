@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace KeyboardSmasher.localization
+namespace KeyboardSmasher.Localization
 {
     public class Localization
     {

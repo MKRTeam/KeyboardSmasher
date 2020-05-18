@@ -1,4 +1,5 @@
 ﻿using KeyboardSmasher.ExerciseMachine;
+using KeyboardSmasher.Gameplay;
 using KeyboardSmasher.GUI;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,22 @@ namespace KeyboardSmasher
         HARD
     }
 
+    public enum Language
+    {
+        RUSSIAN,
+        ENGLISH
+    }
+
     static class Program
     {
-        private static void Initilize()
+        private static Dictionary<Language, string> localization_paths;
+        private static Biom[] bioms;
+        
+        private static void Initialize()
         {
-            
+            localization_paths = new Dictionary<Language, string>();
+            localization_paths.Add(Language.RUSSIAN, "russian.xml");
+            localization_paths.Add(Language.ENGLISH, "english.xml");
         }
 
         /// <summary>
@@ -39,9 +51,10 @@ namespace KeyboardSmasher
         [STAThread]
         static void Main()
         {
+            Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainForm main_form = new MainForm();
+            MainForm main_form = new MainForm(localization_paths);
             main_form.showMainMenu();
             main_form.ShowDialog();
         }

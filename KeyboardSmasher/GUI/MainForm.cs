@@ -22,9 +22,11 @@ namespace KeyboardSmasher.GUI
         SettingsControl setting_control;
         Control currentVisibleControl = null;
 
-        public static Difficulty Difficulty { get; set; }
+        Difficulty difficulty;
+        Dictionary<Language, string> localization_paths;
+        Localization.Localization localization = null;
 
-        public MainForm()
+        public MainForm(Dictionary<Language,string> localization_paths)
         {
             InitializeComponent();
             InitControls();
@@ -45,7 +47,7 @@ namespace KeyboardSmasher.GUI
             this.Controls.Add(setting_control);
             #endregion
             #region pause_menu
-            pause_menu = new PauseMenu();
+            pause_menu = new PauseMenu(OnPauseMenuResultChanged);
             pause_menu.Visible = false;
             pause_menu.Dock = DockStyle.Fill;
             this.Controls.Add(pause_menu);
@@ -62,6 +64,12 @@ namespace KeyboardSmasher.GUI
             event_control.Dock = DockStyle.Fill;
             this.Controls.Add(event_control);
             #endregion
+        }
+
+        private void SetLanguage(Language language)
+        {
+            localization = Localization.Localization.Deserialize(localization_paths[language]);
+            //здесь передать в действующий контрол
         }
 
         private void showControl(Control control)
@@ -105,14 +113,17 @@ namespace KeyboardSmasher.GUI
                     } break;
                 case SettingsControlResult.CHANGE_DIFFICULTY:
                     {
-                        Difficulty = setting_control.Difficulty;
+                        difficulty = setting_control.Difficulty;
                     }
                     break;
                 default: { } break;
             }
         }
 
-        //private void OnPauseMenuResultChanged(PauseMenuResult new_result);
+        private void OnPauseMenuResultChanged(PauseMenuResult new_result)
+        {
+
+        }
 
         //private void OnEventControlResultChanged(EventControlResult new_result);
 
