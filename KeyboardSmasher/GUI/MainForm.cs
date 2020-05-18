@@ -112,15 +112,9 @@ namespace KeyboardSmasher.GUI
             }
         }
 
-        private void OnPauseMenuResultChanged(PauseMenuResult new_result)
-        {
+        //private void OnPauseMenuResultChanged(PauseMenuResult new_result);
 
-        }
-
-        private void OnEventControlResultChanged(EventControlResult new_result)
-        {
-
-        }
+        //private void OnEventControlResultChanged(EventControlResult new_result);
 
 
     }
