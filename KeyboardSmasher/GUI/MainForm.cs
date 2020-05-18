@@ -22,6 +22,8 @@ namespace KeyboardSmasher.GUI
         SettingsControl setting_control;
         Control currentVisibleControl = null;
 
+        public static Difficulty Difficulty { get; set; }
+
         public MainForm()
         {
             InitializeComponent();
@@ -82,10 +84,12 @@ namespace KeyboardSmasher.GUI
             switch(new_result)
             {
                 case MainMenuResult.START_GAME: { MessageBox.Show("Игра начинается"); } break;
-                case MainMenuResult.OPEN_SETTINGS: {
+                case MainMenuResult.OPEN_SETTINGS:
+                    {
                         setting_control.LastControl = main_menu;
                         showControl(setting_control);
-                    }break;
+                    }
+                    break;
                 case MainMenuResult.EXIT: this.Close(); break;
                 default: { } break;
             }
@@ -95,11 +99,29 @@ namespace KeyboardSmasher.GUI
         {
             switch(new_result)
             {
-                case SettingsControlResult.BACK: {
-                        showControl(setting_control.LastControl); 
+                case SettingsControlResult.BACK:
+                    {
+                        showControl(setting_control.LastControl);
                     } break;
+                case SettingsControlResult.CHANGE_DIFFICULTY:
+                    {
+                        Difficulty = setting_control.Difficulty;
+                    }
+                    break;
                 default: { } break;
             }
         }
+
+        private void OnPauseMenuResultChanged(PauseMenuResult new_result)
+        {
+
+        }
+
+        private void OnEventControlResultChanged(EventControlResult new_result)
+        {
+
+        }
+
+
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace KeyboardSmasher
 {
     //типа тренажеров
-    enum ExerciseType
+    public enum ExerciseType
     {
         NO_EXERCISE,
         SYMBOL_STREAM,
@@ -19,11 +19,11 @@ namespace KeyboardSmasher
     }
 
     //уровни сложности
-    enum Difficulty
+    public enum Difficulty
     {
         EASY,
         NORMAL,
-        HIGH
+        HARD
     }
 
     static class Program
