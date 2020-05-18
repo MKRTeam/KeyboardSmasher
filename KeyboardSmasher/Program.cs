@@ -37,12 +37,22 @@ namespace KeyboardSmasher
     {
         private static Dictionary<Language, string> localization_paths;
         private static Biom[] bioms;
-        
+        private static int bioms_count = 1;
         private static void Initialize()
         {
+            #region localization
             localization_paths = new Dictionary<Language, string>();
             localization_paths.Add(Language.RUSSIAN, "russian.xml");
             localization_paths.Add(Language.ENGLISH, "english.xml");
+            #endregion
+            #region bioms
+            bioms = new Biom[bioms_count];
+            #region biom1
+            const int objects_count = 5;
+            EventObject[] objects = new EventObject[objects_count];
+            bioms[0] = new Biom("Тайга", "Описание", objects);
+            #endregion
+            #endregion
         }
 
         /// <summary>
@@ -54,7 +64,7 @@ namespace KeyboardSmasher
             Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainForm main_form = new MainForm(localization_paths);
+            MainForm main_form = new MainForm(localization_paths, bioms);
             main_form.showMainMenu();
             main_form.ShowDialog();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KeyboardSmasher.Gameplay
 {
-    struct EventAction
+    public struct EventAction
     {
         public string Description { get; }
         public ExerciseType execise_code { get; }
@@ -24,7 +24,7 @@ namespace KeyboardSmasher.Gameplay
         }
     }
 
-    class Event
+    public class Event
     {
         private EventObject event_object;
         private EventAction[] actions;

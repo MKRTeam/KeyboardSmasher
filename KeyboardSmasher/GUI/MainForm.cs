@@ -1,4 +1,5 @@
 ﻿using KeyboardSmasher.ExerciseMachine.GUI;
+using KeyboardSmasher.Gameplay;
 using KeyboardSmasher.Gameplay.GUI;
 using KeyboardSmasher.GUI.Menu;
 using System;
@@ -25,11 +26,14 @@ namespace KeyboardSmasher.GUI
         Difficulty difficulty;
         Dictionary<Language, string> localization_paths;
         Localization.Localization localization = null;
+        Biom[] bioms;
+        Biom current_biom = null;
 
-        public MainForm(Dictionary<Language,string> localization_paths)
+        public MainForm(Dictionary<Language,string> localization_paths, Biom[] bioms)
         {
             InitializeComponent();
             InitControls();
+            this.bioms = bioms;
         }
 
         private void InitControls()
@@ -59,10 +63,10 @@ namespace KeyboardSmasher.GUI
             this.Controls.Add(symbol_stream_control);
             #endregion
             #region event_control
-            event_control = new EventControl();
-            event_control.Visible = false;
-            event_control.Dock = DockStyle.Fill;
-            this.Controls.Add(event_control);
+            //event_control = new EventControl();
+            //event_control.Visible = false;
+            //event_control.Dock = DockStyle.Fill;
+            //this.Controls.Add(event_control);
             #endregion
         }
 
