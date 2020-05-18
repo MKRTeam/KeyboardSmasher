@@ -29,53 +29,56 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PauseMenu));
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnContinueGame = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnExitToMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button3
+            // btnExit
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.AutoEllipsis = true;
-            this.button3.BackColor = System.Drawing.Color.FloralWhite;
-            this.button3.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(40, 326);
-            this.button3.Margin = new System.Windows.Forms.Padding(8);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(222, 40);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "ВЫХОД";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.AutoEllipsis = true;
+            this.btnExit.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnExit.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(40, 326);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(8);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(222, 40);
+            this.btnExit.TabIndex = 7;
+            this.btnExit.Text = "ВЫХОД";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // button2
+            // btnSettings
             // 
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Ivory;
-            this.button2.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(40, 214);
-            this.button2.Margin = new System.Windows.Forms.Padding(8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(222, 40);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "НАСТРОЙКИ";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnSettings.AutoSize = true;
+            this.btnSettings.BackColor = System.Drawing.Color.Ivory;
+            this.btnSettings.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSettings.Location = new System.Drawing.Point(40, 214);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(8);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(222, 40);
+            this.btnSettings.TabIndex = 6;
+            this.btnSettings.Text = "НАСТРОЙКИ";
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // button1
+            // btnContinueGame
             // 
-            this.button1.AutoEllipsis = true;
-            this.button1.BackColor = System.Drawing.Color.FloralWhite;
-            this.button1.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(193, 158);
-            this.button1.Margin = new System.Windows.Forms.Padding(8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(222, 40);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "ПРОДОЛЖИТЬ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnContinueGame.AutoEllipsis = true;
+            this.btnContinueGame.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnContinueGame.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContinueGame.Location = new System.Drawing.Point(193, 158);
+            this.btnContinueGame.Margin = new System.Windows.Forms.Padding(8);
+            this.btnContinueGame.Name = "btnContinueGame";
+            this.btnContinueGame.Size = new System.Drawing.Size(222, 40);
+            this.btnContinueGame.TabIndex = 5;
+            this.btnContinueGame.Text = "ПРОДОЛЖИТЬ";
+            this.btnContinueGame.UseVisualStyleBackColor = false;
+            this.btnContinueGame.Click += new System.EventHandler(this.btnContinueGame_Click);
             // 
             // label1
             // 
@@ -88,29 +91,30 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "ПАУЗА";
             // 
-            // button4
+            // btnExitToMenu
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.AutoEllipsis = true;
-            this.button4.BackColor = System.Drawing.Color.FloralWhite;
-            this.button4.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(193, 270);
-            this.button4.Margin = new System.Windows.Forms.Padding(8);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(222, 40);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "ВЫХОД В МЕНЮ";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnExitToMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExitToMenu.AutoSize = true;
+            this.btnExitToMenu.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnExitToMenu.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExitToMenu.Location = new System.Drawing.Point(193, 270);
+            this.btnExitToMenu.Margin = new System.Windows.Forms.Padding(8);
+            this.btnExitToMenu.Name = "btnExitToMenu";
+            this.btnExitToMenu.Size = new System.Drawing.Size(222, 40);
+            this.btnExitToMenu.TabIndex = 8;
+            this.btnExitToMenu.Text = "ВЫХОД В МЕНЮ";
+            this.btnExitToMenu.UseVisualStyleBackColor = false;
+            this.btnExitToMenu.Click += new System.EventHandler(this.btnExitToMenu_Click);
             // 
             // PauseMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExitToMenu);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnSettings);
+            this.Controls.Add(this.btnContinueGame);
             this.Controls.Add(this.label1);
             this.Name = "PauseMenu";
             this.Size = new System.Drawing.Size(460, 430);
@@ -121,10 +125,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnContinueGame;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnExitToMenu;
     }
 }
