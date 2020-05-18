@@ -1,5 +1,4 @@
-﻿using KeyboardSmasher.ExerciseMachine;
-using KeyboardSmasher.Gameplay;
+﻿using Gameplay;
 using KeyboardSmasher.GUI;
 using System;
 using System.Collections.Generic;
@@ -12,23 +11,6 @@ using System.Xml.Serialization;
 
 namespace KeyboardSmasher
 {
-    //типа тренажеров
-    public enum ExerciseType
-    {
-        NO_EXERCISE,
-        SYMBOL_STREAM,
-        WORDS_ON_REACTION,
-        MISTAKE_COUNT
-    }
-
-    //уровни сложности
-    public enum Difficulty
-    {
-        EASY,
-        NORMAL,
-        HARD
-    }
-
     public enum Language
     {
         RUSSIAN,
@@ -47,7 +29,7 @@ namespace KeyboardSmasher
             localization_paths.Add(Language.RUSSIAN, "russian.xml");
             localization_paths.Add(Language.ENGLISH, "english.xml");
             #endregion
-            bioms = DeserializeGameData("gamedata.xml");
+            //bioms = DeserializeGameData("gamedata.xml");
         }
 
         private static Biom[] DeserializeGameData(string gamedata_path)

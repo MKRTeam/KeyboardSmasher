@@ -1,7 +1,6 @@
-﻿using KeyboardSmasher.ExerciseMachine.GUI;
-using KeyboardSmasher.Gameplay;
-using KeyboardSmasher.Gameplay.GUI;
-using KeyboardSmasher.GUI.Menu;
+﻿using Gameplay;
+using KeyboardSmasher.ExerciseMachine.GUI;
+using KeyboardSmasher.GUI.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +15,7 @@ namespace KeyboardSmasher.GUI
 {
     public partial class MainForm : Form
     {
-        MainMenu main_menu;
+        Controls.MainMenu main_menu;
         PauseMenu pause_menu;
         SymbolStreamControl symbol_stream_control;
         EventControl event_control;
@@ -39,7 +38,7 @@ namespace KeyboardSmasher.GUI
         private void InitControls()
         {
             #region main_menu
-            main_menu = new MainMenu(OnMainMenuResultChanged);
+            main_menu = new Controls.MainMenu(OnMainMenuResultChanged);
             main_menu.Visible = false;
             main_menu.Dock = DockStyle.Fill;
             this.Controls.Add(main_menu);
