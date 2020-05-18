@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExerciseMachine\ExerciseMachine.cs" />
     <Compile Include="ExerciseMachine\GUI\MistakeCountControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,28 +70,22 @@
     <Compile Include="ExerciseMachine\GUI\WordsOnReactionControl.Designer.cs">
       <DependentUpon>WordsOnReactionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExerciseMachine\MistakeCount.cs" />
-    <Compile Include="ExerciseMachine\SymbolStream.cs" />
-    <Compile Include="ExerciseMachine\WordsOnReaction.cs" />
-    <Compile Include="Gameplay\Biom.cs" />
-    <Compile Include="Gameplay\Event.cs" />
-    <Compile Include="Gameplay\EventObject.cs" />
-    <Compile Include="Gameplay\GUI\EventControl.cs">
+    <Compile Include="GUI\Controls\EventControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gameplay\GUI\EventControl.Designer.cs">
+    <Compile Include="GUI\Controls\EventControl.Designer.cs">
       <DependentUpon>EventControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Menu\SettingsControl.cs">
+    <Compile Include="GUI\Controls\SettingsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Menu\SettingsControl.Designer.cs">
+    <Compile Include="GUI\Controls\SettingsControl.Designer.cs">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Menu\MainMenu.cs">
+    <Compile Include="GUI\Controls\MainMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Menu\MainMenu.Designer.cs">
+    <Compile Include="GUI\Controls\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\MainForm.cs">
@@ -101,10 +94,10 @@
     <Compile Include="GUI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Menu\PauseMenu.cs">
+    <Compile Include="GUI\Controls\PauseMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Menu\PauseMenu.Designer.cs">
+    <Compile Include="GUI\Controls\PauseMenu.Designer.cs">
       <DependentUpon>PauseMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Localization\Localization.cs" />
@@ -113,19 +106,19 @@
     <EmbeddedResource Include="ExerciseMachine\GUI\SymbolQueueControl.resx">
       <DependentUpon>SymbolQueueControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gameplay\GUI\EventControl.resx">
+    <EmbeddedResource Include="GUI\Controls\EventControl.resx">
       <DependentUpon>EventControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Menu\SettingsControl.resx">
+    <EmbeddedResource Include="GUI\Controls\SettingsControl.resx">
       <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Menu\MainMenu.resx">
+    <EmbeddedResource Include="GUI\Controls\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Menu\PauseMenu.resx">
+    <EmbeddedResource Include="GUI\Controls\PauseMenu.resx">
       <DependentUpon>PauseMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -150,6 +143,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GameplayClasses\Gameplay.csproj">
+      <Project>{c1005b83-1bda-4941-b601-1d0e18de51d7}</Project>
+      <Name>Gameplay</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
