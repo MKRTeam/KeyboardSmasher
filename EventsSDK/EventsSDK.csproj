@@ -106,5 +106,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gameplay\GameplayLibrary.csproj">
+      <Project>{922dab0d-50de-4d70-8fe6-80f65cd1ffa4}</Project>
+      <Name>GameplayLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
