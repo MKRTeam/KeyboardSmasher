@@ -10,28 +10,49 @@ using System.Windows.Forms;
 
 namespace KeyboardSmasher.Gameplay.GUI
 {
+   
+    
+
     public partial class EventControl : UserControl
     {
         string name_image;
         string[] action;
         string textScene;
-        public string Result;
-        public EventControl(string name_image,string[] actions,string textScene)
+
+        private int Result
+        {
+            get { return Result; }
+            set
+            {
+                Result = value;
+                OnControlResultChanged(value);
+            }
+        }
+
+        public delegate void EventControlResultProc(int result);
+        event EventControlResultProc OnControlResultChanged;
+        
+
+        public EventControl(string name_image,string[] actions,string textScene, EventControlResultProc result_handler)
         {
             InitializeComponent();
-            tableLayoutPanel1.RowCount = action.Length;
+            rTBTextActionScene.Text = textScene;
+            pictureBoxScene.Image = new System.Drawing.Bitmap(name_image);
+            tLPActionButton.RowCount = action.Length;
+            OnControlResultChanged += result_handler;
             for (int i = 0; i < action.Length; i++)
             {
                 Button button = new Button();
                 button.Dock = DockStyle.Fill;
                 button.Text = actions[i];
+                button.Tag = i;
                 button.Click += OnClickButton_Action;
-                tableLayoutPanel1.SetRow(button, i);
+                tLPActionButton.SetRow(button, i);
             }
         }
         void OnClickButton_Action(object sender, EventArgs e)
         {
-             
+            Result = int.Parse(((Button)sender).Tag.ToString());
         }
         
     }

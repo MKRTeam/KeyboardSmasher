@@ -28,61 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rTBTextActionScene = new System.Windows.Forms.RichTextBox();
+            this.pictureBoxScene = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tLPActionButton = new System.Windows.Forms.TableLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScene)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // rTBTextActionScene
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(538, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(232, 332);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.rTBTextActionScene.Location = new System.Drawing.Point(538, 3);
+            this.rTBTextActionScene.Name = "rTBTextActionScene";
+            this.rTBTextActionScene.Size = new System.Drawing.Size(232, 332);
+            this.rTBTextActionScene.TabIndex = 0;
+            this.rTBTextActionScene.Text = "";
             // 
-            // pictureBox1
+            // pictureBoxScene
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(532, 332);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxScene.Location = new System.Drawing.Point(0, 3);
+            this.pictureBoxScene.Name = "pictureBoxScene";
+            this.pictureBoxScene.Size = new System.Drawing.Size(532, 332);
+            this.pictureBoxScene.TabIndex = 1;
+            this.pictureBoxScene.TabStop = false;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.panel1.Controls.Add(this.tLPActionButton);
             this.panel1.Location = new System.Drawing.Point(6, 341);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(767, 215);
             this.panel1.TabIndex = 2;
             // 
-            // tableLayoutPanel1
+            // tLPActionButton
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(767, 215);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tLPActionButton.AutoSize = true;
+            this.tLPActionButton.ColumnCount = 1;
+            this.tLPActionButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tLPActionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tLPActionButton.Location = new System.Drawing.Point(0, 0);
+            this.tLPActionButton.Name = "tLPActionButton";
+            this.tLPActionButton.RowCount = 1;
+            this.tLPActionButton.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tLPActionButton.Size = new System.Drawing.Size(767, 215);
+            this.tLPActionButton.TabIndex = 0;
             // 
             // EventControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.pictureBoxScene);
+            this.Controls.Add(this.rTBTextActionScene);
             this.Name = "EventControl";
             this.Size = new System.Drawing.Size(773, 556);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScene)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -91,9 +91,9 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RichTextBox rTBTextActionScene;
+        private System.Windows.Forms.PictureBox pictureBoxScene;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tLPActionButton;
     }
 }
