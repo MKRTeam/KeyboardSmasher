@@ -107,7 +107,7 @@
     <Compile Include="GUI\Menu\PauseMenu.Designer.cs">
       <DependentUpon>PauseMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Localization.cs" />
+    <Compile Include="localization\Localization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ExerciseMachine\GUI\SymbolQueueControl.resx">
