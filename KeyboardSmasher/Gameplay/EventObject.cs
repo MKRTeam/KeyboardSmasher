@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace KeyboardSmasher.Gameplay
 {
-    class EventObject
+    public class EventObject
     {
         private Biom Biom { get; }
         string Name { get; }
         string Description { get; }
 
-        public EventObject(string name, string description, Biom biom)
+        private Event[] events;
+        private static Random random = new Random();
+
+        public EventObject(string name, string description, Biom biom, Event[] events)
         {
             if (name != "" || description != "" || biom !=null)
             {
@@ -22,6 +25,12 @@ namespace KeyboardSmasher.Gameplay
             Biom = biom;
             Name = name;
             Description = description;
+            this.events = events;
+        }
+
+        public Event getRandomEvent()
+        {
+            return events[random.Next(0, events.Length)];
         }
     }
 }

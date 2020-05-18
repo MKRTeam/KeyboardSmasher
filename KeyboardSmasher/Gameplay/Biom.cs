@@ -12,12 +12,15 @@ namespace KeyboardSmasher.Gameplay
             : base(message)
         { }
     }
-    class Biom
+    public class Biom
     {
         public string Name { get; }
         public string Description { get; }
 
-        public Biom(string name, string description)
+        private EventObject[] objects;
+        private static Random random = new Random();
+
+        public Biom(string name, string description, EventObject[] objects)
         {
             if (name != "" || description != "")
             {
@@ -25,10 +28,13 @@ namespace KeyboardSmasher.Gameplay
                 return;
             }
             this.Name = name;
-
             this.Description = description;
+            this.objects = objects;
         }
 
-
+        public EventObject getRandomEventObject()
+        {
+            return objects[random.Next(0, objects.Length)];
+        }
     }
 }
