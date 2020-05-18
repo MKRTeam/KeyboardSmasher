@@ -30,36 +30,36 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.buttonAddBiom = new System.Windows.Forms.Button();
+            this.buttonDeleteBiom = new System.Windows.Forms.Button();
+            this.listBoxBioms = new System.Windows.Forms.ListBox();
+            this.buttonNextAnimals = new System.Windows.Forms.Button();
+            this.textBoxDescriptionBiom = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxNameBiom = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.buttonDeleteAnimal = new System.Windows.Forms.Button();
+            this.buttonAddAnimal = new System.Windows.Forms.Button();
+            this.listBoxAnimals = new System.Windows.Forms.ListBox();
+            this.buttonNextAction = new System.Windows.Forms.Button();
+            this.textBoxDescriptionAnimal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxNameAnimal = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonDeleteAction = new System.Windows.Forms.Button();
+            this.buttonAddAction = new System.Windows.Forms.Button();
+            this.listBoxActions = new System.Windows.Forms.ListBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.textBoxDescriptionAction = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.textBoxNameAction = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelCurrentBiom = new System.Windows.Forms.Label();
+            this.labelCurrentAnimal = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -79,14 +79,14 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button9);
-            this.tabPage1.Controls.Add(this.button8);
-            this.tabPage1.Controls.Add(this.listBox3);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.buttonAddBiom);
+            this.tabPage1.Controls.Add(this.buttonDeleteBiom);
+            this.tabPage1.Controls.Add(this.listBoxBioms);
+            this.tabPage1.Controls.Add(this.buttonNextAnimals);
+            this.tabPage1.Controls.Add(this.textBoxDescriptionBiom);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.textBoxNameBiom);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -95,23 +95,49 @@
             this.tabPage1.Text = "Настрока биома";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonAddBiom
             // 
-            this.button1.Location = new System.Drawing.Point(505, 454);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 60);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Далее";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAddBiom.Location = new System.Drawing.Point(291, 313);
+            this.buttonAddBiom.Name = "buttonAddBiom";
+            this.buttonAddBiom.Size = new System.Drawing.Size(105, 25);
+            this.buttonAddBiom.TabIndex = 27;
+            this.buttonAddBiom.Text = "Добавить";
+            this.buttonAddBiom.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // buttonDeleteBiom
             // 
-            this.textBox2.Location = new System.Drawing.Point(23, 111);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(373, 187);
-            this.textBox2.TabIndex = 7;
+            this.buttonDeleteBiom.Location = new System.Drawing.Point(602, 313);
+            this.buttonDeleteBiom.Name = "buttonDeleteBiom";
+            this.buttonDeleteBiom.Size = new System.Drawing.Size(105, 25);
+            this.buttonDeleteBiom.TabIndex = 26;
+            this.buttonDeleteBiom.Text = "Удалить";
+            this.buttonDeleteBiom.UseVisualStyleBackColor = true;
+            // 
+            // listBoxBioms
+            // 
+            this.listBoxBioms.FormattingEnabled = true;
+            this.listBoxBioms.Location = new System.Drawing.Point(446, 34);
+            this.listBoxBioms.Name = "listBoxBioms";
+            this.listBoxBioms.Size = new System.Drawing.Size(261, 264);
+            this.listBoxBioms.TabIndex = 25;
+            // 
+            // buttonNextAnimals
+            // 
+            this.buttonNextAnimals.Location = new System.Drawing.Point(505, 454);
+            this.buttonNextAnimals.Name = "buttonNextAnimals";
+            this.buttonNextAnimals.Size = new System.Drawing.Size(202, 60);
+            this.buttonNextAnimals.TabIndex = 8;
+            this.buttonNextAnimals.Text = "Далее";
+            this.buttonNextAnimals.UseVisualStyleBackColor = true;
+            this.buttonNextAnimals.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBoxDescriptionBiom
+            // 
+            this.textBoxDescriptionBiom.Location = new System.Drawing.Point(23, 111);
+            this.textBoxDescriptionBiom.Multiline = true;
+            this.textBoxDescriptionBiom.Name = "textBoxDescriptionBiom";
+            this.textBoxDescriptionBiom.Size = new System.Drawing.Size(373, 187);
+            this.textBoxDescriptionBiom.TabIndex = 7;
             // 
             // label6
             // 
@@ -131,23 +157,23 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "Имя биома";
             // 
-            // textBox1
+            // textBoxNameBiom
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(375, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxNameBiom.Location = new System.Drawing.Point(21, 48);
+            this.textBoxNameBiom.Name = "textBoxNameBiom";
+            this.textBoxNameBiom.Size = new System.Drawing.Size(375, 20);
+            this.textBoxNameBiom.TabIndex = 0;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.listBox1);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.buttonDeleteAnimal);
+            this.tabPage2.Controls.Add(this.buttonAddAnimal);
+            this.tabPage2.Controls.Add(this.listBoxAnimals);
+            this.tabPage2.Controls.Add(this.buttonNextAction);
+            this.tabPage2.Controls.Add(this.textBoxDescriptionAnimal);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.textBox4);
+            this.tabPage2.Controls.Add(this.textBoxNameAnimal);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -156,76 +182,48 @@
             this.tabPage2.Text = "Создание животных";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // buttonDeleteAnimal
             // 
-            this.tabPage3.Controls.Add(this.button5);
-            this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Controls.Add(this.listBox2);
-            this.tabPage3.Controls.Add(this.button7);
-            this.tabPage3.Controls.Add(this.textBox5);
-            this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.textBox6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(713, 520);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Создание дейсвий";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.buttonDeleteAnimal.Location = new System.Drawing.Point(596, 305);
+            this.buttonDeleteAnimal.Name = "buttonDeleteAnimal";
+            this.buttonDeleteAnimal.Size = new System.Drawing.Size(105, 25);
+            this.buttonDeleteAnimal.TabIndex = 16;
+            this.buttonDeleteAnimal.Text = "Удалить";
+            this.buttonDeleteAnimal.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // buttonAddAnimal
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Текущий биом";
+            this.buttonAddAnimal.Location = new System.Drawing.Point(285, 291);
+            this.buttonAddAnimal.Name = "buttonAddAnimal";
+            this.buttonAddAnimal.Size = new System.Drawing.Size(105, 25);
+            this.buttonAddAnimal.TabIndex = 15;
+            this.buttonAddAnimal.Text = "Добавить";
+            this.buttonAddAnimal.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // listBoxAnimals
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Выбранное животное";
+            this.listBoxAnimals.FormattingEnabled = true;
+            this.listBoxAnimals.Location = new System.Drawing.Point(440, 35);
+            this.listBoxAnimals.Name = "listBoxAnimals";
+            this.listBoxAnimals.Size = new System.Drawing.Size(261, 264);
+            this.listBoxAnimals.TabIndex = 14;
             // 
-            // label3
+            // buttonNextAction
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(99, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Текущий биом";
+            this.buttonNextAction.Location = new System.Drawing.Point(499, 441);
+            this.buttonNextAction.Name = "buttonNextAction";
+            this.buttonNextAction.Size = new System.Drawing.Size(202, 60);
+            this.buttonNextAction.TabIndex = 13;
+            this.buttonNextAction.Text = "Далее";
+            this.buttonNextAction.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // textBoxDescriptionAnimal
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(134, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Текущий биом";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(499, 441);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(202, 60);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Далее";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(17, 98);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(373, 187);
-            this.textBox3.TabIndex = 12;
+            this.textBoxDescriptionAnimal.Location = new System.Drawing.Point(17, 98);
+            this.textBoxDescriptionAnimal.Multiline = true;
+            this.textBoxDescriptionAnimal.Name = "textBoxDescriptionAnimal";
+            this.textBoxDescriptionAnimal.Size = new System.Drawing.Size(373, 187);
+            this.textBoxDescriptionAnimal.TabIndex = 12;
             // 
             // label7
             // 
@@ -245,81 +243,73 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Имя животного";
             // 
-            // textBox4
+            // textBoxNameAnimal
             // 
-            this.textBox4.Location = new System.Drawing.Point(15, 35);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(375, 20);
-            this.textBox4.TabIndex = 9;
+            this.textBoxNameAnimal.Location = new System.Drawing.Point(15, 35);
+            this.textBoxNameAnimal.Name = "textBoxNameAnimal";
+            this.textBoxNameAnimal.Size = new System.Drawing.Size(375, 20);
+            this.textBoxNameAnimal.TabIndex = 9;
             // 
-            // listBox1
+            // tabPage3
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(440, 35);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(261, 264);
-            this.listBox1.TabIndex = 14;
+            this.tabPage3.Controls.Add(this.buttonDeleteAction);
+            this.tabPage3.Controls.Add(this.buttonAddAction);
+            this.tabPage3.Controls.Add(this.listBoxActions);
+            this.tabPage3.Controls.Add(this.buttonSave);
+            this.tabPage3.Controls.Add(this.textBoxDescriptionAction);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.textBoxNameAction);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(713, 520);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Создание дейсвий";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonDeleteAction
             // 
-            this.button3.Location = new System.Drawing.Point(285, 291);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 25);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Добавить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonDeleteAction.Location = new System.Drawing.Point(596, 292);
+            this.buttonDeleteAction.Name = "buttonDeleteAction";
+            this.buttonDeleteAction.Size = new System.Drawing.Size(105, 25);
+            this.buttonDeleteAction.TabIndex = 24;
+            this.buttonDeleteAction.Text = "Удалить";
+            this.buttonDeleteAction.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonAddAction
             // 
-            this.button4.Location = new System.Drawing.Point(596, 305);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 25);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Удалить";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonAddAction.Location = new System.Drawing.Point(285, 291);
+            this.buttonAddAction.Name = "buttonAddAction";
+            this.buttonAddAction.Size = new System.Drawing.Size(105, 25);
+            this.buttonAddAction.TabIndex = 23;
+            this.buttonAddAction.Text = "Добавить";
+            this.buttonAddAction.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // listBoxActions
             // 
-            this.button5.Location = new System.Drawing.Point(596, 292);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(105, 25);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "Удалить";
-            this.button5.UseVisualStyleBackColor = true;
+            this.listBoxActions.FormattingEnabled = true;
+            this.listBoxActions.Location = new System.Drawing.Point(440, 22);
+            this.listBoxActions.Name = "listBoxActions";
+            this.listBoxActions.Size = new System.Drawing.Size(261, 264);
+            this.listBoxActions.TabIndex = 22;
             // 
-            // button6
+            // buttonSave
             // 
-            this.button6.Location = new System.Drawing.Point(285, 291);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 25);
-            this.button6.TabIndex = 23;
-            this.button6.Text = "Добавить";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(499, 441);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(202, 60);
+            this.buttonSave.TabIndex = 21;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // textBoxDescriptionAction
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(440, 22);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(261, 264);
-            this.listBox2.TabIndex = 22;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(499, 441);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(202, 60);
-            this.button7.TabIndex = 21;
-            this.button7.Text = "Сохранить";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(17, 98);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(373, 187);
-            this.textBox5.TabIndex = 20;
+            this.textBoxDescriptionAction.Location = new System.Drawing.Point(17, 98);
+            this.textBoxDescriptionAction.Multiline = true;
+            this.textBoxDescriptionAction.Name = "textBoxDescriptionAction";
+            this.textBoxDescriptionAction.Size = new System.Drawing.Size(373, 187);
+            this.textBoxDescriptionAction.TabIndex = 20;
             // 
             // label9
             // 
@@ -340,46 +330,56 @@
             this.label10.Text = "Название дейсвия";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // textBox6
+            // textBoxNameAction
             // 
-            this.textBox6.Location = new System.Drawing.Point(15, 35);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(375, 20);
-            this.textBox6.TabIndex = 17;
+            this.textBoxNameAction.Location = new System.Drawing.Point(15, 35);
+            this.textBoxNameAction.Name = "textBoxNameAction";
+            this.textBoxNameAction.Size = new System.Drawing.Size(375, 20);
+            this.textBoxNameAction.TabIndex = 17;
             // 
-            // button8
+            // label1
             // 
-            this.button8.Location = new System.Drawing.Point(602, 313);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(105, 25);
-            this.button8.TabIndex = 26;
-            this.button8.Text = "Удалить";
-            this.button8.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Текущий биом";
             // 
-            // listBox3
+            // label2
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(446, 34);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(261, 264);
-            this.listBox3.TabIndex = 25;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Выбранное животное";
             // 
-            // button9
+            // labelCurrentBiom
             // 
-            this.button9.Location = new System.Drawing.Point(291, 313);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(105, 25);
-            this.button9.TabIndex = 27;
-            this.button9.Text = "Добавить";
-            this.button9.UseVisualStyleBackColor = true;
+            this.labelCurrentBiom.AutoSize = true;
+            this.labelCurrentBiom.Location = new System.Drawing.Point(99, 9);
+            this.labelCurrentBiom.Name = "labelCurrentBiom";
+            this.labelCurrentBiom.Size = new System.Drawing.Size(81, 13);
+            this.labelCurrentBiom.TabIndex = 3;
+            this.labelCurrentBiom.Text = "Текущий биом";
+            // 
+            // labelCurrentAnimal
+            // 
+            this.labelCurrentAnimal.AutoSize = true;
+            this.labelCurrentAnimal.Location = new System.Drawing.Point(134, 37);
+            this.labelCurrentAnimal.Name = "labelCurrentAnimal";
+            this.labelCurrentAnimal.Size = new System.Drawing.Size(81, 13);
+            this.labelCurrentAnimal.TabIndex = 4;
+            this.labelCurrentAnimal.Text = "Текущий биом";
             // 
             // SDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 611);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelCurrentAnimal);
+            this.Controls.Add(this.labelCurrentBiom);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
@@ -401,36 +401,36 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxDescriptionBiom;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxNameBiom;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label labelCurrentBiom;
+        private System.Windows.Forms.Label labelCurrentAnimal;
+        private System.Windows.Forms.Button buttonNextAnimals;
+        private System.Windows.Forms.Button buttonNextAction;
+        private System.Windows.Forms.TextBox textBoxDescriptionAnimal;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxNameAnimal;
+        private System.Windows.Forms.Button buttonAddBiom;
+        private System.Windows.Forms.Button buttonDeleteBiom;
+        private System.Windows.Forms.ListBox listBoxBioms;
+        private System.Windows.Forms.Button buttonDeleteAnimal;
+        private System.Windows.Forms.Button buttonAddAnimal;
+        private System.Windows.Forms.ListBox listBoxAnimals;
+        private System.Windows.Forms.Button buttonDeleteAction;
+        private System.Windows.Forms.Button buttonAddAction;
+        private System.Windows.Forms.ListBox listBoxActions;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.TextBox textBoxDescriptionAction;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxNameAction;
     }
 }
 

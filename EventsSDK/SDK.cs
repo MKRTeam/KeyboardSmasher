@@ -14,6 +14,7 @@ namespace EventsSDK
     {
         public SDK()
         {
+            
             InitializeComponent();
         }
 
