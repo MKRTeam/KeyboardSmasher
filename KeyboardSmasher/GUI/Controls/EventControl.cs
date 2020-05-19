@@ -21,6 +21,14 @@ namespace KeyboardSmasher.GUI.Controls
         ACTION4
     }
 
+    class NonSelectableButton : Button
+    {
+        public NonSelectableButton()
+        {
+            this.SetStyle(ControlStyles.Selectable, false);
+        }
+    }
+
     public partial class EventControl : UserControl
     {
         string image_path;
@@ -57,13 +65,13 @@ namespace KeyboardSmasher.GUI.Controls
             tLPActionButton.RowStyles.Clear();
             for (int i = 0; i < actions.Length; i++)
             {
-                Button button = new Button();
+                NonSelectableButton button = new NonSelectableButton();
                 
                 button.Dock = DockStyle.Fill;
                 button.Text = actions[i];
                 button.Tag = i;//в тег заносим порядковый номер варианта действия
                 button.Click += OnClickButton_Action;
-                
+
                 tLPActionButton.Controls.Add(button, 0, i);
                
                 //ПОПРАВИТЬ СТИЛЬ ОТОБРАЖЕНИЯ КНОПОК
@@ -77,6 +85,8 @@ namespace KeyboardSmasher.GUI.Controls
             Result = EventControlResult.ACTION0 + (int)((Button)sender).Tag;
         }
 
+
+
         public void EventControl_KeyDown(object sender, KeyEventArgs e)
         {
             //не работает событие. Событие не вызывается при нажатии кнопки ПОЧЕМУ?
@@ -88,7 +98,7 @@ namespace KeyboardSmasher.GUI.Controls
 
         public void EventControl_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MessageBox.Show("нажалось");
+            
         }
     }
 }
