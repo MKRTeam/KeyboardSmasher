@@ -15,13 +15,16 @@ namespace KeyboardSmasher.GUI
 {
     public partial class MainForm : Form
     {
+        //контролы, которые всегда хранятся в памяти
         Controls.MainMenu main_menu;
         PauseMenu pause_menu;
         SymbolStreamControl symbol_stream_control;
-        EventControl event_control;
         SettingsControl setting_control;
+        //видимый контрол
         Control currentVisibleControl = null;
+        EventControl currentEventControl = null;
 
+        //игровые данные
         Difficulty difficulty;
         Dictionary<Language, string> localization_paths;
         Localization.Localization localization = null;
@@ -33,6 +36,7 @@ namespace KeyboardSmasher.GUI
             InitializeComponent();
             InitControls();
             this.bioms = bioms;
+            current_biom = this.bioms[0];
         }
 
         private void InitControls()
@@ -85,16 +89,33 @@ namespace KeyboardSmasher.GUI
             currentVisibleControl = control;
         }
 
+
+        private void showNewEventControl()
+        {
+            if (currentEventControl != null)
+                this.Controls.Remove(currentEventControl);
+            Event evt = current_biom.getRandomEventObject().getRandomEvent();
+            currentEventControl = new EventControl("", evt.getActions(), evt.Description, OnEventControlResultChanged);
+            currentEventControl.Dock = DockStyle.Fill;
+            this.Controls.Add(currentEventControl);
+            showControl(currentEventControl);
+        }
+
         public void showMainMenu()
         {
             showControl(main_menu);
         }
 
+        #region result_handlers
         private void OnMainMenuResultChanged(MainMenuResult new_result)
         {
             switch(new_result)
             {
-                case MainMenuResult.START_GAME: { MessageBox.Show("Игра начинается"); } break;
+                case MainMenuResult.START_GAME:
+                    {
+                        showNewEventControl();
+                    }
+                    break;
                 case MainMenuResult.OPEN_SETTINGS:
                     {
                         setting_control.LastControl = main_menu;
@@ -125,11 +146,40 @@ namespace KeyboardSmasher.GUI
 
         private void OnPauseMenuResultChanged(PauseMenuResult new_result)
         {
-
+            switch(new_result)
+            {
+                case PauseMenuResult.CONTINUE_GAME: { showControl(pause_menu.LastControl); } break;
+                case PauseMenuResult.EXIT: { Close(); } break;
+                case PauseMenuResult.EXIT_TO_MENU: { showMainMenu(); } break;
+                case PauseMenuResult.SETTINGS:
+                    {
+                        setting_control.LastControl = pause_menu;
+                        showControl(setting_control);
+                    } break;
+                case PauseMenuResult.NO_RESULT: { } break;
+            }
         }
 
-        //private void OnEventControlResultChanged(EventControlResult new_result);
+        private void OnEventControlResultChanged(EventControlResult new_result)
+        {
+            switch(new_result)
+            {
+                case EventControlResult.EXIT_TO_PAUSE_MENU:
+                    {
+                        pause_menu.LastControl = currentVisibleControl;
+                        showControl(pause_menu);
+                    }
+                    break;
+                case EventControlResult.SKIP_EVENT:
+                    {
+                        showNewEventControl();
+                    }
+                    break;
+            }
+        }
 
+        //private void OnSymbolStreamControlChanged();
 
+        #endregion
     }
 }

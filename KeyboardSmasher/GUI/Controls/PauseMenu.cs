@@ -24,10 +24,14 @@ namespace KeyboardSmasher.GUI.Controls
         PauseMenuResult result = PauseMenuResult.NO_RESULT;
         public delegate void PauseMenuResultProc(PauseMenuResult new_result);
         event PauseMenuResultProc OnControlResultChanged;
+
+        public Control LastControl { get; set; }
+
         public PauseMenu(PauseMenuResultProc result_handler)
         {
             InitializeComponent();
             OnControlResultChanged += result_handler;
+            this.LastControl = null;
         }
         private PauseMenuResult Result
         {
@@ -48,8 +52,6 @@ namespace KeyboardSmasher.GUI.Controls
         {
             Result = PauseMenuResult.SETTINGS;
         }
-
-
 
         private void btnExitToMenu_Click(object sender, EventArgs e)
         {

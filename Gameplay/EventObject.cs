@@ -19,8 +19,7 @@ namespace Gameplay
         {
             if (name != "" || description != "" || biom !=null)
             {
-                new _Exception("Имя или описание не задано(24 строка, EventObject.cs)");
-                return;
+                throw new Exception("Имя или описание не задано(24 строка, EventObject.cs)");
             }
             Biom = biom;
             Name = name;
@@ -31,6 +30,11 @@ namespace Gameplay
         public Event getRandomEvent()
         {
             return events[random.Next(0, events.Length)];
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

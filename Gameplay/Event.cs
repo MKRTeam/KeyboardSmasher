@@ -16,8 +16,7 @@ namespace Gameplay
         {
             if (desctiprion == "" || desctiprion == null)
             {
-                new _Exception("Описание пустое, структура EventAction");
-
+                throw new Exception("Описание пустое, структура EventAction");
             }
             Description = desctiprion;
             this.execise_code = exercise_code;
@@ -54,7 +53,7 @@ namespace Gameplay
         public ExerciseType getActionResult(uint action_index)
         {
             if(action_index>=actions.Length)
-                new _Exception("Выход за пределы массива, класс Event");
+                throw new Exception("Выход за пределы массива, класс Event");
             return actions[action_index].execise_code;
         }
     }

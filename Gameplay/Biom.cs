@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace Gameplay
 {
-    class _Exception : Exception
-    {
-        public _Exception(string message)
-            : base(message)
-        { }
-    }
     public class Biom
     {
         public string Name { get; }
@@ -24,8 +18,7 @@ namespace Gameplay
         {
             if (name != "" || description != "")
             {
-               new _Exception("Имя биома или описание не задано(24 строка, Biom.cs)");
-                return;
+               throw new Exception("Имя биома или описание не задано(24 строка, Biom.cs)");
             }
             this.Name = name;
             this.Description = description;
@@ -35,6 +28,11 @@ namespace Gameplay
         public EventObject getRandomEventObject()
         {
             return objects[random.Next(0, objects.Length)];
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

@@ -82,6 +82,7 @@
             this.Controls.Add(this.rTBTextActionScene);
             this.Name = "EventControl";
             this.Size = new System.Drawing.Size(773, 556);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EventControl_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScene)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
