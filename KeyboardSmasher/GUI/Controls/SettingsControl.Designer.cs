@@ -90,9 +90,9 @@
             this.comboBoxDifficulty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDifficulty.FormattingEnabled = true;
             this.comboBoxDifficulty.Items.AddRange(new object[] {
-            "ЛЕГКО",
-            "СРЕДНЕ",
-            "ТЯЖЕЛО"});
+            "#DIFFICULTY_EASY",
+            "#DIFFICULTY_NORMAL",
+            "#DIFFICULTY_HARD"});
             this.comboBoxDifficulty.Location = new System.Drawing.Point(252, 158);
             this.comboBoxDifficulty.Name = "comboBoxDifficulty";
             this.comboBoxDifficulty.Size = new System.Drawing.Size(130, 21);
@@ -103,7 +103,8 @@
             this.comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLanguage.FormattingEnabled = true;
             this.comboBoxLanguage.Items.AddRange(new object[] {
-            "РУССКИЙ"});
+            "#LANG_RUS",
+            "#LANG_ENG"});
             this.comboBoxLanguage.Location = new System.Drawing.Point(252, 217);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(130, 21);
