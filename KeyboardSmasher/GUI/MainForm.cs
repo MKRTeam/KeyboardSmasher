@@ -152,6 +152,11 @@ namespace KeyboardSmasher.GUI
                         difficulty = setting_control.Difficulty;
                     }
                     break;
+                case SettingsControlResult.CHANGE_LANGUAGE:
+                    {
+                        SetLanguage(setting_control.Language);
+                    }
+                    break;
                 default: { } break;
             }
         }

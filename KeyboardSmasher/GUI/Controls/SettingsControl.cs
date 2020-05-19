@@ -47,13 +47,15 @@ namespace KeyboardSmasher.GUI.Controls
         {
             get
             {
-                switch (comboBoxDifficulty.SelectedIndex)
-                {
-                    case 0: return Difficulty.EASY;
-                    case 1: return Difficulty.NORMAL;
-                    case 2: return Difficulty.HARD;
-                    default: return Difficulty.EASY;
-                }
+                return Difficulty.EASY + comboBoxDifficulty.SelectedIndex;
+            }
+        }
+
+        public Language Language
+        {
+            get
+            {
+                return Language.RUSSIAN + comboBoxLanguage.SelectedIndex;
             }
         }
 
