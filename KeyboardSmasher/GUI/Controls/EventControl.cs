@@ -54,17 +54,22 @@ namespace KeyboardSmasher.GUI.Controls
             //pictureBoxScene.Image = new System.Drawing.Bitmap(image_path);
             tLPActionButton.RowCount = actions.Length;
             OnControlResultChanged += result_handler;
+            tLPActionButton.RowStyles.Clear();
             for (int i = 0; i < actions.Length; i++)
             {
                 Button button = new Button();
+                
                 button.Dock = DockStyle.Fill;
                 button.Text = actions[i];
                 button.Tag = i;//в тег заносим порядковый номер варианта действия
                 button.Click += OnClickButton_Action;
+                
                 tLPActionButton.Controls.Add(button, 0, i);
+               
                 //ПОПРАВИТЬ СТИЛЬ ОТОБРАЖЕНИЯ КНОПОК
                 tLPActionButton.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
             }
+            
             tLPActionButton.Refresh();
         }
         void OnClickButton_Action(object sender, EventArgs e)

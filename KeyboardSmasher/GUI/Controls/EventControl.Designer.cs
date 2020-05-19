@@ -66,9 +66,10 @@
             // tLPActionButton
             // 
             this.tLPActionButton.AutoScroll = true;
+            this.tLPActionButton.AutoSize = true;
             this.tLPActionButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tLPActionButton.ColumnCount = 1;
-            this.tLPActionButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tLPActionButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tLPActionButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tLPActionButton.Location = new System.Drawing.Point(0, 0);
             this.tLPActionButton.Name = "tLPActionButton";
@@ -129,6 +130,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
