@@ -33,6 +33,7 @@ namespace KeyboardSmasher
             localization_paths.Add(Language.ENGLISH, "english.xml");
             #endregion
             //bioms = DeserializeGameData("gamedata.xml");
+            Localization.Localization default_loc = new Localization.Localization();
             //программное создание списка биомов
             bioms = new Biom[5];
             const string biom_str = "BIOM";
@@ -52,6 +53,7 @@ namespace KeyboardSmasher
                     for (int k = 0; k < 10; ++k)
                     { 
                         string event_descr = "#" + biom_str + i + "_" + object_str + j + "_" + event_str + k + descr_str;
+                        default_loc.addTranslatedString(event_descr, "event_descr");
                         EventAction[] actions = new EventAction[3];
                         //создаем список действий для конкретного события
                         for (int p = 0; p < 3; ++p)
@@ -60,6 +62,7 @@ namespace KeyboardSmasher
                                                         object_str + j + "_" + 
                                                         event_str + k + "_" + 
                                                         event_action_str + p + descr_str;
+                            default_loc.addTranslatedString(event_action_descr, "event_action_descr");
                             ExerciseType type = ExerciseType.SYMBOL_STREAM + p;
                             actions[p] = new EventAction(event_action_descr, type);
                         }
@@ -67,12 +70,18 @@ namespace KeyboardSmasher
                     }
                     string object_name = "#" + biom_str + i + "_" + object_str + j + name_str;
                     string object_descr = "#" + biom_str + i + "_" + object_str + j + descr_str;
+                    default_loc.addTranslatedString(object_name, "object_name");
+                    default_loc.addTranslatedString(object_descr, "object_descr");
                     objects[j] = new EventObject(object_name, object_descr, events);
                 }
                 string biom_name = "#" + biom_str + i + name_str;
                 string biom_descr = "#" + biom_str + i + descr_str;
+                default_loc.addTranslatedString(biom_name, "biom_name");
+                default_loc.addTranslatedString(biom_descr, "biom_descr");
                 bioms[i] = new Biom(biom_name, biom_descr, objects);
             }
+
+            Localization.Localization.Serialize(default_loc, "default.txt");
         }
 
         private static Biom[] DeserializeGameData(string gamedata_path)
