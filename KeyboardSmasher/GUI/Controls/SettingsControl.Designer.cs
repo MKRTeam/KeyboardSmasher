@@ -48,6 +48,7 @@
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(222, 40);
             this.buttonBack.TabIndex = 12;
+            this.buttonBack.Tag = "#BACK_BUTTON";
             this.buttonBack.Text = "НАЗАД";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -61,6 +62,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(263, 46);
             this.label1.TabIndex = 9;
+            this.label1.Tag = "#SETTINGS_LABEL";
             this.label1.Text = "НАСТРОЙКИ";
             // 
             // label2
@@ -72,6 +74,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 31);
             this.label2.TabIndex = 13;
+            this.label2.Tag = "#LANGUAGE_LABEL";
             this.label2.Text = "ЯЗЫК";
             // 
             // label3
@@ -83,6 +86,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(194, 31);
             this.label3.TabIndex = 14;
+            this.label3.Tag = "#DIFFICULTY_LABEL";
             this.label3.Text = "СЛОЖНОСТЬ";
             // 
             // comboBoxDifficulty

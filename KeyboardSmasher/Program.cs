@@ -28,8 +28,8 @@ namespace KeyboardSmasher
         {
             #region localization
             localization_paths = new Dictionary<Language, string>();
-            localization_paths.Add(Language.RUSSIAN, "russian.xml");
-            localization_paths.Add(Language.ENGLISH, "english.xml");
+            localization_paths.Add(Language.RUSSIAN, "russian.txt");
+            localization_paths.Add(Language.ENGLISH, "english.txt");
             #endregion
             //bioms = DeserializeGameData("gamedata.xml");
             Localization.Localization default_loc = new Localization.Localization();
@@ -80,7 +80,7 @@ namespace KeyboardSmasher
                 bioms[i] = new Biom(biom_name, biom_descr, objects);
             }
 
-            Localization.Localization.Serialize(default_loc, "default.txt");
+            //Localization.Localization.Serialize(default_loc, "default.txt");
         }
 
         private static Biom[] DeserializeGameData(string gamedata_path)

@@ -54,6 +54,8 @@ namespace KeyboardSmasher.Localization
 
         public string getTranslatedString(string string_id)
         {
+            if (!localization.ContainsKey(string_id))
+                return null;
             return localization[string_id];
         }
 

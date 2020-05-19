@@ -44,6 +44,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(623, 46);
             this.label1.TabIndex = 0;
+            this.label1.Tag = "#KEYBOARD_SMASHER_NAME";
             this.label1.Text = "#KEYBOARD_SMASHER_NAME";
             // 
             // btnStartGame
@@ -56,6 +57,7 @@
             this.btnStartGame.Name = "btnStartGame";
             this.btnStartGame.Size = new System.Drawing.Size(222, 40);
             this.btnStartGame.TabIndex = 1;
+            this.btnStartGame.Tag = "#START_GAME_BUTTON";
             this.btnStartGame.Text = "#START_GAME_BUTTON";
             this.btnStartGame.UseVisualStyleBackColor = false;
             this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
@@ -71,6 +73,7 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(222, 40);
             this.btnSettings.TabIndex = 2;
+            this.btnSettings.Tag = "#SETTINGS_BUTTON";
             this.btnSettings.Text = "#SETTINGS_BUTTON";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
@@ -86,6 +89,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(222, 40);
             this.btnExit.TabIndex = 3;
+            this.btnExit.Tag = "#EXIT_BUTTON";
             this.btnExit.Text = "#EXIT_BUTTON";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
