@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EventsSDK
 {
-    public partial class SDK : Form
+    public partial class EditEventForm : Form
     {
-        public SDK()
+        public EditEventForm()
         {
             InitializeComponent();
         }

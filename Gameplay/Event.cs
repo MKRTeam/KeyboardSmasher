@@ -22,6 +22,11 @@ namespace Gameplay
             this.execise_code = exercise_code;
 
         }
+
+        public override string ToString()
+        {
+            return Description;
+        }
     }
 
     public class Event
