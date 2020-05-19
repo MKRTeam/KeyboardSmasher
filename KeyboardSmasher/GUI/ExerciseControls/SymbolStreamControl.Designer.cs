@@ -36,9 +36,9 @@
             // symbolQueueControl1
             // 
             this.symbolQueueControl1.Image = ((System.Drawing.Image)(resources.GetObject("symbolQueueControl1.Image")));
-            this.symbolQueueControl1.Location = new System.Drawing.Point(35, 132);
+            this.symbolQueueControl1.Location = new System.Drawing.Point(35, 118);
             this.symbolQueueControl1.Name = "symbolQueueControl1";
-            this.symbolQueueControl1.Size = new System.Drawing.Size(272, 50);
+            this.symbolQueueControl1.Size = new System.Drawing.Size(272, 73);
             this.symbolQueueControl1.TabIndex = 0;
             this.symbolQueueControl1.TabStop = false;
             // 
