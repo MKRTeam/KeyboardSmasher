@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace KeyboardSmasher
 {
@@ -22,7 +22,6 @@ namespace KeyboardSmasher
     {
         private static Dictionary<Language, string> localization_paths;
 
-        [XmlElement]
         private static Biom[] bioms;
 
         private static void Initialize()
@@ -86,11 +85,8 @@ namespace KeyboardSmasher
 
         private static Biom[] DeserializeGameData(string gamedata_path)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Biom[]));
-            using (Stream reader = new FileStream(gamedata_path, FileMode.Open))
-            {
-                return (Biom[])serializer.Deserialize(reader);
-            }
+            string json = File.ReadAllText(gamedata_path);
+            return JsonConvert.DeserializeObject<Biom[]>(json);
         }
 
         /// <summary>
