@@ -20,8 +20,10 @@ namespace KeyboardSmasher
     static class Program
     {
         private static Dictionary<Language, string> localization_paths;
+
         [XmlElement]
         private static Biom[] bioms;
+
         private static void Initialize()
         {
             #region localization
