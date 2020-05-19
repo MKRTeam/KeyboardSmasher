@@ -206,5 +206,17 @@ namespace KeyboardSmasher.GUI
         //private void OnSymbolStreamControlChanged();
 
         #endregion
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (currentVisibleControl.GetType().Name == "EventControl")
+                ((EventControl)currentVisibleControl).EventControl_KeyDown(sender, e);
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (currentVisibleControl.GetType().Name == "EventControl")
+                ((EventControl)currentVisibleControl).EventControl_KeyPress(sender, e);
+        }
     }
 }

@@ -72,7 +72,7 @@ namespace KeyboardSmasher.GUI.Controls
             Result = EventControlResult.ACTION0 + (int)((Button)sender).Tag;
         }
 
-        private void EventControl_KeyDown(object sender, KeyEventArgs e)
+        public void EventControl_KeyDown(object sender, KeyEventArgs e)
         {
             //не работает событие. Событие не вызывается при нажатии кнопки ПОЧЕМУ?
             if (e.KeyCode == Keys.Escape)
@@ -81,7 +81,7 @@ namespace KeyboardSmasher.GUI.Controls
                 Result = EventControlResult.SKIP_EVENT;
         }
 
-        private void EventControl_KeyPress(object sender, KeyPressEventArgs e)
+        public void EventControl_KeyPress(object sender, KeyPressEventArgs e)
         {
             MessageBox.Show("нажалось");
         }
