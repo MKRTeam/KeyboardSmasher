@@ -74,28 +74,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExerciseMachine\GUI\MistakeCountControl.cs">
+    <Compile Include="GUI\ExerciseControls\MistakeCountControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ExerciseMachine\GUI\MistakeCountControl.Designer.cs">
+    <Compile Include="GUI\ExerciseControls\MistakeCountControl.Designer.cs">
       <DependentUpon>MistakeCountControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExerciseMachine\GUI\SymbolQueueControl.cs">
+    <Compile Include="GUI\ExerciseControls\SymbolQueueControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExerciseMachine\GUI\SymbolQueueControl.Designer.cs">
+    <Compile Include="GUI\ExerciseControls\SymbolQueueControl.Designer.cs">
       <DependentUpon>SymbolQueueControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExerciseMachine\GUI\SymbolStreamControl.cs">
+    <Compile Include="GUI\ExerciseControls\SymbolStreamControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ExerciseMachine\GUI\SymbolStreamControl.Designer.cs">
+    <Compile Include="GUI\ExerciseControls\SymbolStreamControl.Designer.cs">
       <DependentUpon>SymbolStreamControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExerciseMachine\GUI\WordsOnReactionControl.cs">
+    <Compile Include="GUI\ExerciseControls\WordsOnReactionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ExerciseMachine\GUI\WordsOnReactionControl.Designer.cs">
+    <Compile Include="GUI\ExerciseControls\WordsOnReactionControl.Designer.cs">
       <DependentUpon>WordsOnReactionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Controls\EventControl.cs">
@@ -131,8 +131,11 @@
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ExerciseMachine\GUI\SymbolQueueControl.resx">
+    <EmbeddedResource Include="GUI\ExerciseControls\SymbolQueueControl.resx">
       <DependentUpon>SymbolQueueControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ExerciseControls\SymbolStreamControl.resx">
+      <DependentUpon>SymbolStreamControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Controls\EventControl.resx">
       <DependentUpon>EventControl.cs</DependentUpon>
