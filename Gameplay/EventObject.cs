@@ -8,20 +8,18 @@ namespace Gameplay
 {
     public class EventObject
     {
-        private Biom Biom { get; }
         string Name { get; }
         string Description { get; }
 
         private Event[] events;
         private static Random random = new Random();
 
-        public EventObject(string name, string description, Biom biom, Event[] events)
+        public EventObject(string name, string description, Event[] events)
         {
-            if (name != "" || description != "" || biom !=null)
+            if (name == "" || description == "")
             {
                 throw new Exception("Имя или описание не задано(24 строка, EventObject.cs)");
             }
-            Biom = biom;
             Name = name;
             Description = description;
             this.events = events;

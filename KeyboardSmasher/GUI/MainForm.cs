@@ -1,4 +1,5 @@
 ﻿using Gameplay;
+using Gameplay.ExerciseMachine;
 using KeyboardSmasher.ExerciseMachine.GUI;
 using KeyboardSmasher.GUI.Controls;
 using System;
@@ -23,6 +24,7 @@ namespace KeyboardSmasher.GUI
         //видимый контрол
         Control currentVisibleControl = null;
         EventControl currentEventControl = null;
+        Event currentEvent = null;
 
         //игровые данные
         Difficulty difficulty;
@@ -76,7 +78,8 @@ namespace KeyboardSmasher.GUI
         private void SetLanguage(Language language)
         {
             localization = Localization.Localization.Deserialize(localization_paths[language]);
-            //здесь передать в действующий контрол
+            if (currentVisibleControl != null)
+                translateControl(currentVisibleControl, localization);
         }
 
         private void showControl(Control control)
@@ -87,18 +90,27 @@ namespace KeyboardSmasher.GUI
                 control.Visible = true;
             else throw new Exception("Визуализируемый контрол был null");
             currentVisibleControl = control;
+            translateControl(control, localization);
         }
 
+        private void translateControl(Control control, Localization.Localization localization)
+        {
+            
+        }
 
         private void showNewEventControl()
         {
             if (currentEventControl != null)
+            {
                 this.Controls.Remove(currentEventControl);
-            Event evt = current_biom.getRandomEventObject().getRandomEvent();
-            currentEventControl = new EventControl("", evt.getActions(), evt.Description, OnEventControlResultChanged);
+                currentEventControl.Dispose();
+            }
+            currentEvent = current_biom.getRandomEventObject().getRandomEvent();
+            currentEventControl = new EventControl("", currentEvent.getActions(), currentEvent.Description, OnEventControlResultChanged);
             currentEventControl.Dock = DockStyle.Fill;
             this.Controls.Add(currentEventControl);
             showControl(currentEventControl);
+            
         }
 
         public void showMainMenu()
@@ -175,6 +187,14 @@ namespace KeyboardSmasher.GUI
                         showNewEventControl();
                     }
                     break;
+                default:
+                    {
+                        ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
+                        //создаем соответствующий тренажер
+                        //и показываем новый контрол
+                    }
+                    break;
+
             }
         }
 

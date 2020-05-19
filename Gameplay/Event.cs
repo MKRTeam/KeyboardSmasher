@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gameplay
 {
-    public struct EventAction
+    public class EventAction
     {
         public string Description { get; }
         public ExerciseType execise_code { get; }
@@ -31,15 +31,13 @@ namespace Gameplay
 
     public class Event
     {
-        private EventObject event_object;
         private EventAction[] actions;
         public string Description { get; }
         //сюда можно добавить картинку какую-то или звук
 
-        public Event(string description, EventObject event_object, EventAction[] actions)
+        public Event(string description, EventAction[] actions)
         {
             Description = description;
-            this.event_object = event_object;
             this.actions = actions;
 
         }

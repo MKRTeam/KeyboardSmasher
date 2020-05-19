@@ -23,20 +23,22 @@ namespace KeyboardSmasher.GUI.Controls
 
     public partial class EventControl : UserControl
     {
-        string name_image;
-        string[] action;
+        string image_path;
+        string[] actions;
         string textScene;
 
         private EventControlResult Result
         {
-            get { return Result; }
+            get { return result; }
             set
             {
-                Result = value;
+                result = value;
                 OnControlResultChanged(value);
             }
         }
-        public delegate void EventControlResultProc(EventControlResult result);
+
+        EventControlResult result;
+        public delegate void EventControlResultProc(EventControlResult new_result);
         event EventControlResultProc OnControlResultChanged;
 
         public EventControl(string image_path, 
@@ -45,19 +47,25 @@ namespace KeyboardSmasher.GUI.Controls
                             EventControlResultProc result_handler)
         {
             InitializeComponent();
+            this.actions = actions;
+            this.textScene = textScene;
+            this.image_path = image_path;
             rTBTextActionScene.Text = textScene;
-            pictureBoxScene.Image = new System.Drawing.Bitmap(image_path);
-            tLPActionButton.RowCount = action.Length;
+            //pictureBoxScene.Image = new System.Drawing.Bitmap(image_path);
+            tLPActionButton.RowCount = actions.Length;
             OnControlResultChanged += result_handler;
-            for (int i = 0; i < action.Length; i++)
+            for (int i = 0; i < actions.Length; i++)
             {
                 Button button = new Button();
                 button.Dock = DockStyle.Fill;
                 button.Text = actions[i];
                 button.Tag = i;//в тег заносим порядковый номер варианта действия
                 button.Click += OnClickButton_Action;
-                tLPActionButton.SetRow(button, i);
+                tLPActionButton.Controls.Add(button, 0, i);
+                //ПОПРАВИТЬ СТИЛЬ ОТОБРАЖЕНИЯ КНОПОК
+                tLPActionButton.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
             }
+            tLPActionButton.Refresh();
         }
         void OnClickButton_Action(object sender, EventArgs e)
         {
@@ -66,10 +74,16 @@ namespace KeyboardSmasher.GUI.Controls
 
         private void EventControl_KeyDown(object sender, KeyEventArgs e)
         {
+            //не работает событие. Событие не вызывается при нажатии кнопки ПОЧЕМУ?
             if (e.KeyCode == Keys.Escape)
                 Result = EventControlResult.EXIT_TO_PAUSE_MENU;
             if (e.KeyCode == Keys.Enter)
                 Result = EventControlResult.SKIP_EVENT;
+        }
+
+        private void EventControl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show("нажалось");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Gameplay
 
         public Biom(string name, string description, EventObject[] objects)
         {
-            if (name != "" || description != "")
+            if (name == "" || description == "")
             {
                throw new Exception("Имя биома или описание не задано(24 строка, Biom.cs)");
             }
