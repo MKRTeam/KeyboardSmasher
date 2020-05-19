@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< Updated upstream
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.buttonAddBiom = new System.Windows.Forms.Button();
@@ -64,6 +65,16 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+=======
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listboxBioms = new System.Windows.Forms.ListBox();
+            this.btnCreateBiom = new System.Windows.Forms.Button();
+            this.btnEditBiom = new System.Windows.Forms.Button();
+            this.btnDeleteBiom = new System.Windows.Forms.Button();
+            this.MainMenu.SuspendLayout();
+>>>>>>> Stashed changes
             this.SuspendLayout();
             // 
             // tabControl1
@@ -77,6 +88,7 @@
             this.tabControl1.Size = new System.Drawing.Size(721, 546);
             this.tabControl1.TabIndex = 0;
             // 
+<<<<<<< Updated upstream
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.buttonAddBiom);
@@ -96,6 +108,9 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // buttonAddBiom
+=======
+            // загрузитьToolStripMenuItem
+>>>>>>> Stashed changes
             // 
             this.buttonAddBiom.Location = new System.Drawing.Point(291, 313);
             this.buttonAddBiom.Name = "buttonAddBiom";
@@ -104,7 +119,17 @@
             this.buttonAddBiom.Text = "Добавить";
             this.buttonAddBiom.UseVisualStyleBackColor = true;
             // 
+<<<<<<< Updated upstream
             // buttonDeleteBiom
+=======
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            // 
+            // listboxBioms
+>>>>>>> Stashed changes
             // 
             this.buttonDeleteBiom.Location = new System.Drawing.Point(602, 313);
             this.buttonDeleteBiom.Name = "buttonDeleteBiom";
@@ -115,11 +140,21 @@
             // 
             // listBoxBioms
             // 
+<<<<<<< Updated upstream
             this.listBoxBioms.FormattingEnabled = true;
             this.listBoxBioms.Location = new System.Drawing.Point(446, 34);
             this.listBoxBioms.Name = "listBoxBioms";
             this.listBoxBioms.Size = new System.Drawing.Size(261, 264);
             this.listBoxBioms.TabIndex = 25;
+=======
+            this.btnCreateBiom.Location = new System.Drawing.Point(276, 28);
+            this.btnCreateBiom.Name = "btnCreateBiom";
+            this.btnCreateBiom.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateBiom.TabIndex = 2;
+            this.btnCreateBiom.Text = "Добавить";
+            this.btnCreateBiom.UseVisualStyleBackColor = true;
+            this.btnCreateBiom.Click += new System.EventHandler(this.btnCreateBiom_Click);
+>>>>>>> Stashed changes
             // 
             // buttonNextAnimals
             // 
