@@ -209,6 +209,7 @@ namespace KeyboardSmasher.GUI
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            //КОСТЫЛЬНО!!! Но по другому только переделывать класс UserControl
             if (currentVisibleControl.GetType().Name == "EventControl")
                 ((EventControl)currentVisibleControl).EventControl_KeyDown(sender, e);
         }
