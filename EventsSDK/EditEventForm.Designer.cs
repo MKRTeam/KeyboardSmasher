@@ -111,7 +111,7 @@
             this.Controls.Add(this.textBoxEventDescription);
             this.Controls.Add(this.label2);
             this.Name = "EditEventForm";
-            this.Text = "EditBiomForm";
+            this.Text = "EditEventForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

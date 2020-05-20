@@ -8,10 +8,10 @@ namespace Gameplay
 {
     public class Biom
     {
-        public string Name { get; }
-        public string Description { get; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
-        private EventObject[] objects;
+        public EventObject[] objects;
         private static Random random = new Random();
 
         public Biom(string name, string description, EventObject[] objects)

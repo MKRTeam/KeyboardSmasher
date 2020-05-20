@@ -16,5 +16,10 @@ namespace EventsSDK
         {
             InitializeComponent();
         }
+
+        internal void GetEventObject()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

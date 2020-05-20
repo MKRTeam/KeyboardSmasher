@@ -88,6 +88,7 @@
             this.btnCreateObject.TabIndex = 5;
             this.btnCreateObject.Text = "Добавить";
             this.btnCreateObject.UseVisualStyleBackColor = true;
+            this.btnCreateObject.Click += new System.EventHandler(this.btnCreateObject_Click);
             // 
             // btnEditObject
             // 
@@ -97,6 +98,7 @@
             this.btnEditObject.TabIndex = 6;
             this.btnEditObject.Text = "Изменить";
             this.btnEditObject.UseVisualStyleBackColor = true;
+            this.btnEditObject.Click += new System.EventHandler(this.btnEditObject_Click);
             // 
             // btnDeleteObject
             // 
@@ -115,6 +117,7 @@
             this.btnSaveBiom.TabIndex = 8;
             this.btnSaveBiom.Text = "Сохранить";
             this.btnSaveBiom.UseVisualStyleBackColor = true;
+            this.btnSaveBiom.Click += new System.EventHandler(this.btnSaveBiom_Click);
             // 
             // EditBiomForm
             // 

@@ -31,7 +31,7 @@ namespace Gameplay
 
     public class Event
     {
-        private EventAction[] actions;
+        public EventAction[] actions;
         public string Description { get; }
         //сюда можно добавить картинку какую-то или звук
 

@@ -8,10 +8,10 @@ namespace Gameplay
 {
     public class EventObject
     {
-        string Name { get; }
-        string Description { get; }
+       public string Name { get; set; }
+       public string Description { get; set; }
 
-        private Event[] events;
+        public Event[] events;
         private static Random random = new Random();
 
         public EventObject(string name, string description, Event[] events)
