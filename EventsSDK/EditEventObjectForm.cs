@@ -34,7 +34,7 @@ namespace EventsSDK
             eventObject = selectedItem;
             textBoxObjectName.Text = eventObject.Name;
             textBoxObjectDescription.Text = eventObject.Description;
-            listBoxEvents.Items.Add(eventObject.events);
+            listBoxEvents.Items.AddRange(eventObject.events);
         }
 
         private void btnSaveObject_Click(object sender, EventArgs e)

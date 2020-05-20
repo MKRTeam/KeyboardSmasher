@@ -70,6 +70,7 @@
             this.btnCreateAction.TabIndex = 5;
             this.btnCreateAction.Text = "Добавить";
             this.btnCreateAction.UseVisualStyleBackColor = true;
+            this.btnCreateAction.Click += new System.EventHandler(this.btnCreateAction_Click);
             // 
             // btnEditAction
             // 
@@ -79,6 +80,7 @@
             this.btnEditAction.TabIndex = 6;
             this.btnEditAction.Text = "Изменить";
             this.btnEditAction.UseVisualStyleBackColor = true;
+            this.btnEditAction.Click += new System.EventHandler(this.btnEditAction_Click);
             // 
             // btnDeleteAction
             // 
@@ -88,6 +90,7 @@
             this.btnDeleteAction.TabIndex = 7;
             this.btnDeleteAction.Text = "Удалить";
             this.btnDeleteAction.UseVisualStyleBackColor = true;
+            this.btnDeleteAction.Click += new System.EventHandler(this.btnDeleteAction_Click);
             // 
             // btnSaveEvent
             // 
@@ -97,6 +100,7 @@
             this.btnSaveEvent.TabIndex = 8;
             this.btnSaveEvent.Text = "Сохранить";
             this.btnSaveEvent.UseVisualStyleBackColor = true;
+            this.btnSaveEvent.Click += new System.EventHandler(this.btnSaveEvent_Click);
             // 
             // EditEventForm
             // 

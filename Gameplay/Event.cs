@@ -9,8 +9,8 @@ namespace Gameplay
 {
     public class EventAction
     {
-        public string Description { get; }
-        public ExerciseType execise_code { get; }
+        public string Description { get; set; }
+        public ExerciseType execise_code { get; set; }
 
         public EventAction(string desctiprion, ExerciseType exercise_code)
         {
@@ -32,7 +32,7 @@ namespace Gameplay
     public class Event
     {
         public EventAction[] actions;
-        public string Description { get; }
+        public string Description { get; set; }
         //сюда можно добавить картинку какую-то или звук
 
         public Event(string description, EventAction[] actions)
@@ -41,7 +41,10 @@ namespace Gameplay
             this.actions = actions;
 
         }
-
+        public override string ToString()
+        {
+            return Description;
+        }
         public string[] getActions()
         {
             /*Получить список описаний*/

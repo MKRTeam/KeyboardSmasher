@@ -18,14 +18,64 @@ namespace EventsSDK
             InitializeComponent();
         }
 
-        internal Event GetEvent()
+        Event @event = null;
+
+        public Event GetEvent()
         {
-            throw new NotImplementedException();
+            return @event;
         }
 
-        internal void SetEvent(Event selectedItem)
+        public void SetEvent(Event selectedItem)
         {
-            throw new NotImplementedException();
+            textBoxEventDescription.Text = selectedItem.Description;
+            listBoxActions.Items.AddRange(selectedItem.actions);
+        }
+
+        private void btnSaveEvent_Click(object sender, EventArgs e)
+        {
+            EventAction[] eventActions = new EventAction[listBoxActions.Items.Count];
+            for (int i = 0; i < listBoxActions.Items.Count; i++)
+                eventActions[i] = (EventAction)listBoxActions.Items[i];
+
+            if (@event == null)
+            {
+                @event = new Event(textBoxEventDescription.Text, eventActions);
+            }
+            else
+            {
+                @event.Description = textBoxEventDescription.Text;
+                @event.actions = eventActions;
+
+            }
+            DialogResult = DialogResult.OK;
+        }
+
+        private void btnDeleteAction_Click(object sender, EventArgs e)
+        {
+            if(listBoxActions.SelectedItem!=null)
+            listBoxActions.Items.Remove(listBoxActions.SelectedItem);
+        }
+
+        private void btnEditAction_Click(object sender, EventArgs e)
+        {
+            EditActionForm editActionForm = new EditActionForm();
+            if(listBoxActions.SelectedItem!=null)
+                editActionForm.SetAction((EventAction)listBoxActions.SelectedItem);
+            if (editActionForm.ShowDialog() == DialogResult.OK)
+            {
+                EventAction eventAction = editActionForm.GetAction();
+                listBoxActions.Items.Add(eventAction);
+            }
+        }
+
+        private void btnCreateAction_Click(object sender, EventArgs e)
+        {
+            EditActionForm editActionForm = new EditActionForm();
+            if (editActionForm.ShowDialog() == DialogResult.OK)
+            {
+                EventAction eventAction = editActionForm.GetAction();
+                listBoxActions.Items.Add(eventAction);
+            }
         }
     }
 }

@@ -60,6 +60,7 @@
             this.btnSaveAction.TabIndex = 2;
             this.btnSaveAction.Text = "Сохранить";
             this.btnSaveAction.UseVisualStyleBackColor = true;
+            this.btnSaveAction.Click += new System.EventHandler(this.btnSaveAction_Click);
             // 
             // comboBox1
             // 
