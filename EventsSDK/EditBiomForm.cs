@@ -27,23 +27,14 @@ namespace EventsSDK
             biom = selectedItem;
             textBoxBiomName.Text = biom.Name;
             textBoxBiomDescription.Text = biom.Description;
-            listBoxObjects.Items.AddRange(biom.objects);
+            listBoxObjects.Items.AddRange(biom.Objects);
         }
         private void btnSaveBiom_Click(object sender, EventArgs e)
         {
             EventObject[] eventObjects = new EventObject[listBoxObjects.Items.Count];
             for (int i = 0; i < listBoxObjects.Items.Count; i++)
                 eventObjects[i] = (EventObject)listBoxObjects.Items[i];
-            if (biom == null)
-            {
-                biom = new Biom(textBoxBiomName.Text, textBoxBiomDescription.Text, eventObjects);
-            }
-            else
-            {
-                biom.Name = textBoxBiomName.Text;
-                biom.Description = textBoxBiomDescription.Text;
-                biom.objects = eventObjects;
-            }
+            biom = new Biom(textBoxBiomName.Text, textBoxBiomDescription.Text, eventObjects);
             DialogResult = DialogResult.OK;
         }
         private void btnCreateObject_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace Gameplay
     public class EventAction
     {
         public string Description { get; set; }
-        public ExerciseType execise_code { get; set; }
+        public ExerciseType ExerciseCode { get; set; }
 
         public EventAction(string desctiprion, ExerciseType exercise_code)
         {
@@ -19,7 +19,7 @@ namespace Gameplay
                 throw new Exception("Описание пустое, структура EventAction");
             }
             Description = desctiprion;
-            this.execise_code = exercise_code;
+            this.ExerciseCode = exercise_code;
 
         }
 
@@ -31,14 +31,14 @@ namespace Gameplay
 
     public class Event
     {
-        public EventAction[] actions;
+        public EventAction[] Actions { get; }
         public string Description { get; set; }
         //сюда можно добавить картинку какую-то или звук
 
         public Event(string description, EventAction[] actions)
         {
             Description = description;
-            this.actions = actions;
+            this.Actions = actions;
 
         }
         public override string ToString()
@@ -48,19 +48,19 @@ namespace Gameplay
         public string[] getActions()
         {
             /*Получить список описаний*/
-            string[] arr_name_action = new string[actions.Length];
-            for (int i = 0; i < actions.Length; i++)
+            string[] arr_name_action = new string[Actions.Length];
+            for (int i = 0; i < Actions.Length; i++)
             {
-                arr_name_action[i] = actions[i].Description;
+                arr_name_action[i] = Actions[i].Description;
             }
             return arr_name_action;
         }
 
         public ExerciseType getActionResult(uint action_index)
         {
-            if(action_index>=actions.Length)
+            if(action_index>=Actions.Length)
                 throw new Exception("Выход за пределы массива, класс Event");
-            return actions[action_index].execise_code;
+            return Actions[action_index].ExerciseCode;
         }
     }
 }

@@ -34,7 +34,7 @@ namespace EventsSDK
             eventObject = selectedItem;
             textBoxObjectName.Text = eventObject.Name;
             textBoxObjectDescription.Text = eventObject.Description;
-            listBoxEvents.Items.AddRange(eventObject.events);
+            listBoxEvents.Items.AddRange(eventObject.Events);
         }
 
         private void btnSaveObject_Click(object sender, EventArgs e)
@@ -42,17 +42,8 @@ namespace EventsSDK
             Event[] events = new Event[listBoxEvents.Items.Count];
             for (int i = 0; i < listBoxEvents.Items.Count; i++)
                 events[i] = (Event)listBoxEvents.Items[i];
-            if (eventObject == null)
-            {
+            eventObject = new EventObject(textBoxObjectName.Text, textBoxObjectDescription.Text, events);
 
-                eventObject = new EventObject(textBoxObjectName.Text, textBoxObjectDescription.Text, events);
-            }
-            else
-            {
-                eventObject.Name = textBoxObjectName.Text;
-                eventObject.Description = textBoxObjectDescription.Text;
-                eventObject.events = events;
-            }
             DialogResult = DialogResult.OK;
         }
 

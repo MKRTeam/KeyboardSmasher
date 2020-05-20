@@ -28,7 +28,7 @@ namespace EventsSDK
         public void SetEvent(Event selectedItem)
         {
             textBoxEventDescription.Text = selectedItem.Description;
-            listBoxActions.Items.AddRange(selectedItem.actions);
+            listBoxActions.Items.AddRange(selectedItem.Actions);
         }
 
         private void btnSaveEvent_Click(object sender, EventArgs e)
@@ -37,16 +37,7 @@ namespace EventsSDK
             for (int i = 0; i < listBoxActions.Items.Count; i++)
                 eventActions[i] = (EventAction)listBoxActions.Items[i];
 
-            if (@event == null)
-            {
-                @event = new Event(textBoxEventDescription.Text, eventActions);
-            }
-            else
-            {
-                @event.Description = textBoxEventDescription.Text;
-                @event.actions = eventActions;
-
-            }
+            @event = new Event(textBoxEventDescription.Text, eventActions);
             DialogResult = DialogResult.OK;
         }
 

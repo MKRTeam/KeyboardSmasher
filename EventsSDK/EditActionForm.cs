@@ -28,7 +28,7 @@ namespace EventsSDK
         public void SetAction(EventAction selectedItem)
         {
             textBox1.Text = selectedItem.Description;
-            comboBox1.SelectedIndex = (int)selectedItem.execise_code;
+            comboBox1.SelectedIndex = (int)selectedItem.ExerciseCode;
         }
 
         private void btnSaveAction_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace EventsSDK
             else
             {
                 eventAction.Description = textBox1.Text;
-                eventAction.execise_code = (ExerciseType)comboBox1.SelectedIndex;
+                eventAction.ExerciseCode = (ExerciseType)comboBox1.SelectedIndex;
             }
             DialogResult = DialogResult.OK;
         }
