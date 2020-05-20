@@ -58,6 +58,7 @@ namespace EventsSDK
 
         private void btnEditAction_Click(object sender, EventArgs e)
         {
+            if (listBoxActions.SelectedItem == null) return;
             EditActionForm editActionForm = new EditActionForm();
             if(listBoxActions.SelectedItem!=null)
                 editActionForm.SetAction((EventAction)listBoxActions.SelectedItem);

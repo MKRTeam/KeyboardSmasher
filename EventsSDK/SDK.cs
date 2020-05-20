@@ -31,6 +31,7 @@ namespace EventsSDK
 
         private void btnEditBiom_Click(object sender, EventArgs e)
         {
+            if (listboxBioms.SelectedItem == null) return;
             EditBiomForm editBiomForm = new EditBiomForm();
             if(listboxBioms.SelectedItem!=null)
             editBiomForm.SetBiom((Biom)listboxBioms.SelectedItem);

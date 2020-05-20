@@ -69,6 +69,7 @@ namespace EventsSDK
 
         private void btnEditEvent_Click(object sender, EventArgs e)
         {
+            if (listBoxEvents.SelectedItem == null) return;
             Event _event = null;
             EditEventForm editEventForm = new EditEventForm();
 
