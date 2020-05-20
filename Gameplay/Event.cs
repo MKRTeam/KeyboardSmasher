@@ -37,6 +37,10 @@ namespace Gameplay
 
         public Event(string description, EventAction[] actions)
         {
+            if (description == null || description == "")
+            {
+                throw new Exception("Не задано описание события, класс Event");
+            }
             Description = description;
             this.Actions = actions;
 

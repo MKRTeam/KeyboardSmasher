@@ -25,8 +25,8 @@ namespace EventsSDK
 
         private void btnDeleteEvent_Click(object sender, EventArgs e)
         {
-            if(listBoxEvents.SelectedItem!=null)
-            listBoxEvents.Items.Remove(listBoxEvents.SelectedItem);
+            if (listBoxEvents.SelectedItem != null)
+                listBoxEvents.Items.Remove(listBoxEvents.SelectedItem);
         }
 
         public void SetEventObject(EventObject selectedItem)
@@ -39,12 +39,21 @@ namespace EventsSDK
 
         private void btnSaveObject_Click(object sender, EventArgs e)
         {
-            Event[] events = new Event[listBoxEvents.Items.Count];
-            for (int i = 0; i < listBoxEvents.Items.Count; i++)
-                events[i] = (Event)listBoxEvents.Items[i];
-            eventObject = new EventObject(textBoxObjectName.Text, textBoxObjectDescription.Text, events);
+            try
+            {
+                Event[] events = new Event[listBoxEvents.Items.Count];
+                for (int i = 0; i < listBoxEvents.Items.Count; i++)
+                    events[i] = (Event)listBoxEvents.Items[i];
+                eventObject = new EventObject(textBoxObjectName.Text, textBoxObjectDescription.Text, events);
 
-            DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+             
+            
         }
 
         private void btnCreateEvent_Click(object sender, EventArgs e)

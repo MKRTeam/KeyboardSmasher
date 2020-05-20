@@ -33,13 +33,19 @@ namespace EventsSDK
 
         private void btnSaveEvent_Click(object sender, EventArgs e)
         {
-            EventAction[] eventActions = new EventAction[listBoxActions.Items.Count];
-            for (int i = 0; i < listBoxActions.Items.Count; i++)
-                eventActions[i] = (EventAction)listBoxActions.Items[i];
+            try { 
+                EventAction[] eventActions = new EventAction[listBoxActions.Items.Count];
+                for (int i = 0; i < listBoxActions.Items.Count; i++)
+                    eventActions[i] = (EventAction)listBoxActions.Items[i];
 
-            @event = new Event(textBoxEventDescription.Text, eventActions);
-            DialogResult = DialogResult.OK;
-        }
+                @event = new Event(textBoxEventDescription.Text, eventActions);
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+}
 
         private void btnDeleteAction_Click(object sender, EventArgs e)
         {

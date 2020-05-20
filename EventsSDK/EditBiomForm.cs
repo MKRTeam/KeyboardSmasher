@@ -31,11 +31,18 @@ namespace EventsSDK
         }
         private void btnSaveBiom_Click(object sender, EventArgs e)
         {
-            EventObject[] eventObjects = new EventObject[listBoxObjects.Items.Count];
-            for (int i = 0; i < listBoxObjects.Items.Count; i++)
-                eventObjects[i] = (EventObject)listBoxObjects.Items[i];
-            biom = new Biom(textBoxBiomName.Text, textBoxBiomDescription.Text, eventObjects);
-            DialogResult = DialogResult.OK;
+            try
+            {
+                EventObject[] eventObjects = new EventObject[listBoxObjects.Items.Count];
+                for (int i = 0; i < listBoxObjects.Items.Count; i++)
+                    eventObjects[i] = (EventObject)listBoxObjects.Items[i];
+                biom = new Biom(textBoxBiomName.Text, textBoxBiomDescription.Text, eventObjects);
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void btnCreateObject_Click(object sender, EventArgs e)
         {

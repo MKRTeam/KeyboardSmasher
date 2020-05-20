@@ -33,16 +33,23 @@ namespace EventsSDK
 
         private void btnSaveAction_Click(object sender, EventArgs e)
         {
-            if (eventAction == null)
+            try
             {
-                eventAction = new EventAction(textBox1.Text, (ExerciseType)comboBox1.SelectedIndex);
+                if (eventAction == null)
+                {
+                    eventAction = new EventAction(textBox1.Text, (ExerciseType)comboBox1.SelectedIndex);
+                }
+                else
+                {
+                    eventAction.Description = textBox1.Text;
+                    eventAction.ExerciseCode = (ExerciseType)comboBox1.SelectedIndex;
+                }
+                DialogResult = DialogResult.OK;
             }
-            else
+            catch (Exception ex)
             {
-                eventAction.Description = textBox1.Text;
-                eventAction.ExerciseCode = (ExerciseType)comboBox1.SelectedIndex;
+                MessageBox.Show(ex.Message);
             }
-            DialogResult = DialogResult.OK;
         }
     }
 }
