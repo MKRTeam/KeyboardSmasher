@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gameplay;
@@ -52,7 +53,22 @@ namespace EventsSDK
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Biom[] bioms = new Biom[listboxBioms.Items.Count];
+            for (int i = 0; i < bioms.Length; i++)
+                bioms[i] = (Biom)listboxBioms.Items[i];
+            string json = JsonConvert.SerializeObject(bioms);
+            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter("out.json");
+            streamWriter.Write(json);
+            streamWriter.Close();
+            MessageBox.Show("Сохранение завершенно");
+        }
 
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.IO.StreamReader streamReader = new System.IO.StreamReader("out.json");
+            Biom[] bioms = JsonConvert.DeserializeObject<Biom[]>(streamReader.ReadToEnd());
+            listboxBioms.Items.AddRange(bioms);
+            streamReader.Close();
         }
     }
 }
