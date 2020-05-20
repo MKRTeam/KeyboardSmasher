@@ -24,7 +24,7 @@ namespace KeyboardSmasher.GUI.Controls
         SettingsControlResult result = SettingsControlResult.NO_RESULT;
         public delegate void SettingsControlResultProc(SettingsControlResult new_result);
         event SettingsControlResultProc OnControlResultChanged;
-        public Control LastControl { get; set; }
+        public UserControl LastControl { get; set; }
 
         public SettingsControl(SettingsControlResultProc result_handler)
         {

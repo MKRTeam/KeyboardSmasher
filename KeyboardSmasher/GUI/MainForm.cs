@@ -22,7 +22,7 @@ namespace KeyboardSmasher.GUI
         SymbolStreamControl symbol_stream_control;
         SettingsControl setting_control;
         //видимый контрол
-        Control currentVisibleControl = null;
+        UserControl currentVisibleControl = null;
         EventControl currentEventControl = null;
         Event currentEvent = null;
 
@@ -82,7 +82,7 @@ namespace KeyboardSmasher.GUI
                 translateControl(currentVisibleControl, localization);
         }
 
-        private void showControl(Control control)
+        private void showControl(UserControl control)
         {
             if (currentVisibleControl != null)
                 currentVisibleControl.Visible = false;
@@ -93,7 +93,7 @@ namespace KeyboardSmasher.GUI
             translateControl(control, localization);
         }
 
-        private void translateControl(Control control, Localization.Localization localization)
+        private void translateControl(UserControl control, Localization.Localization localization)
         {
             
         }
@@ -210,14 +210,16 @@ namespace KeyboardSmasher.GUI
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             //КОСТЫЛЬНО!!! Но по другому только переделывать класс UserControl
-            if (currentVisibleControl.GetType().Name == "EventControl")
-                ((EventControl)currentVisibleControl).EventControl_KeyDown(sender, e);
+            currentVisibleControl.Control_KeyDown(sender, e);
+            //if (currentVisibleControl.GetType().Name == "EventControl")
+            //    ((EventControl)currentVisibleControl).EventControl_KeyDown(sender, e);
         }
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (currentVisibleControl.GetType().Name == "EventControl")
-                ((EventControl)currentVisibleControl).EventControl_KeyPress(sender, e);
+            currentVisibleControl.Control_KeyPress(sender, e);
+            //if (currentVisibleControl.GetType().Name == "EventControl")
+            //    ((EventControl)currentVisibleControl).EventControl_KeyPress(sender, e);
         }
     }
 }

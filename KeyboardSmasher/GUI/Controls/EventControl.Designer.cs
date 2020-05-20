@@ -121,8 +121,6 @@
             this.Controls.Add(this.splitContainer2);
             this.Name = "EventControl";
             this.Size = new System.Drawing.Size(773, 556);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EventControl_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EventControl_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScene)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

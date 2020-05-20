@@ -87,7 +87,7 @@ namespace KeyboardSmasher.GUI.Controls
 
 
 
-        public void EventControl_KeyDown(object sender, KeyEventArgs e)
+        public override void Control_KeyDown(object sender, KeyEventArgs e)
         {
             //не работает событие. Событие не вызывается при нажатии кнопки ПОЧЕМУ?
             if (e.KeyCode == Keys.Escape)
@@ -95,8 +95,7 @@ namespace KeyboardSmasher.GUI.Controls
             if (e.KeyCode == Keys.Enter)
                 Result = EventControlResult.SKIP_EVENT;
         }
-
-        public void EventControl_KeyPress(object sender, KeyPressEventArgs e)
+        public override void Control_KeyPress(object sender, KeyPressEventArgs e)
         {
             
         }
