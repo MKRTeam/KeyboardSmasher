@@ -35,7 +35,8 @@ namespace EventsSDK
             editBiomForm.SetBiom((Biom)listboxBioms.SelectedItem);
             if (editBiomForm.ShowDialog() == DialogResult.OK)
             {
-                // 
+                Biom biom = editBiomForm.GetBiom();
+                listboxBioms.Items[listboxBioms.SelectedIndex] = biom;
             }
         }
 
@@ -45,6 +46,11 @@ namespace EventsSDK
             {
                 listboxBioms.Items.Remove(listboxBioms.SelectedItem);
             }
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
