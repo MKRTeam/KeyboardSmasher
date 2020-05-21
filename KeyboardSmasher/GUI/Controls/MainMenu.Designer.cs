@@ -42,10 +42,10 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(38, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(623, 46);
+            this.label1.Size = new System.Drawing.Size(349, 46);
             this.label1.TabIndex = 0;
             this.label1.Tag = "#KEYBOARD_SMASHER_NAME";
-            this.label1.Text = "#KEYBOARD_SMASHER_NAME";
+            this.label1.Text = "KeyboardSmasher";
             // 
             // btnStartGame
             // 
@@ -58,7 +58,7 @@
             this.btnStartGame.Size = new System.Drawing.Size(222, 40);
             this.btnStartGame.TabIndex = 1;
             this.btnStartGame.Tag = "#START_GAME_BUTTON";
-            this.btnStartGame.Text = "#START_GAME_BUTTON";
+            this.btnStartGame.Text = "НАЧАТЬ ИГРУ";
             this.btnStartGame.UseVisualStyleBackColor = false;
             this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
             // 
@@ -74,7 +74,7 @@
             this.btnSettings.Size = new System.Drawing.Size(222, 40);
             this.btnSettings.TabIndex = 2;
             this.btnSettings.Tag = "#SETTINGS_BUTTON";
-            this.btnSettings.Text = "#SETTINGS_BUTTON";
+            this.btnSettings.Text = "НАСТРОЙКИ";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
@@ -90,7 +90,7 @@
             this.btnExit.Size = new System.Drawing.Size(222, 40);
             this.btnExit.TabIndex = 3;
             this.btnExit.Tag = "#EXIT_BUTTON";
-            this.btnExit.Text = "#EXIT_BUTTON";
+            this.btnExit.Text = "ВЫХОД";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 

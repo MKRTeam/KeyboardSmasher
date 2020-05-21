@@ -47,7 +47,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(222, 40);
             this.btnExit.TabIndex = 7;
-            this.btnExit.Text = "#EXIT_BUTTON";
+            this.btnExit.Text = "ВЫХОД";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -62,7 +62,7 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(222, 40);
             this.btnSettings.TabIndex = 6;
-            this.btnSettings.Text = "#SETTINGS_BUTTON";
+            this.btnSettings.Text = "НАСТРОЙКИ";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
@@ -76,7 +76,7 @@
             this.btnContinueGame.Name = "btnContinueGame";
             this.btnContinueGame.Size = new System.Drawing.Size(222, 40);
             this.btnContinueGame.TabIndex = 5;
-            this.btnContinueGame.Text = "#CONTINUE_BUTTON";
+            this.btnContinueGame.Text = "ПРОДОЛЖИТЬ";
             this.btnContinueGame.UseVisualStyleBackColor = false;
             this.btnContinueGame.Click += new System.EventHandler(this.btnContinueGame_Click);
             // 
@@ -87,9 +87,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(43, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 46);
+            this.label1.Size = new System.Drawing.Size(151, 46);
             this.label1.TabIndex = 4;
-            this.label1.Text = "#PAUSE";
+            this.label1.Text = "ПАУЗА";
             // 
             // btnExitToMenu
             // 
@@ -97,12 +97,12 @@
             this.btnExitToMenu.AutoSize = true;
             this.btnExitToMenu.BackColor = System.Drawing.Color.FloralWhite;
             this.btnExitToMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitToMenu.Location = new System.Drawing.Point(185, 270);
+            this.btnExitToMenu.Location = new System.Drawing.Point(180, 270);
             this.btnExitToMenu.Margin = new System.Windows.Forms.Padding(8);
             this.btnExitToMenu.Name = "btnExitToMenu";
-            this.btnExitToMenu.Size = new System.Drawing.Size(230, 40);
+            this.btnExitToMenu.Size = new System.Drawing.Size(235, 40);
             this.btnExitToMenu.TabIndex = 8;
-            this.btnExitToMenu.Text = "#EXIT_TO_MENU_BUTTON";
+            this.btnExitToMenu.Text = "ВЫЙТИ В ГЛАВНОЕ МЕНЮ";
             this.btnExitToMenu.UseVisualStyleBackColor = false;
             this.btnExitToMenu.Click += new System.EventHandler(this.btnExitToMenu_Click);
             // 
