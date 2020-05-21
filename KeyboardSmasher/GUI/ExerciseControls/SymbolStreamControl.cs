@@ -204,11 +204,21 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         }
 
         /// <summary>
+        /// Флаг, поднимающийся при нажатии клавиши и опускающийся при её отпускании.
+        /// Для того, чтобы исключить учёт удержания клавиши
+        /// </summary>
+        private bool f_keyDown = false;
+
+        /// <summary>
         /// Обработчик события нажатия клавиши
         /// </summary>
         /// <param name="sender">Объект, вызвавший событие</param>
         /// <param name="e">Параметры события</param>
         public void Control_KeyDown(object sender, KeyEventArgs e) {
+            // Проверяем, было ли уже обработано событие - чтобы исключить учёт удержания клавиши
+            if (f_keyDown)
+                return;
+            f_keyDown = true;
             // ! Подписан на событие самого контрола
             Keys keyCode = e.KeyCode;
             // Начинаем состязание, если после запуска нажат Enter
@@ -260,6 +270,16 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 Result = SymbolStreamControlResult.EXIT;
             }
         }
+
+        /// <summary>
+        /// Обработчик события отпускания клавиши
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие</param>
+        /// <param name="e">Параметры события</param>
+        public void Control_KeyUp(object sender, KeyEventArgs e) {
+            f_keyDown = false;
+        }
+
 
         public void Pause()
         {
