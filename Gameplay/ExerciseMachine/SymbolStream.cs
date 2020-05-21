@@ -46,7 +46,7 @@ namespace Gameplay.ExerciseMachine
             //здесь происходит определение того, какой набор букв будет в испытании, сколько символов будет
             SymbolSet = SymbolStream.symbol_sets_for_langs[lang][difficulty];
             SymbolsCount = 25u * ((uint)difficulty + 1u);
-            TimePerSymbol = 5 * ((int)difficulty + 1);
+            TimePerSymbol = 100 * ((int)difficulty + 1);
         }
 
         //сам словарь формируется где-нибудь в main и сюда передается

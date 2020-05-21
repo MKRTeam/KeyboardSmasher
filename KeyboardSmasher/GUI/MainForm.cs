@@ -25,6 +25,7 @@ namespace KeyboardSmasher.GUI
         UserControl currentVisibleControl = null;
         EventControl currentEventControl = null;
         Event currentEvent = null;
+        SymbolStreamControl currentSymbolStreamControl = null;
 
         //игровые данные
         Difficulty difficulty;
@@ -110,6 +111,19 @@ namespace KeyboardSmasher.GUI
             
         }
 
+        private void showSymbolStreamControl()
+        {
+            if (currentSymbolStreamControl != null)
+            {
+                this.Controls.Remove(currentSymbolStreamControl);
+                currentSymbolStreamControl.Dispose();
+            }
+            currentSymbolStreamControl = new SymbolStreamControl(lang, difficulty);
+            this.Controls.Add(currentSymbolStreamControl);
+            currentSymbolStreamControl.Dock = DockStyle.Fill;
+            showControl(currentSymbolStreamControl);
+        }
+
         public void showMainMenu()
         {
             showControl(main_menu);
@@ -193,8 +207,7 @@ namespace KeyboardSmasher.GUI
                     {
                         ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
                         //создаем соответствующий тренажер
-                        SymbolStreamControl symbolStreamControl = new SymbolStreamControl(lang, difficulty);
-                        showControl(symbolStreamControl);   
+                        showSymbolStreamControl();
                     }
                     break;
 
