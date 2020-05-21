@@ -8,10 +8,10 @@ namespace Gameplay
 {
     public class EventObject
     {
-        string Name { get; }
-        string Description { get; }
+       public string Name { get; set; }
+       public string Description { get; set; }
 
-        private Event[] events;
+        public Event[] Events { get; }
         private static Random random = new Random();
 
         public EventObject(string name, string description, Event[] events)
@@ -22,12 +22,12 @@ namespace Gameplay
             }
             Name = name;
             Description = description;
-            this.events = events;
+            this.Events = events;
         }
 
         public Event getRandomEvent()
         {
-            return events[random.Next(0, events.Length)];
+            return Events[random.Next(0, Events.Length)];
         }
 
         public override string ToString()

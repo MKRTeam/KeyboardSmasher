@@ -18,6 +18,6 @@ namespace Gameplay.ExerciseMachine
 
     interface ExerciseMachine
     {
-        bool start(out object statistic);
+        bool check(object statistic);
     }
 }

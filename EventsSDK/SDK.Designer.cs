@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listboxBioms = new System.Windows.Forms.ListBox();
             this.btnCreateBiom = new System.Windows.Forms.Button();
             this.btnEditBiom = new System.Windows.Forms.Button();
@@ -49,17 +49,19 @@
             this.MainMenu.TabIndex = 0;
             this.MainMenu.Text = "menuStrip1";
             // 
-            // сохранитьToolStripMenuItem
-            // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
-            // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
             this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // listboxBioms
             // 
@@ -77,6 +79,7 @@
             this.btnCreateBiom.TabIndex = 2;
             this.btnCreateBiom.Text = "Добавить";
             this.btnCreateBiom.UseVisualStyleBackColor = true;
+            this.btnCreateBiom.Click += new System.EventHandler(this.btnCreateBiom_Click);
             // 
             // btnEditBiom
             // 
@@ -86,6 +89,7 @@
             this.btnEditBiom.TabIndex = 3;
             this.btnEditBiom.Text = "Изменить";
             this.btnEditBiom.UseVisualStyleBackColor = true;
+            this.btnEditBiom.Click += new System.EventHandler(this.btnEditBiom_Click);
             // 
             // btnDeleteBiom
             // 
@@ -95,6 +99,7 @@
             this.btnDeleteBiom.TabIndex = 4;
             this.btnDeleteBiom.Text = "Удалить";
             this.btnDeleteBiom.UseVisualStyleBackColor = true;
+            this.btnDeleteBiom.Click += new System.EventHandler(this.btnDeleteBiom_Click);
             // 
             // SDK
             // 

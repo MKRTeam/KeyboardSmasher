@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Gameplay.ExerciseMachine
 {
-    struct SymbolStreamStatistic
+    public struct SymbolStreamStatistic
     {
 
     }
 
-    class SymbolStream// : ExerciseMachine
+    class SymbolStream : ExerciseMachine
     {
         //наборы символов для каждого уровня сложности
         private static Dictionary<Difficulty, char[]> symbol_sets = null;
-        //размер очереди букв
-        private const uint symbols_queue_size = 5;
 
         //кол-во букв в испытании. зависит от сложности
         public uint SymbolsCount { get; }
@@ -26,6 +24,8 @@ namespace Gameplay.ExerciseMachine
 
         //время на одну букву. зависит от сложности
         public TimeSpan TimePerSymbol { get; }
+
+
 
         public SymbolStream(Difficulty difficulty)
         {
@@ -40,6 +40,9 @@ namespace Gameplay.ExerciseMachine
         //public static void Init(Dictionary<Difficulty, char[]> symbol_sets);
 
 
-        //public override bool start(out object statistic);
+        public bool check(object statistic)
+        {
+            return false;
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Gameplay.ExerciseMachine
 
     }
 
-    class MistakeCount// : ExerciseMachine
+    class MistakeCount : ExerciseMachine
     {
         //текст который дадим писать пользователю
         public string Text { get; }//зависит от сложности
@@ -21,6 +21,9 @@ namespace Gameplay.ExerciseMachine
 
         }
 
-        //public override bool start(out object statistic);
+        public bool check(object statistic)
+        {
+            return false;
+        }
     }
 }

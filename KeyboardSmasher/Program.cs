@@ -12,6 +12,13 @@ using Newtonsoft.Json;
 
 namespace KeyboardSmasher
 {
+    public class UserControl : System.Windows.Forms.UserControl
+    {
+        public virtual void Control_KeyPress(object sender, KeyPressEventArgs e)
+            { }
+        public virtual void Control_KeyDown(object sender, KeyEventArgs e)
+        { }
+    }
     public enum Language
     {
         RUSSIAN,

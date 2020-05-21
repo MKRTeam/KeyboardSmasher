@@ -88,6 +88,7 @@
             this.btnCreateEvent.TabIndex = 5;
             this.btnCreateEvent.Text = "Добавить";
             this.btnCreateEvent.UseVisualStyleBackColor = true;
+            this.btnCreateEvent.Click += new System.EventHandler(this.btnCreateEvent_Click);
             // 
             // btnEditEvent
             // 
@@ -97,6 +98,7 @@
             this.btnEditEvent.TabIndex = 6;
             this.btnEditEvent.Text = "Изменить";
             this.btnEditEvent.UseVisualStyleBackColor = true;
+            this.btnEditEvent.Click += new System.EventHandler(this.btnEditEvent_Click);
             // 
             // btnDeleteEvent
             // 
@@ -106,6 +108,7 @@
             this.btnDeleteEvent.TabIndex = 7;
             this.btnDeleteEvent.Text = "Удалить";
             this.btnDeleteEvent.UseVisualStyleBackColor = true;
+            this.btnDeleteEvent.Click += new System.EventHandler(this.btnDeleteEvent_Click);
             // 
             // btnSaveObject
             // 
@@ -115,8 +118,9 @@
             this.btnSaveObject.TabIndex = 8;
             this.btnSaveObject.Text = "Сохранить";
             this.btnSaveObject.UseVisualStyleBackColor = true;
+            this.btnSaveObject.Click += new System.EventHandler(this.btnSaveObject_Click);
             // 
-            // EditBiomForm
+            // EditEventObjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,8 +134,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxObjectName);
             this.Controls.Add(this.label1);
-            this.Name = "EditBiomForm";
-            this.Text = "EditBiomForm";
+            this.Name = "EditEventObjectForm";
+            this.Text = "EditEventObjectForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

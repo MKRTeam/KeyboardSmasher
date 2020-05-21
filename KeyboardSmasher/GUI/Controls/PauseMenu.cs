@@ -25,7 +25,7 @@ namespace KeyboardSmasher.GUI.Controls
         public delegate void PauseMenuResultProc(PauseMenuResult new_result);
         event PauseMenuResultProc OnControlResultChanged;
 
-        public Control LastControl { get; set; }
+        public UserControl LastControl { get; set; }
 
         public PauseMenu(PauseMenuResultProc result_handler)
         {

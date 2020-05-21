@@ -20,7 +20,7 @@ namespace KeyboardSmasher.GUI.Controls
         EXIT
     }
 
-    public partial class MainMenu : UserControl
+    public partial class MainMenu : KeyboardSmasher.UserControl
     {
         MainMenuResult result = MainMenuResult.NO_RESULT;
         public delegate void MainMenuResultProc(MainMenuResult new_result);
