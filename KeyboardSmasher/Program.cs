@@ -12,18 +12,7 @@ using Newtonsoft.Json;
 
 namespace KeyboardSmasher
 {
-    public class UserControl : System.Windows.Forms.UserControl
-    {
-        public virtual void Control_KeyPress(object sender, KeyPressEventArgs e)
-            { }
-        public virtual void Control_KeyDown(object sender, KeyEventArgs e)
-        { }
-    }
-    public enum Language
-    {
-        RUSSIAN,
-        ENGLISH
-    }
+    
 
     static class Program
     {
@@ -87,7 +76,11 @@ namespace KeyboardSmasher
                 bioms[i] = new Biom(biom_name, biom_descr, objects);
             }
 
-            //Localization.Localization.Serialize(default_loc, "default.txt");
+            Dictionary<Language, Dictionary<Difficulty, char[]>> symbol_sets = new Dictionary<Language, Dictionary<Difficulty, char[]>>();
+            symbol_sets.Add(Language.RUSSIAN, new Dictionary<Difficulty, char[]>());
+            char[] ss = { 'ф', 'ы', 'в', 'а', 'о', 'л', 'д', 'ж' };
+            symbol_sets[Language.RUSSIAN].Add(Difficulty.EASY, ss);
+            SymbolStream.Init(symbol_sets);
         }
 
         private static Biom[] DeserializeGameData(string gamedata_path)

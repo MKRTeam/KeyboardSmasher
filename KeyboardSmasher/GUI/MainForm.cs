@@ -2,6 +2,7 @@
 using Gameplay.ExerciseMachine;
 using KeyboardSmasher.ExerciseMachine.GUI;
 using KeyboardSmasher.GUI.Controls;
+using KeyboardSmasher.GUI.ExerciseMachine;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,6 @@ namespace KeyboardSmasher.GUI
         //контролы, которые всегда хранятся в памяти
         Controls.MainMenu main_menu;
         PauseMenu pause_menu;
-        SymbolStreamControl symbol_stream_control;
         SettingsControl setting_control;
         //видимый контрол
         UserControl currentVisibleControl = null;
@@ -28,6 +28,7 @@ namespace KeyboardSmasher.GUI
 
         //игровые данные
         Difficulty difficulty;
+        Language lang;
         Dictionary<Language, string> localization_paths;
         Localization.Localization localization = null;
         Biom[] bioms;
@@ -61,12 +62,6 @@ namespace KeyboardSmasher.GUI
             pause_menu.Dock = DockStyle.Fill;
             this.Controls.Add(pause_menu);
             #endregion
-            #region symbol_stream_comtrol
-            symbol_stream_control = new SymbolStreamControl();
-            symbol_stream_control.Visible = false;
-            symbol_stream_control.Dock = DockStyle.Fill;
-            this.Controls.Add(symbol_stream_control);
-            #endregion
             #region event_control
             //event_control = new EventControl();
             //event_control.Visible = false;
@@ -77,6 +72,7 @@ namespace KeyboardSmasher.GUI
 
         private void SetLanguage(Language language)
         {
+            this.lang = language;
             localization = Localization.Localization.Deserialize(localization_paths[language]);
             if (currentVisibleControl != null)
                 translateControl(currentVisibleControl, localization);
@@ -90,6 +86,7 @@ namespace KeyboardSmasher.GUI
                 control.Visible = true;
             else throw new Exception("Визуализируемый контрол был null");
             currentVisibleControl = control;
+            currentVisibleControl.Dock = DockStyle.Fill;
             translateControl(control, localization);
         }
 
@@ -196,7 +193,8 @@ namespace KeyboardSmasher.GUI
                     {
                         ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
                         //создаем соответствующий тренажер
-                        //и показываем новый контрол
+                        SymbolStreamControl symbolStreamControl = new SymbolStreamControl(lang, difficulty);
+                        showControl(symbolStreamControl);   
                     }
                     break;
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace KeyboardSmasher.ExerciseMachine.GUI {
+namespace KeyboardSmasher.GUI.ExerciseMachine
+{
     public partial class SymbolQueueControl : PictureBox {
         /// <summary>
         /// Класс буквы для хранения информации об отображаемых буквах

@@ -7,24 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gameplay;
+using Gameplay.ExerciseMachine;
 
-namespace KeyboardSmasher.ExerciseMachine.GUI
+namespace KeyboardSmasher.GUI.ExerciseMachine
 {
-    /// <summary>
-    /// Структура для хранения статистики задания SymbolStream
-    /// </summary>
-    public struct SymbolStreamStatistic {
-        /// <summary>
-        /// Количество промахов (пропущенная буква или буква, нажатая преждевременно)
-        /// </summary>
-        public int missedCount;
-        /// <summary>
-        /// Количество верно нажатых букв
-        /// </summary>
-        public int correctCount;
-    }
-
-
     public partial class SymbolStreamControl : UserControl {
         /// <summary>
         /// Перечислитель, содержащий режимы работы элемента управления
@@ -44,22 +31,10 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
             StreamFinished
         }
 
-
-        private SymbolStreamStatistic curStatistics;
-
         /// <summary>
         /// Текущий режим работы элемента управления
         /// </summary>
         private ControlMode CurControlMode { get; set; }
-
-        /// <summary>
-        /// Массив букв русского алфавита (в верхнем регистре)
-        /// </summary>
-        private readonly char[] c_rusAlphabet = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".ToCharArray();
-        /// <summary>
-        /// Массив букв английского алфавита (в верхнем регистре)
-        /// </summary>
-        private readonly char[] c_engAlphabet = "QWERTYUIOPASDFGHJKLZXCVBNM".ToCharArray();
 
         /// <summary>
         /// Метод получения русской буквы в верхнем регистре по коду клавиши.
@@ -143,46 +118,22 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
             }
         }
 
-
-        /// <summary>
-        /// Язык символов в очереди - параметр: 'ru'/'en'
-        /// </summary>
-        private readonly string p_symbolsLanguage;
-        /// <summary>
-        /// Допустимый алфавит символов
-        /// </summary>
-        private readonly char[] p_alphabet;
-        /// <summary>
-        /// Задержка перед добавлением в очередь очередного символа
-        /// </summary>
-        private readonly int p_symbolsReleaseDelay;
-        /// <summary>
-        /// Количество оставшихся для добавления в очередь символов
-        /// </summary>
-        private int p_remainingSymbolsCount;
-
         /// <summary>
         /// Метод генерации следующей буквы (в верхнем регистре) заданного алфавита в заданном количестве для добавления в поток
         /// </summary>
         /// <param name="alphabet">Алфавит - массив допустимых символов для добавления в очередь</param>
         /// <returns></returns>
-        private char GenerateNextSymbol() {
-            Random rand = new Random();
-            return char.ToUpper(p_alphabet[rand.Next(p_alphabet.Length)]);
+        private char GenerateRandomSymbol()
+        {
+            return char.ToUpper(symbolStream.getRandomSymbol());
         }
-
-
-        /// <summary>
-        /// Таймер добавления нового символа в поток
-        /// </summary>
-        private System.Threading.Timer AddingSymbolTimer { get; set; }
 
         /// <summary>
         /// Метод добавления очередной буквы в очередь. Соответствует делегату TimerCallback
         /// </summary>
         /// <param name="nullParam"></param>
         private void AddSymbolToQueue(object nullParam) {
-            symbolQueueControl.AddLetterToStream(GenerateNextSymbol());
+            symbolQueueControl.AddLetterToStream(GenerateRandomSymbol());
             // Уменьшаем количество оставшихся для добавления символов и возвращаем сгенерированный символ
             p_remainingSymbolsCount--;
             // Если больше букв не будет
@@ -194,44 +145,34 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
             }
         }
 
-
         /// <summary>
-        /// Конструктор
+        /// Таймер добавления нового символа в поток
         /// </summary>
-        /// <param name="language">Язык символов потока: 'en' - английский, 'ru' - русский</param>
-        /// <param name="alphabet">Алфавит символов, которые могут составлять поток</param>
-        /// <param name="symbolsCount">Количество символов в потоке</param>
-        /// <param name="symbolsReleaseDelay">Задержка перед появлением нового символа</param>
-        public SymbolStreamControl(string language = "en", char[] alphabet = null, int symbolsCount = 20, int symbolsReleaseDelay = 50) {
-            InitializeComponent();
-            // Проверка правильности аргументов
-            if (language != "en" && language != "ru")
-                throw new ArgumentException("Неправильно указан язык!");
-            if (symbolsCount <= 0)
-                throw new ArgumentException("Количество символов не может быть отрицательным или нулевым!");
-            if (symbolsReleaseDelay <= 0)
-                throw new ArgumentException("Задержка добавления символов не может быть отрицательной или нулевой!");
-            // Текст приветствия
-            lTaskText.Text =
-                @"Добро пожаловать в тренажёр ""Поток букв""! На полосе сверху будет появляться поток букв. " +
+        private System.Threading.Timer AddingSymbolTimer { get; set; }
+
+        private SymbolStream symbolStream;
+        uint p_remainingSymbolsCount;
+        private SymbolStreamStatistic curStatistic;
+        private Language lang;
+
+        private static readonly string welcome_text = @"Добро пожаловать в тренажёр ""Поток букв""! На полосе сверху будет появляться поток букв. " +
                 "Ваша задача - нажимать на клавишу, буква которой находится в кольце. Успевайте вовремя, и вы победите! " +
                 "Нажмите клавишу 'Enter', чтобы начать.";
+
+        public SymbolStreamControl(Language lang, Difficulty difficulty) {
+            InitializeComponent();
+            this.lang = lang;
+            // Текст приветствия
+            lTaskText.Text = welcome_text;
             // Текущий режим работы элемента управления - "запущен"
             CurControlMode = ControlMode.ControlStarted;
             // Создаём статистику
-            curStatistics = new SymbolStreamStatistic();
+            curStatistic = new SymbolStreamStatistic();
+            symbolStream = new SymbolStream(lang, difficulty);
+            p_remainingSymbolsCount = symbolStream.SymbolsCount;
             // Подписываемся на события SymbolQueueControl
             symbolQueueControl.LetterMissedEvt += OnLetterMissed;
             symbolQueueControl.QueueEndEvt += OnQueueEnd;
-            // Задаём параметры
-            if (alphabet == null && language == "en")
-                alphabet = c_engAlphabet;
-            else
-                alphabet = c_rusAlphabet;
-            p_symbolsLanguage = language;
-            p_alphabet = alphabet;
-            p_symbolsReleaseDelay = symbolsReleaseDelay;
-            p_remainingSymbolsCount = symbolsCount;
         }
 
         /// <summary>
@@ -239,7 +180,7 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
         /// </summary>
         /// <param name="sender">Объект, вызвавший событие</param>
         /// <param name="e">Параметры события</param>
-        public void OnKeyDown(object sender, KeyEventArgs e) {
+        public void Control_KeyDown(object sender, KeyEventArgs e) {
             // ! Подписан на событие самого контрола
             Keys keyCode = e.KeyCode;
             // Начинаем состязание, если после запуска нажат Enter
@@ -248,24 +189,31 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
                 CurControlMode = ControlMode.StreamStarted;
                 symbolQueueControl.StartLettersStream();
                 // Устанавливаем таймер на добавление новых букв в очередь
-                AddingSymbolTimer = new System.Threading.Timer(AddSymbolToQueue, null, 0, p_symbolsReleaseDelay);
+                AddingSymbolTimer = new System.Threading.Timer(AddSymbolToQueue, null, 0, symbolStream.TimePerSymbol);
             }
             // Если поток идёт - проверяем нажатую кнопку на соответствие символу в кольце
             else if (CurControlMode == ControlMode.StreamStarted) {
                 char roundedSymbol = symbolQueueControl.GetRoundedChar();
                 char pressedSymbol;
-                pressedSymbol = p_symbolsLanguage == "en" ? GetUpperEngCharForKey(keyCode) : GetUpperRusCharForKey(keyCode);
+                switch (lang)
+                {
+                    case Language.ENGLISH:
+                        pressedSymbol = GetUpperEngCharForKey(keyCode); break;
+                    case Language.RUSSIAN:
+                        pressedSymbol = GetUpperRusCharForKey(keyCode); break;
+                    default: pressedSymbol = '\0'; break;
+                }
                 if (roundedSymbol == '\0') {
-                    curStatistics.missedCount++;
+                    curStatistic.missedCount++;
                     lTaskText.Text = "Мимо!";
                 }
                 else if (pressedSymbol == '\0' || pressedSymbol != roundedSymbol) {
-                    curStatistics.missedCount++;
+                    curStatistic.missedCount++;
                     lTaskText.Text = "Неправильная клавиша!";
                 }
                 else if (pressedSymbol == roundedSymbol) {
                     symbolQueueControl.DropFirstLetterFormStream();
-                    curStatistics.correctCount++;
+                    curStatistic.correctCount++;
                     lTaskText.Text = "Отлично!";
                 }
             }
@@ -286,7 +234,7 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
         /// </summary>
         private void OnQueueEnd() {
             // Запускаем изменение текста лейбла в том же потоке, в котором работает элемент управления
-            lTaskText.Invoke(new Action(() => lTaskText.Text = $"Поток завершён!\nВерных нажатий:{curStatistics.correctCount}\nОшибок: {curStatistics.missedCount}"));
+            lTaskText.Invoke(new Action(() => lTaskText.Text = $"Поток завершён!\nВерных нажатий:{curStatistic.correctCount}\nОшибок: {curStatistic.missedCount}"));
             CurControlMode = ControlMode.StreamFinished;
         }
     }

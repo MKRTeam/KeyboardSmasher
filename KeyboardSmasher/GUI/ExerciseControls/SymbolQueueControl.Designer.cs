@@ -1,4 +1,5 @@
-﻿namespace KeyboardSmasher.ExerciseMachine.GUI {
+﻿namespace KeyboardSmasher.GUI.ExerciseMachine
+{
     partial class SymbolQueueControl {
         /// <summary> 
         /// Обязательная переменная конструктора.

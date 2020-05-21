@@ -131,6 +131,9 @@
     <Compile Include="Localization\Localization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="GUI\ExerciseControls\SymbolQueueControl.resx">
       <DependentUpon>SymbolQueueControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +164,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

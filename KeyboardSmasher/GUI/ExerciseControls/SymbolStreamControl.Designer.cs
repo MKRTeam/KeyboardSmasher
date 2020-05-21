@@ -1,4 +1,4 @@
-﻿namespace KeyboardSmasher.ExerciseMachine.GUI
+﻿namespace KeyboardSmasher.GUI.ExerciseMachine
 {
     partial class SymbolStreamControl {
         /// <summary> 
@@ -29,7 +29,7 @@
             this.lTaskText = new System.Windows.Forms.Label();
             this.pbKeyboard = new System.Windows.Forms.PictureBox();
             this.tlpMiddle = new System.Windows.Forms.TableLayoutPanel();
-            this.symbolQueueControl = new KeyboardSmasher.ExerciseMachine.GUI.SymbolQueueControl();
+            this.symbolQueueControl = new KeyboardSmasher.GUI.ExerciseMachine.SymbolQueueControl();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbKeyboard)).BeginInit();
             this.tlpMiddle.SuspendLayout();
@@ -108,7 +108,7 @@
             this.MinimumSize = new System.Drawing.Size(150, 100);
             this.Name = "SymbolStreamControl";
             this.Size = new System.Drawing.Size(675, 427);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             this.tlpMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbKeyboard)).EndInit();
             this.tlpMiddle.ResumeLayout(false);
