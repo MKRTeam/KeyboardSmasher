@@ -215,11 +215,12 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// <param name="sender">Объект, вызвавший событие</param>
         /// <param name="e">Параметры события</param>
         public void Control_KeyDown(object sender, KeyEventArgs e) {
+            // ! Подписан на событие самого контрола
+
             // Проверяем, было ли уже обработано событие - чтобы исключить учёт удержания клавиши
             if (f_keyDown)
                 return;
             f_keyDown = true;
-            // ! Подписан на событие самого контрола
             Keys keyCode = e.KeyCode;
             // Начинаем состязание, если после запуска нажат Enter
             if (CurControlMode == ControlMode.ControlStarted && keyCode == Keys.Enter) {
@@ -313,7 +314,6 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             CurControlMode = ControlMode.StreamFinished;
         }
 
-        // TODO: последняя ликвидированная буква потока исчезает
         // TODO: Настраиваемая сложность
     }
 }

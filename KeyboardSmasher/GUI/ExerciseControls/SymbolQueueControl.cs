@@ -134,7 +134,6 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// Отрисовать новое состояние элемента управления
         /// </summary>
         private void DrawNewState() {
-            // Параметры рисования
             // Рисуем новое состояние элемента управления
             Bitmap newImage = new Bitmap(Size.Width, Size.Height);
             Graphics g = Graphics.FromImage(newImage);
@@ -162,6 +161,9 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             if (LettersStream.Count == 0 && AddingLettersQueue.Count == 0) {
                 // Если букв в потоке и в буфере нет, и добавление букв в очередь закончено - конец
                 if (AddingLettersIsOver == true) {
+                    // Отрисовываем новое состояние - букв в потоке нет
+                    DrawNewState();
+                    // Поднимаем событие окончания потока, и выключаем таймер обновления состояния
                     QueueEndEvt();
                     UpdatingStateTimer.Dispose();
                 }
