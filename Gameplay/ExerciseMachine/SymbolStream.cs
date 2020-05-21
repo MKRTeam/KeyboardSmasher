@@ -33,20 +33,19 @@ namespace Gameplay.ExerciseMachine
         private char[] SymbolSet { get; }
 
         //время на одну букву. зависит от сложности
-        public int TimePerSymbol { get; }
+        public int SymbolSpeed { get; }
 
 
 
         public SymbolStream(Language lang, Difficulty difficulty)
         {
-
             //если не выполнена инициализация symbol_sets то выкинуть исключение и не дать создать объект!!
             if (symbol_sets_for_langs == null)
                 throw new Exception("Нет наборов символов");
             //здесь происходит определение того, какой набор букв будет в испытании, сколько символов будет
             SymbolSet = SymbolStream.symbol_sets_for_langs[lang][difficulty];
             SymbolsCount = 25u * ((uint)difficulty + 1u);
-            TimePerSymbol = 100 * ((int)difficulty + 1);
+            SymbolSpeed = 1 * (Difficulty.HARD - difficulty + 1);
         }
 
         //сам словарь формируется где-нибудь в main и сюда передается

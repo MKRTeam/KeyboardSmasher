@@ -114,7 +114,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// Свдинуть отображаемые буквы влево
         /// </summary>
         /// <param name="pushValue">Величина сдвига (в пикселях). По умолчанию величина равна единице</param>
-        private void PushQueueForward(int pushValue = 1) {
+        private void PushQueueForward(int pushValue = 2) {
             // Если первая буква ушла за линию - она исчезает
             if (LettersStream.First.Value.position.X <= 0) {
                 LettersStream.RemoveFirst();
@@ -208,11 +208,11 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// </summary>
         /// <param name="speedCoefficient">Коэффициент ускорения (мс). Ускорение при значении от нуля до единицы (не включая).
         /// Замедление при значении больше единицы. Стандартное значение равняется единице</param>
-        public void StartLettersStream() {
+        public void StartLettersStream(int SymbolSpeed) {
             if (UpdatingStateTimer != null)
                 return;
             // Запускаем таймер обновления состояния
-            UpdatingStateTimer = new System.Threading.Timer(UpdateState, null, 0, 10);
+            UpdatingStateTimer = new System.Threading.Timer(UpdateState, null, 0, SymbolSpeed);
         }
 
 

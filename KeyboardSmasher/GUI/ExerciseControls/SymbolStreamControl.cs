@@ -187,9 +187,9 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             if (CurControlMode == ControlMode.ControlStarted && keyCode == Keys.Enter) {
                 lTaskText.Text = "Поток букв запущен!";
                 CurControlMode = ControlMode.StreamStarted;
-                symbolQueueControl.StartLettersStream();
+                symbolQueueControl.StartLettersStream(symbolStream.SymbolSpeed);
                 // Устанавливаем таймер на добавление новых букв в очередь
-                AddingSymbolTimer = new System.Threading.Timer(AddSymbolToQueue, null, 0, symbolStream.TimePerSymbol);
+                AddingSymbolTimer = new System.Threading.Timer(AddSymbolToQueue, null, 0, symbolStream.SymbolSpeed);
             }
             // Если поток идёт - проверяем нажатую кнопку на соответствие символу в кольце
             else if (CurControlMode == ControlMode.StreamStarted) {
