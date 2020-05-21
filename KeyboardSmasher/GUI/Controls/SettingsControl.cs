@@ -39,6 +39,7 @@ namespace KeyboardSmasher.GUI.Controls
         {
             get { return result; }
             set { result = value;
+                if (OnControlResultChanged != null)
                 OnControlResultChanged(result);
             }
         }
@@ -62,6 +63,16 @@ namespace KeyboardSmasher.GUI.Controls
         private void buttonBack_Click(object sender, EventArgs e)
         {
             Result = SettingsControlResult.BACK;
+        }
+
+        private void comboBoxDifficulty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Result = SettingsControlResult.CHANGE_DIFFICULTY;
+        }
+
+        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Result = SettingsControlResult.CHANGE_LANGUAGE;
         }
     }
 }
