@@ -29,6 +29,8 @@ namespace EventsSDK
         {
             textBoxEventDescription.Text = selectedItem.Description;
             listBoxActions.Items.AddRange(selectedItem.Actions);
+            textBoxImage.Text = selectedItem.FileNameImage;
+            textBoxMusic.Text = selectedItem.FileNameMusic;
         }
 
         private void btnSaveEvent_Click(object sender, EventArgs e)
@@ -39,6 +41,8 @@ namespace EventsSDK
                     eventActions[i] = (EventAction)listBoxActions.Items[i];
 
                 @event = new Event(textBoxEventDescription.Text, eventActions);
+                @event.FileNameImage = textBoxImage.Text;
+                @event.FileNameMusic = textBoxImage.Text;
                 DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
