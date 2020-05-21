@@ -118,7 +118,7 @@ namespace KeyboardSmasher.GUI
                 this.Controls.Remove(currentSymbolStreamControl);
                 currentSymbolStreamControl.Dispose();
             }
-            currentSymbolStreamControl = new SymbolStreamControl(lang, difficulty);
+            currentSymbolStreamControl = new SymbolStreamControl(lang, difficulty, OnSymbolStreamControlChanged);
             this.Controls.Add(currentSymbolStreamControl);
             currentSymbolStreamControl.Dock = DockStyle.Fill;
             showControl(currentSymbolStreamControl);
@@ -214,7 +214,26 @@ namespace KeyboardSmasher.GUI
             }
         }
 
-        //private void OnSymbolStreamControlChanged();
+        private void OnSymbolStreamControlChanged(SymbolStreamControlResult new_result)
+        {
+            switch(new_result)
+            {
+                case SymbolStreamControlResult.EXIT:
+                    {
+                        showNewEventControl();
+                    } break;
+                case SymbolStreamControlResult.PAUSE:
+                    {
+                        currentSymbolStreamControl.Pause();
+                    } break;
+                case SymbolStreamControlResult.RESUME:
+                    {
+                        currentSymbolStreamControl.Resume();
+                    } break;
+                default: { } break;
+            }
+
+        }
 
         #endregion
 

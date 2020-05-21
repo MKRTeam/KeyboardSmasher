@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace KeyboardSmasher.GUI.ExerciseMachine
 {
@@ -42,7 +43,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// <summary>
         /// Таймер обновления состояния элемента управления при отображении потока букв
         /// </summary>
-        private System.Threading.Timer UpdatingStateTimer { get; set; }
+        private System.Timers.Timer UpdatingStateTimer { get; set; }
 
         /// <summary>
         /// Делегат обработчика событий очереди: "Буква была проущена" и "Очередь опустела"
@@ -156,7 +157,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// сдвинуть уже отображаемые буквы влево, отрисовать новое состояние
         /// </summary>
         /// <param name="nullParam">Неиспользуемый параметр для соответствия делегату TimerCallback</param>
-        private void UpdateState(object nullParam) {
+        private void UpdateState(object sender, ElapsedEventArgs e) {
             // Если менять нечего
             if (LettersStream.Count == 0 && AddingLettersQueue.Count == 0) {
                 // Если букв в потоке и в буфере нет, и добавление букв в очередь закончено - конец
@@ -208,11 +209,13 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// </summary>
         /// <param name="speedCoefficient">Коэффициент ускорения (мс). Ускорение при значении от нуля до единицы (не включая).
         /// Замедление при значении больше единицы. Стандартное значение равняется единице</param>
-        public void StartLettersStream(int SymbolSpeed) {
+        public void StartLettersStream(double SymbolSpeed) {
             if (UpdatingStateTimer != null)
                 return;
             // Запускаем таймер обновления состояния
-            UpdatingStateTimer = new System.Threading.Timer(UpdateState, null, 0, SymbolSpeed);
+            UpdatingStateTimer = new System.Timers.Timer(1.0 / SymbolSpeed);
+            UpdatingStateTimer.Elapsed += UpdateState;
+            UpdatingStateTimer.Start();
         }
 
 
@@ -251,6 +254,16 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 return firstLetter.letter;
             else
                 return '\0';
+        }
+
+        public void Pause()
+        {
+            UpdatingStateTimer.Stop();
+        }
+
+        public void Resume()
+        {
+            UpdatingStateTimer.Start();
         }
 
         /// <summary>
