@@ -35,6 +35,10 @@
             this.btnEditAction = new System.Windows.Forms.Button();
             this.btnDeleteAction = new System.Windows.Forms.Button();
             this.btnSaveEvent = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxImage = new System.Windows.Forms.TextBox();
+            this.textBoxMusic = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxEventDescription
@@ -59,7 +63,7 @@
             this.listBoxActions.FormattingEnabled = true;
             this.listBoxActions.Location = new System.Drawing.Point(93, 153);
             this.listBoxActions.Name = "listBoxActions";
-            this.listBoxActions.Size = new System.Drawing.Size(527, 160);
+            this.listBoxActions.Size = new System.Drawing.Size(271, 160);
             this.listBoxActions.TabIndex = 4;
             // 
             // btnCreateAction
@@ -102,11 +106,47 @@
             this.btnSaveEvent.UseVisualStyleBackColor = true;
             this.btnSaveEvent.Click += new System.EventHandler(this.btnSaveEvent_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(396, 153);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Название изображения";
+            // 
+            // textBoxImage
+            // 
+            this.textBoxImage.Location = new System.Drawing.Point(399, 169);
+            this.textBoxImage.Name = "textBoxImage";
+            this.textBoxImage.Size = new System.Drawing.Size(221, 20);
+            this.textBoxImage.TabIndex = 10;
+            // 
+            // textBoxMusic
+            // 
+            this.textBoxMusic.Location = new System.Drawing.Point(399, 208);
+            this.textBoxMusic.Name = "textBoxMusic";
+            this.textBoxMusic.Size = new System.Drawing.Size(221, 20);
+            this.textBoxMusic.TabIndex = 12;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(396, 192);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Название музыки";
+            // 
             // EditEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 356);
+            this.Controls.Add(this.textBoxMusic);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxImage);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSaveEvent);
             this.Controls.Add(this.btnDeleteAction);
             this.Controls.Add(this.btnEditAction);
@@ -129,5 +169,9 @@
         private System.Windows.Forms.Button btnEditAction;
         private System.Windows.Forms.Button btnDeleteAction;
         private System.Windows.Forms.Button btnSaveEvent;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxImage;
+        private System.Windows.Forms.TextBox textBoxMusic;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -11,7 +11,7 @@ namespace Gameplay
     {
         public string Description { get; set; }
         public ExerciseType ExerciseCode { get; set; }
-        public string PathImage { get; set; }
+       
         public EventAction(string desctiprion, ExerciseType exercise_code)
         {
             if (desctiprion == "" || desctiprion == null)
@@ -22,7 +22,7 @@ namespace Gameplay
             this.ExerciseCode = exercise_code;
 
         }
-
+        
         public override string ToString()
         {
             return Description;
@@ -34,7 +34,8 @@ namespace Gameplay
         public EventAction[] Actions { get; }
         public string Description { get; set; }
         //сюда можно добавить картинку какую-то или звук
-
+        public string FileNameImage { get; set; }
+        public string FileNameMusic { get; set; }
         public Event(string description, EventAction[] actions)
         {
             if (description == null || description == "")
