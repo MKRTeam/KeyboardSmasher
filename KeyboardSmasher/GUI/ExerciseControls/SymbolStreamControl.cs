@@ -36,7 +36,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             }
         }
 
-        
+
 
 
         /// <summary>
@@ -312,5 +312,8 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             lTaskText.Invoke(new Action(() => lTaskText.Text = $"Поток завершён!\nВерных нажатий:{curStatistic.correctCount}\nОшибок: {curStatistic.missedCount}\nНажмите Enter чтобы пойти дальше"));
             CurControlMode = ControlMode.StreamFinished;
         }
+
+        // TODO: последняя ликвидированная буква потока исчезает
+        // TODO: Настраиваемая сложность
     }
 }
