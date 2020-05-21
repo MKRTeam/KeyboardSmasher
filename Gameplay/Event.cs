@@ -11,7 +11,7 @@ namespace Gameplay
     {
         public string Description { get; set; }
         public ExerciseType ExerciseCode { get; set; }
-
+        public string PathImage { get; set; }
         public EventAction(string desctiprion, ExerciseType exercise_code)
         {
             if (desctiprion == "" || desctiprion == null)
