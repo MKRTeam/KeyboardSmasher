@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Gameplay.ExerciseMachine
 {
-    struct WordsOnReactionStatistic
+    public struct WordsOnReactionStatistic
     {
 
     }
 
-    class WordsOnReaction// : ExerciseMachine
+    class WordsOnReaction : ExerciseMachine
     {
         //текст, который дадим писать пользователю
         public string Text { get; }
@@ -24,6 +24,9 @@ namespace Gameplay.ExerciseMachine
 
         }
 
-        //public override bool start(out object statistic);
+        public bool check(object statistic)
+        {
+            return false;
+        }
     }
 }
