@@ -221,8 +221,16 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 AddingSymbolTimer.Elapsed += AddSymbolToQueue;
                 AddingSymbolTimer.Start();
             }
+            // Проверяем, не была ли нажата пауза
+            else if (CurControlMode == ControlMode.StreamStarted && keyCode == Keys.Escape) {
+                Result = SymbolStreamControlResult.PAUSE;
+            }
+            // Проверяем, не запрошено ли снятие паузы
+            else if (CurControlMode == ControlMode.StreamStoped && keyCode == Keys.Escape) {
+                Result = SymbolStreamControlResult.RESUME;
+            }
             // Если поток идёт - проверяем нажатую кнопку на соответствие символу в кольце
-            if (CurControlMode == ControlMode.StreamStarted) {
+            else if (CurControlMode == ControlMode.StreamStarted) {
                 char roundedSymbol = symbolQueueControl.GetRoundedChar();
                 char pressedSymbol;
                 switch (lang)
@@ -247,12 +255,8 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                     lTaskText.Text = "Отлично!";
                 }
             }
-            if (keyCode == Keys.Escape && CurControlMode == ControlMode.StreamStoped)
-                Result = SymbolStreamControlResult.RESUME;
-            else if (keyCode == Keys.Escape)
-                Result = SymbolStreamControlResult.PAUSE;
-            if (CurControlMode == ControlMode.StreamFinished && keyCode == Keys.Enter)
-            {
+            // Завершение работы элемента управления
+            else if (CurControlMode == ControlMode.StreamFinished && keyCode == Keys.Enter) {
                 Result = SymbolStreamControlResult.EXIT;
             }
         }
