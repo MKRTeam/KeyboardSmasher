@@ -68,43 +68,43 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
 
         // -----------------Параметры рисования------------------
         private Color g_circleColor = Color.Orange; // цвет кольца
-        private int g_penWidth; // ширина линии кольца (зависит от высоты элемента управления)
         private Point g_circleRectLeftUpPoint; // верхний левый угол описанного вокруг окружности четырёхугольника - с учётом ширины кисти
         private int g_circleDiametr; // диаметр окружности выбора букв (равен высоте полосы контрола минус ширина кисти)
         private int g_fontSize; // размер шрифта, с учётом ширины полосы (равен половине высоты контрола
         private Font g_font; // шрифт
+        private Pen g_Pen;//ручка которой рисуем эллипс
 
         /// <summary>
         /// Метод вычисления констант рисования на основе размеров элемента управления 
         /// и ширины линии окружности выбора букв
         /// </summary>
         private void CalcDrawingParams() {
-            g_penWidth = Height / 10;
+            int g_penWidth = Height / 10;
             g_circleRectLeftUpPoint = new Point(0 + g_penWidth / 2, 0 + g_penWidth / 2);
             g_circleDiametr = Height - g_penWidth;
             g_fontSize = Height / 2;
             g_font = new Font(FontFamily.GenericSansSerif, g_fontSize);
+            g_Pen = new Pen(g_circleColor, g_penWidth);
         }
         // -----------------Параметры рисования------------------
 
 
-
+        private static Random rand = new Random();
+        private bool LetterStreamIsEmpty;
+        private bool AddingLetterQueueIsEmpty;
         /// <summary>
         /// Добавить первую букву из очереди ожидающих отображения букв в список отображаемых букв,
         /// если соблюдается необходимый интервал после последней отображаемой буквой
         /// </summary>
         private void AddLetterFromBuffer() {
-            // Если очередь ожидающих букв пуста - добавлять нечего
-            if (AddingLettersQueue.Count == 0)
-                return;
+            int radius = Height / 2;
             // Если расстояние между последней отображаемой буквой (если есть) и правой границей элемента управления
             // (точкой добавления новой буквы) не меньше пороговой величины (диаметра окружности выбора букв) - добавляем букву
-            if (LettersStream.Count == 0 || (LettersStream.Count != 0 && Width - LettersStream.Last.Value.position.X >= Height)) {
+            if (!AddingLetterQueueIsEmpty && (LetterStreamIsEmpty || 
+                Width - LettersStream.Last.Value.position.X >= radius)) {
                 // Добавляемая буква появляется на правой границе элемента управления
                 float xPos = Width;
-                // Координата Y буквы задаётся случайно - так, чтобы буквы "прыгали", при этом есть отступ от горизонтальных границ
-                Random random = new Random();
-                float yPos = (Height / 2 - 5) - random.Next(Height / 2 - 15); // Height / 2 - ширина шрифта
+                float yPos = (radius - 5) - rand.Next(radius - 15);
                 // Формируем новую букву и добавляем её
                 Letter addingLetter = new Letter(AddingLettersQueue.Dequeue(), new PointF(xPos, yPos));
                 LettersStream.AddLast(addingLetter);
@@ -115,19 +115,21 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// Свдинуть отображаемые буквы влево
         /// </summary>
         /// <param name="pushValue">Величина сдвига (в пикселях). По умолчанию величина равна единице</param>
-        private void PushQueueForward(int pushValue = 2) {
-            // Если первая буква ушла за линию - она исчезает
-            if (LettersStream.First.Value.position.X <= 0) {
-                LettersStream.RemoveFirst();
-                // Оповещаем о том, что одна буква ушла из очереди, т.к. была пропущена
-                LetterMissedEvt?.Invoke();
-            }
+        private void PushQueueForward(int pushValue = 1) {
             // Если отображаемых букв нет - двигать нечего, выходим
-            if (LettersStream.Count == 0)
-                return;
-            // Обходим двусвязный список и уменьшаем координату X каждой вершины на величину сдвига
-            foreach (var listNode in LettersStream)
-                listNode.position.X -= pushValue;
+            if (!LetterStreamIsEmpty)
+            {
+                // Обходим двусвязный список и уменьшаем координату X каждой вершины на величину сдвига
+                foreach (var listNode in LettersStream)
+                    listNode.position.X -= pushValue;
+                // Если первая буква ушла за линию - она исчезает
+                if (LettersStream.First.Value.position.X <= 0)
+                {
+                    LettersStream.RemoveFirst();
+                    // Оповещаем о том, что одна буква ушла из очереди, т.к. была пропущена
+                    LetterMissedEvt?.Invoke();
+                }
+            }
         }
 
         /// <summary>
@@ -136,19 +138,22 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         private void DrawNewState() {
             // Рисуем новое состояние элемента управления
             Bitmap newImage = new Bitmap(Size.Width, Size.Height);
-            Graphics g = Graphics.FromImage(newImage);
-            // Задаём сглаживание при рисовании
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            // Заливаем холст белым
-            g.Clear(Color.White);
-            // Рисуем окружность выбора буквы в левом конце полосы контрола
-            g.DrawEllipse(new Pen(g_circleColor, g_penWidth), g_circleRectLeftUpPoint.X, g_circleRectLeftUpPoint.Y, g_circleDiametr, g_circleDiametr);
-            // Рисуем буквы в соответствии с их информацией
-            foreach (var letter in LettersStream)
-                g.DrawString(letter.letter.ToString(), g_font, new SolidBrush(letter.color), letter.position.X, letter.position.Y - g_fontSize / 2);
-            g.Dispose();
+            using (Graphics g = Graphics.FromImage(newImage))
+            {
+                // Задаём сглаживание при рисовании
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+                // Заливаем холст белым
+                g.Clear(Color.White);
+                // Рисуем окружность выбора буквы в левом конце полосы контрола
+                g.DrawEllipse(g_Pen, g_circleRectLeftUpPoint.X, g_circleRectLeftUpPoint.Y, g_circleDiametr, g_circleDiametr);
+                // Рисуем буквы в соответствии с их информацией
+                foreach (var letter in LettersStream)
+                    g.DrawString(letter.letter.ToString(), g_font, new SolidBrush(letter.color), letter.position.X, letter.position.Y - g_fontSize / 2);
+            }
+
             Image = newImage;
             Invalidate();
+            //Refresh();
         }
 
         /// <summary>
@@ -157,28 +162,33 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// </summary>
         /// <param name="nullParam">Неиспользуемый параметр для соответствия делегату TimerCallback</param>
         private void UpdateState(object sender, ElapsedEventArgs e) {
+            LetterStreamIsEmpty = LettersStream.Count == 0;
+            AddingLetterQueueIsEmpty = AddingLettersQueue.Count == 0;
             // Если менять нечего
-            if (LettersStream.Count == 0 && AddingLettersQueue.Count == 0) {
+            if (LetterStreamIsEmpty && AddingLetterQueueIsEmpty) {
                 // Если букв в потоке и в буфере нет, и добавление букв в очередь закончено - конец
                 if (AddingLettersIsOver == true) {
                     // Отрисовываем новое состояние - букв в потоке нет
                     DrawNewState();
                     // Поднимаем событие окончания потока, и выключаем таймер обновления состояния
                     QueueEndEvt();
+                    UpdatingStateTimer.Stop();
                     UpdatingStateTimer.Dispose();
                 }
-                // Ввыходим
-                return;
             }
-            // Блокируем обновление состояния элемента управления, чтобы не было попытки
-            // обновить состояние при обновлении состояния (критическая секция)
-            lock (UpdatingStateLock) {
-                // Добавляем букву из очереди добавляемых букв
-                AddLetterFromBuffer();
-                // Сдвигаем отображаемые буквы влево
-                PushQueueForward();
-                // Отрисовываем новое состояние
-                DrawNewState();
+            else
+            {
+                // Блокируем обновление состояния элемента управления, чтобы не было попытки
+                // обновить состояние при обновлении состояния (критическая секция)
+                lock (UpdatingStateLock)
+                {
+                    // Добавляем букву из очереди добавляемых букв
+                    AddLetterFromBuffer();
+                    // Сдвигаем отображаемые буквы влево
+                    PushQueueForward();
+                    // Отрисовываем новое состояние
+                    DrawNewState();
+                }
             }
         }
 
@@ -190,7 +200,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         public SymbolQueueControl() {
             InitializeComponent();
             // Инициализируем изображение, отображаемое контролом
-            Image = new Bitmap(Width, Height);
+            Image = new Bitmap(Size.Width, Size.Height);
             // Инициализируем пустую очередь добавляемых букв
             AddingLettersQueue = new Queue<char>();
             // Инициализируем пустой список отображаемых букв

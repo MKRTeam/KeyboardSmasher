@@ -44,7 +44,7 @@ namespace Gameplay.ExerciseMachine
                 throw new Exception("Нет наборов символов");
             //здесь происходит определение того, какой набор букв будет в испытании, сколько символов будет
             SymbolSet = SymbolStream.symbol_sets_for_langs[lang][difficulty];
-            SymbolsCount = 25u * ((uint)difficulty + 1u);
+            SymbolsCount = 5u * ((uint)difficulty + 1u);
             SymbolSpeed = 0.1 * (Difficulty.HARD - difficulty + 1);
             TimeForSymbolCreation = 350.0 * (Difficulty.HARD - difficulty + 1);
         }
