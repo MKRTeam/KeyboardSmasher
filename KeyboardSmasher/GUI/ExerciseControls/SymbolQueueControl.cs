@@ -139,8 +139,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// </summary>
         private void DrawNewState() {
             // Рисуем новое состояние элемента управления
-            //using (Graphics g = Graphics.FromImage(Image))
-            using (Graphics g = CreateGraphics())
+            using (Graphics g = Graphics.FromImage(Image))
             {
                 // Задаём сглаживание при рисовании
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
@@ -152,7 +151,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 foreach (var letter in LettersStream)
                     g.DrawString(letter.letter.ToString(), g_font, brushes[letter.color], letter.position.X, letter.position.Y - g_fontSize / 2);
             }
-            
+            Invalidate();
         }
 
         /// <summary>
