@@ -139,8 +139,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// </summary>
         private void DrawNewState() {
             // Рисуем новое состояние элемента управления
-            Bitmap newImage = new Bitmap(Size.Width, Size.Height);
-            using (Graphics g = Graphics.FromImage(newImage))
+            using (Graphics g = Graphics.FromImage(Image))
             {
                 // Задаём сглаживание при рисовании
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
@@ -152,10 +151,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 foreach (var letter in LettersStream)
                     g.DrawString(letter.letter.ToString(), g_font, brushes[letter.color], letter.position.X, letter.position.Y - g_fontSize / 2);
             }
-
-            Image = newImage;
             Invalidate();
-            //Refresh();
         }
 
         /// <summary>
@@ -167,9 +163,11 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             LetterStreamIsEmpty = LettersStream.Count == 0;
             AddingLetterQueueIsEmpty = AddingLettersQueue.Count == 0;
             // Если менять нечего
-            if (LetterStreamIsEmpty && AddingLetterQueueIsEmpty) {
+            if (LetterStreamIsEmpty && AddingLetterQueueIsEmpty)
+            {
                 // Если букв в потоке и в буфере нет, и добавление букв в очередь закончено - конец
-                if (AddingLettersIsOver == true) {
+                if (AddingLettersIsOver == true)
+                {
                     // Отрисовываем новое состояние - букв в потоке нет
                     DrawNewState();
                     // Поднимаем событие окончания потока, и выключаем таймер обновления состояния
@@ -180,17 +178,12 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             }
             else
             {
-                // Блокируем обновление состояния элемента управления, чтобы не было попытки
-                // обновить состояние при обновлении состояния (критическая секция)
-                //lock (UpdatingStateLock)
-                //{
-                    // Добавляем букву из очереди добавляемых букв
-                    AddLetterFromBuffer();
-                    // Сдвигаем отображаемые буквы влево
-                    PushQueueForward();
-                    // Отрисовываем новое состояние
-                    DrawNewState();
-                //}
+                // Добавляем букву из очереди добавляемых букв
+                AddLetterFromBuffer();
+                // Сдвигаем отображаемые буквы влево
+                PushQueueForward();
+                // Отрисовываем новое состояние
+                DrawNewState();
             }
         }
 
@@ -294,6 +287,8 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// <param name="sender">Объект, вызвавший событие</param>
         /// <param name="e">Аргументы события</param>
         private void SymbolQueueControl_SizeChanged(object sender, EventArgs e) {
+            Image = new Bitmap(Size.Width, Size.Height);
+            Invalidate();
             // Перевычисляем параметры рисования
             CalcDrawingParams();
             // Отрисовываем новое состояние элемента управления
