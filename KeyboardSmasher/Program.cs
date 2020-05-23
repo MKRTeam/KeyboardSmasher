@@ -80,6 +80,26 @@ namespace KeyboardSmasher
             symbol_sets.Add(Language.RUSSIAN, new Dictionary<Difficulty, char[]>());
             char[] ss = { 'ф', 'ы', 'в', 'а', 'о', 'л', 'д', 'ж' };
             symbol_sets[Language.RUSSIAN].Add(Difficulty.EASY, ss);
+            // ----Тест---
+            symbol_sets[Language.RUSSIAN] = new Dictionary<Difficulty, char[]>();
+            symbol_sets[Language.RUSSIAN][Difficulty.EASY] = 
+                new char[] { 'й', 'ц', 'у', 'к', 'ф', 'ы', 'в', 'а', 'я', 'ч', 'с', 'м'};
+            symbol_sets[Language.RUSSIAN][Difficulty.NORMAL] = 
+                new char[] { 'у', 'к', 'е', 'н', 'г', 'в', 'а', 'п', 'р', 'о', 'с',  'м', 'и', 'т', 'ь'};
+            symbol_sets[Language.RUSSIAN][Difficulty.HARD] =
+                new char[] { 'й', 'ц', 'у', 'к', 'ф', 'ы', 'в', 'а', 'я', 'ч', 'с', 'м', 'е', 'н', 'г', 'ш', 'п', 
+                    'р', 'о', 'л', 'и', 'т', 'ъ', 'х', 'з', 'щ', 'э', 'ж', 'д', 'ю', 'б', 'ь'};
+            symbol_sets[Language.ENGLISH] = new Dictionary<Difficulty, char[]>();
+            symbol_sets[Language.ENGLISH][Difficulty.EASY] =
+                new char[] { 'q', 'w', 'e', 'r', 'a', 's', 'd', 'f', 'z', 'x', 'c', 'v' };
+            symbol_sets[Language.ENGLISH][Difficulty.NORMAL] =
+                new char[] { 'e', 'r', 't', 'y', 'u', 'd', 'f', 'g', 'h', 'j', 'c', 'v', 'b', 'n' };
+            symbol_sets[Language.ENGLISH][Difficulty.HARD] =
+                new char[] { 'q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c', 'p', 'o', 'i', 'l', 'k', 'j', 'm', 'n',
+                    'r', 't', 'y', 'u', 'f', 'g', 'h', 'v', 'b' };
+            // TODO: регулирование расстояний между буквами в потоке, в зависимости от сложности
+            // TODO: количество символов в потоке зависит от сложности
+            // ----Тест----
             SymbolStream.Init(symbol_sets);
         }
 
