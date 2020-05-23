@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace KeyboardSmasher
 {
@@ -93,6 +94,62 @@ namespace KeyboardSmasher
                 case Keys.M: return 'M';
                 default: return '\0';
             }
+        }
+
+
+        /// <summary>
+        /// Метод для получения цвета русской буквы в соответствии с изображением
+        /// раскрашенной клавиатуры в цвет определённых пальцев
+        /// </summary>
+        /// <param name="rusChar">Русская буква</param>
+        /// <returns></returns>
+        public static Color GetKeyColorForRusChar(char rusChar) {
+            if (rusChar == 'Й' || rusChar == 'Ф' || rusChar == 'Я')
+                return Color.Red;
+            else if (rusChar == 'Ц' || rusChar == 'Ы' || rusChar == 'Ч')
+                return Color.Orange;
+            else if (rusChar == 'У' || rusChar == 'В' || rusChar == 'С')
+                return Color.Green;
+            else if (rusChar == 'К' || rusChar == 'А' || rusChar == 'М' || rusChar == 'Е' || rusChar == 'П' || rusChar == 'И')
+                return Color.Blue;
+            else if (rusChar == 'Н' || rusChar == 'Р' || rusChar == 'Т' || rusChar == 'Г' || rusChar == 'О' || rusChar == 'Ь')
+                return Color.Violet;
+            else if (rusChar == 'Ш' || rusChar == 'Л' || rusChar == 'Б')
+                return Color.LightBlue;
+            else if (rusChar == 'Щ' || rusChar == 'Д' || rusChar == 'Ю')
+                return Color.MintCream;
+            else if (rusChar == 'З' || rusChar == 'Ж' || rusChar == 'Х' || rusChar == 'Э' || rusChar == 'Ъ')
+                return Color.Gray;
+            else
+                return Color.Black;
+        }
+
+
+        /// <summary>
+        /// Метод для получения цвета английской буквы в соответствии с изображением
+        /// раскрашенной клавиатуры в цвет определённых пальцев
+        /// </summary>
+        /// <param name="rusChar">Английская буква</param>
+        /// <returns></returns>
+        public static Color GetKeyColorForEngChar(char rusChar) {
+            if (rusChar == 'Q' || rusChar == 'A' || rusChar == 'Z')
+                return Color.Red;
+            else if (rusChar == 'W' || rusChar == 'S' || rusChar == 'X')
+                return Color.Orange;
+            else if (rusChar == 'E' || rusChar == 'D' || rusChar == 'C')
+                return Color.Green;
+            else if (rusChar == 'R' || rusChar == 'F' || rusChar == 'V' || rusChar == 'T' || rusChar == 'G' || rusChar == 'B')
+                return Color.Blue;
+            else if (rusChar == 'Y' || rusChar == 'H' || rusChar == 'N' || rusChar == 'U' || rusChar == 'J' || rusChar == 'M')
+                return Color.Violet;
+            else if (rusChar == 'I' || rusChar == 'K')
+                return Color.LightBlue;
+            else if (rusChar == 'O' || rusChar == 'L')
+                return Color.MintCream;
+            else if (rusChar == 'P')
+                return Color.Gray;
+            else
+                return Color.Black;
         }
     }
 }
