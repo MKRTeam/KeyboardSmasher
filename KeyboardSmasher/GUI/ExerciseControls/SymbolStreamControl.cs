@@ -77,7 +77,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// Метод добавления очередной буквы в очередь. Соответствует делегату TimerCallback
         /// </summary>
         /// <param name="nullParam"></param>
-        private void AddSymbolToQueue(object sender, ElapsedEventArgs e) {
+        private void AddSymbolToQueue(object sender, EventArgs e) {
             symbolQueueControl.AddLetterToStream(GenerateRandomSymbol());
             // Уменьшаем количество оставшихся для добавления символов и возвращаем сгенерированный символ
             p_remainingSymbolsCount--;
@@ -93,7 +93,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// <summary>
         /// Таймер добавления нового символа в поток
         /// </summary>
-        private System.Timers.Timer AddingSymbolTimer { get; set; }
+        private System.Windows.Forms.Timer AddingSymbolTimer { get; set; }
 
         private SymbolStream symbolStream;
         uint p_remainingSymbolsCount;
@@ -146,8 +146,9 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 CurControlMode = ControlMode.StreamStarted;
                 symbolQueueControl.StartLettersStream(symbolStream.SymbolSpeed);
                 // Устанавливаем таймер на добавление новых букв в очередь
-                AddingSymbolTimer = new System.Timers.Timer(symbolStream.TimeForSymbolCreation);
-                AddingSymbolTimer.Elapsed += AddSymbolToQueue;
+                AddingSymbolTimer = new System.Windows.Forms.Timer();
+                AddingSymbolTimer.Interval = (int)symbolStream.TimeForSymbolCreation;
+                AddingSymbolTimer.Tick += AddSymbolToQueue;
                 AddingSymbolTimer.Start();
             }
             // Проверяем, не была ли нажата пауза

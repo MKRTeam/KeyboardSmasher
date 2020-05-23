@@ -42,7 +42,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// <summary>
         /// Таймер обновления состояния элемента управления при отображении потока букв
         /// </summary>
-        private System.Timers.Timer UpdatingStateTimer { get; set; }
+        private System.Windows.Forms.Timer UpdatingStateTimer { get; set; }
 
         /// <summary>
         /// Делегат обработчика событий очереди: "Буква была проущена" и "Очередь опустела"
@@ -117,7 +117,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// Свдинуть отображаемые буквы влево
         /// </summary>
         /// <param name="pushValue">Величина сдвига (в пикселях). По умолчанию величина равна единице</param>
-        private void PushQueueForward(int pushValue = 1) {
+        private void PushQueueForward(int pushValue = 2) {
             // Если отображаемых букв нет - двигать нечего, выходим
             if (!LetterStreamIsEmpty)
             {
@@ -163,7 +163,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// сдвинуть уже отображаемые буквы влево, отрисовать новое состояние
         /// </summary>
         /// <param name="nullParam">Неиспользуемый параметр для соответствия делегату TimerCallback</param>
-        private void UpdateState(object sender, ElapsedEventArgs e) {
+        private void UpdateState(object sender, EventArgs e) {
             LetterStreamIsEmpty = LettersStream.Count == 0;
             AddingLetterQueueIsEmpty = AddingLettersQueue.Count == 0;
             // Если менять нечего
@@ -182,15 +182,15 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             {
                 // Блокируем обновление состояния элемента управления, чтобы не было попытки
                 // обновить состояние при обновлении состояния (критическая секция)
-                lock (UpdatingStateLock)
-                {
+                //lock (UpdatingStateLock)
+                //{
                     // Добавляем букву из очереди добавляемых букв
                     AddLetterFromBuffer();
                     // Сдвигаем отображаемые буквы влево
                     PushQueueForward();
                     // Отрисовываем новое состояние
                     DrawNewState();
-                }
+                //}
             }
         }
 
@@ -234,8 +234,9 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             if (UpdatingStateTimer != null)
                 return;
             // Запускаем таймер обновления состояния
-            UpdatingStateTimer = new System.Timers.Timer(1.0 / SymbolSpeed);
-            UpdatingStateTimer.Elapsed += UpdateState;
+            UpdatingStateTimer = new System.Windows.Forms.Timer();
+            UpdatingStateTimer.Interval = (int)SymbolSpeed;
+            UpdatingStateTimer.Tick += UpdateState;
             UpdatingStateTimer.Start();
         }
 
