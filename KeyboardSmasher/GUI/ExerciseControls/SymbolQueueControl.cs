@@ -152,7 +152,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 foreach (var letter in LettersStream)
                     g.DrawString(letter.letter.ToString(), g_font, brushes[letter.color], letter.position.X, letter.position.Y - g_fontSize / 2);
             }
-            //Invalidate();
+            
         }
 
         /// <summary>
