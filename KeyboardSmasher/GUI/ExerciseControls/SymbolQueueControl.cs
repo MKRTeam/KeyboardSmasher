@@ -92,7 +92,6 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         private bool LetterStreamIsEmpty;
         private bool AddingLetterQueueIsEmpty;
         private readonly Dictionary<Color, SolidBrush> brushes = new Dictionary<Color, SolidBrush>();
-        private readonly List<Color> colors;
         /// <summary>
         /// Добавить первую букву из очереди ожидающих отображения букв в список отображаемых букв,
         /// если соблюдается необходимый интервал после последней отображаемой буквой
@@ -106,9 +105,10 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 // Добавляемая буква появляется на правой границе элемента управления
                 float xPos = Width;
                 float yPos = (radius - 5) - rand.Next(radius - 15);
-                int color_index = rand.Next(0, brushes.Count);
+                char letter = AddingLettersQueue.Dequeue();
+                Color color = KeyboardHelper.GetKeyColorForChar(letter);
                 // Формируем новую букву и добавляем её
-                Letter addingLetter = new Letter(AddingLettersQueue.Dequeue(), new PointF(xPos, yPos), colors[color_index]);                
+                Letter addingLetter = new Letter(letter, new PointF(xPos, yPos), color);                
                 LettersStream.AddLast(addingLetter);
             }
         }
@@ -204,13 +204,9 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             CalcDrawingParams();
             // Устанавливаем признак окончания очереди в ложь
             AddingLettersIsOver = false;
-            //заполняем словарь кистей кистями случайных цветов
-            for(int i = 0; i < 36; ++i)
-            {
-                Color c = Color.FromArgb(rand.Next(230), rand.Next(230), rand.Next(230));
+            //заполняем словарь кистей кистями цветов раскраски букв
+            foreach(var c in KeyboardHelper.Colors)
                 brushes.Add(c, new SolidBrush(c));
-            }
-            colors = Enumerable.ToList(brushes.Keys);
             // Отрисовываем окружность выбора, чтобы она была видна при добавлении элемента управления на форму
             DrawNewState();
             Invalidate();

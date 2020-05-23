@@ -220,6 +220,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// (т.е. пользователь вовремя не нажал нужную клавишу)
         /// </summary>
         private void OnLetterMissed() {
+            curStatistic.missedCount++;
             // Запускаем изменение текста лейбла в том же потоке, в котором работает элемент управления
             lTaskText.Invoke(new Action(() => lTaskText.Text = "Буква была пропущена!"));
         }
