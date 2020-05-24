@@ -73,8 +73,7 @@ namespace EventsSDK
             Event _event = null;
             EditEventForm editEventForm = new EditEventForm();
 
-            if (listBoxEvents.SelectedItem != null)
-                editEventForm.SetEvent((Event)listBoxEvents.SelectedItem);
+            editEventForm.SetEvent((Event)listBoxEvents.SelectedItem);
 
             if (editEventForm.ShowDialog() == DialogResult.OK)
             {

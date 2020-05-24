@@ -54,17 +54,17 @@ namespace EventsSDK
         private void btnDeleteAction_Click(object sender, EventArgs e)
         {
             if(listBoxActions.SelectedItem!=null)
-            listBoxActions.Items.Remove(listBoxActions.SelectedItem);
+                listBoxActions.Items.Remove(listBoxActions.SelectedItem);
         }
 
         private void btnEditAction_Click(object sender, EventArgs e)
         {
             if (listBoxActions.SelectedItem == null) return;
             EditActionForm editActionForm = new EditActionForm();
-            if(listBoxActions.SelectedItem!=null)
-                editActionForm.SetAction((EventAction)listBoxActions.SelectedItem);
+            editActionForm.SetAction((EventAction)listBoxActions.SelectedItem);
             if (editActionForm.ShowDialog() == DialogResult.OK)
             {
+                listBoxActions.Items.Remove(listBoxActions.SelectedItem);
                 EventAction eventAction = editActionForm.GetAction();
                 listBoxActions.Items.Add(eventAction);
             }

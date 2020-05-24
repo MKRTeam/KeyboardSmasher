@@ -57,9 +57,10 @@ namespace KeyboardSmasher.GUI.Controls
             InitializeComponent();
             this.actions = actions;
             this.textScene = textScene;
+            this.rTBTextActionScene.Font = new Font("Arial", 12, FontStyle.Regular);
             this.image_path = image_path;
             rTBTextActionScene.Text = textScene;
-            //pictureBoxScene.Image = new System.Drawing.Bitmap(image_path);
+            pictureBoxScene.Image = new System.Drawing.Bitmap(image_path);
             tLPActionButton.RowCount = actions.Length;
             OnControlResultChanged += result_handler;
             tLPActionButton.RowStyles.Clear();
@@ -70,6 +71,7 @@ namespace KeyboardSmasher.GUI.Controls
                 button.Dock = DockStyle.Fill;
                 button.Text = actions[i];
                 button.Tag = i;//в тег заносим порядковый номер варианта действия
+                button.Font = new Font("Arial", 12, FontStyle.Regular);
                 button.Click += OnClickButton_Action;
 
                 tLPActionButton.Controls.Add(button, 0, i);

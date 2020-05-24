@@ -30,7 +30,8 @@ namespace KeyboardSmasher
             //bioms = DeserializeGameData("gamedata.xml");
             Localization.Localization default_loc = new Localization.Localization();
             //программное создание списка биомов
-            bioms = new Biom[5];
+            bioms = DeserializeGameData("Gamedata.json");
+            /*bioms = new Biom[5];
             const string biom_str = "BIOM";
             const string name_str = "_NAME";
             const string descr_str = "_DESCRIPTION";
@@ -74,7 +75,7 @@ namespace KeyboardSmasher
                 default_loc.addTranslatedString(biom_name, "biom_name");
                 default_loc.addTranslatedString(biom_descr, "biom_descr");
                 bioms[i] = new Biom(biom_name, biom_descr, objects);
-            }
+            }*/
 
             Dictionary<Language, Dictionary<Difficulty, char[]>> symbol_sets = new Dictionary<Language, Dictionary<Difficulty, char[]>>();
             symbol_sets[Language.RUSSIAN] = new Dictionary<Difficulty, char[]>();

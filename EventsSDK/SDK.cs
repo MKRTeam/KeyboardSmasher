@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gameplay;
+using System.IO;
 
 namespace EventsSDK
 {
@@ -56,8 +57,8 @@ namespace EventsSDK
             Biom[] bioms = new Biom[listboxBioms.Items.Count];
             for (int i = 0; i < bioms.Length; i++)
                 bioms[i] = (Biom)listboxBioms.Items[i];
-            string json = JsonConvert.SerializeObject(bioms);
-            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter("out.json");
+            string json = JsonConvert.SerializeObject(bioms, Formatting.Indented);
+            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter("Gamedata.json");
             streamWriter.Write(json);
             streamWriter.Close();
             MessageBox.Show("Сохранение завершенно");
@@ -65,10 +66,9 @@ namespace EventsSDK
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.IO.StreamReader streamReader = new System.IO.StreamReader("out.json");
-            Biom[] bioms = JsonConvert.DeserializeObject<Biom[]>(streamReader.ReadToEnd());
+            string json = File.ReadAllText("gamedata.json");
+            Biom[] bioms = JsonConvert.DeserializeObject<Biom[]>(json);
             listboxBioms.Items.AddRange(bioms);
-            streamReader.Close();
         }
     }
 }

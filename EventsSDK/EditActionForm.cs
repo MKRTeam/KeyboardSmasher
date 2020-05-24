@@ -17,7 +17,6 @@ namespace EventsSDK
         {
             InitializeComponent();
             comboBox1.DataSource = Enum.GetValues(typeof(ExerciseType));
-
         }
         EventAction eventAction = null;
         public EventAction GetAction()

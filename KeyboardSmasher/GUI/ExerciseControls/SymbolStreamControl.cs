@@ -76,7 +76,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             // Создаём статистику
             curStatistic = new SymbolStreamStatistic();
             symbolStream = new SymbolStream(lang, difficulty);
-            OnControlResultChanged += result_handler;
+            OnControlResultChanged += result_handler;   
             // Подписываемся на события SymbolQueueControl
             symbolQueueControl.LetterMissedEvt += OnLetterMissed;
             symbolQueueControl.QueueEndEvt += OnQueueEnd;
