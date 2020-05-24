@@ -48,26 +48,25 @@ namespace KeyboardSmasher.GUI
             #region main_menu
             main_menu = new Controls.MainMenu(OnMainMenuResultChanged);
             main_menu.Visible = false;
-            main_menu.Dock = DockStyle.Fill;
+            main_menu.Location = new Point(Size.Width / 2 - main_menu.Size.Width / 2,
+                                            Size.Height / 2 - main_menu.Size.Height / 2);
             this.Controls.Add(main_menu);
             #endregion
             #region setting_control
             setting_control = new SettingsControl(OnSettingsConrolResultChanged);
             setting_control.Visible = false;
-            setting_control.Dock = DockStyle.Fill;
+            //setting_control.Dock = DockStyle.Fill;
+            setting_control.Location = new Point(Size.Width / 2 - setting_control.Size.Width / 2,
+                                            Size.Height / 2 - setting_control.Size.Height / 2);
             this.Controls.Add(setting_control);
             #endregion
             #region pause_menu
             pause_menu = new PauseMenu(OnPauseMenuResultChanged);
             pause_menu.Visible = false;
-            pause_menu.Dock = DockStyle.Fill;
+            //pause_menu.Dock = DockStyle.Fill;
+            pause_menu.Location = new Point(Size.Width / 2 - pause_menu.Size.Width / 2,
+                                            Size.Height / 2 - pause_menu.Size.Height / 2);
             this.Controls.Add(pause_menu);
-            #endregion
-            #region event_control
-            //event_control = new EventControl();
-            //event_control.Visible = false;
-            //event_control.Dock = DockStyle.Fill;
-            //this.Controls.Add(event_control);
             #endregion
         }
 
@@ -87,7 +86,8 @@ namespace KeyboardSmasher.GUI
                 control.Visible = true;
             else throw new Exception("Визуализируемый контрол был null");
             currentVisibleControl = control;
-            currentVisibleControl.Dock = DockStyle.Fill;
+            //currentVisibleControl.Dock = DockStyle.Top;
+            //currentVisibleControl.Anchor = AnchorStyles.
             translateControl(control, localization);
         }
 
