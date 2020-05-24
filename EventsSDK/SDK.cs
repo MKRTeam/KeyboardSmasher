@@ -58,7 +58,7 @@ namespace EventsSDK
             for (int i = 0; i < bioms.Length; i++)
                 bioms[i] = (Biom)listboxBioms.Items[i];
             string json = JsonConvert.SerializeObject(bioms, Formatting.Indented);
-            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter("Gamedata.json");
+            System.IO.StreamWriter streamWriter = new System.IO.StreamWriter("../Gamedata.json");
             streamWriter.Write(json);
             streamWriter.Close();
             MessageBox.Show("Сохранение завершенно");
@@ -66,7 +66,7 @@ namespace EventsSDK
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string json = File.ReadAllText("gamedata.json");
+            string json = File.ReadAllText("../Gamedata.json");
             Biom[] bioms = JsonConvert.DeserializeObject<Biom[]>(json);
             listboxBioms.Items.AddRange(bioms);
         }

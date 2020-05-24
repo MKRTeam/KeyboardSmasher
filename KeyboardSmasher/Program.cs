@@ -30,7 +30,7 @@ namespace KeyboardSmasher
             //bioms = DeserializeGameData("gamedata.xml");
             Localization.Localization default_loc = new Localization.Localization();
             //программное создание списка биомов
-            bioms = DeserializeGameData("Gamedata.json");
+            bioms = DeserializeGameData("../Gamedata.json");
             /*bioms = new Biom[5];
             const string biom_str = "BIOM";
             const string name_str = "_NAME";
