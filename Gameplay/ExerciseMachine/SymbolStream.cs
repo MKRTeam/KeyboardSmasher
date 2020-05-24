@@ -66,5 +66,21 @@ namespace Gameplay.ExerciseMachine
             int index = rand.Next(0, SymbolSet.Length);
             return this.SymbolSet[index];
         }
+
+        public char GetRandomEngSymbol(Difficulty difficulty) {
+            char[] symbolSet = symbol_sets_for_langs[Language.ENGLISH][difficulty];
+            return symbolSet[rand.Next(symbolSet.Length)];
+        }
+
+
+        public char GetRandomRusSymbol(Difficulty difficulty) {
+            char[] symbolSet = symbol_sets_for_langs[Language.RUSSIAN][difficulty];
+            return symbolSet[rand.Next(symbolSet.Length)];
+        }
+
+
+        public int GetSymbolsCountForDifficulty(Difficulty difficulty) {
+            return 13 * ((int)difficulty + 1);
+        }
     }
 }

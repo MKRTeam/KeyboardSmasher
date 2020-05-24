@@ -206,6 +206,12 @@ namespace KeyboardSmasher.GUI
                 default:
                     {
                         ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
+                        if (new_result == EventControlResult.ACTION0)
+                            difficulty = Difficulty.EASY;
+                        else if (new_result == EventControlResult.ACTION1)
+                            difficulty = Difficulty.NORMAL;
+                        else if (new_result == EventControlResult.ACTION2)
+                            difficulty = Difficulty.HARD;
                         //создаем соответствующий тренажер
                         showSymbolStreamControl();
                     }

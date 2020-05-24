@@ -95,7 +95,6 @@
             // 
             // symbolQueueControl
             // 
-            this.symbolQueueControl.AddingLettersIsOver = false;
             this.symbolQueueControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.symbolQueueControl.Image = ((System.Drawing.Image)(resources.GetObject("symbolQueueControl.Image")));
             this.symbolQueueControl.Location = new System.Drawing.Point(3, 2);
