@@ -104,7 +104,7 @@ namespace KeyboardSmasher.GUI
                 currentEventControl.Dispose();
             }
             currentEvent = current_biom.getRandomEventObject().getRandomEvent();
-            currentEventControl = new EventControl("", currentEvent.getActions(), currentEvent.Description, OnEventControlResultChanged);
+            currentEventControl = new EventControl(currentEvent.FileNameImage, currentEvent.getActions(), currentEvent.Description, OnEventControlResultChanged);
             currentEventControl.Dock = DockStyle.Fill;
             this.Controls.Add(currentEventControl);
             showControl(currentEventControl);

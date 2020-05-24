@@ -69,5 +69,13 @@ namespace EventsSDK
                 }
             }
         }
+
+        private void btnDeleteObject_Click(object sender, EventArgs e)
+        {
+            if (listBoxObjects.SelectedItem != null)
+            {
+                listBoxObjects.Items.Remove(listBoxObjects.SelectedItem);
+            }
+        }
     }
 }

@@ -53,6 +53,7 @@
             this.rTBTextActionScene.Size = new System.Drawing.Size(285, 362);
             this.rTBTextActionScene.TabIndex = 0;
             this.rTBTextActionScene.Text = "";
+            this.rTBTextActionScene.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0); 
             // 
             // pictureBoxScene
             // 
@@ -62,6 +63,7 @@
             this.pictureBoxScene.Size = new System.Drawing.Size(484, 362);
             this.pictureBoxScene.TabIndex = 1;
             this.pictureBoxScene.TabStop = false;
+            this.pictureBoxScene.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             // 
             // tLPActionButton
             // 
@@ -84,6 +86,7 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             // 
             // splitContainer1.Panel1
             // 

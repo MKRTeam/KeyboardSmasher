@@ -108,6 +108,7 @@
             this.btnDeleteObject.TabIndex = 7;
             this.btnDeleteObject.Text = "Удалить";
             this.btnDeleteObject.UseVisualStyleBackColor = true;
+            this.btnDeleteObject.Click += new System.EventHandler(this.btnDeleteObject_Click);
             // 
             // btnSaveBiom
             // 

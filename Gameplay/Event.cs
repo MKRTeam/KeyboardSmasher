@@ -11,16 +11,11 @@ namespace Gameplay
     {
         public string Description { get; set; }
         public ExerciseType ExerciseCode { get; set; }
-       
+
         public EventAction(string desctiprion, ExerciseType exercise_code)
         {
-            if (desctiprion == "" || desctiprion == null)
-            {
-                throw new Exception("Описание пустое, структура EventAction");
-            }
             Description = desctiprion;
             this.ExerciseCode = exercise_code;
-
         }
         
         public override string ToString()
