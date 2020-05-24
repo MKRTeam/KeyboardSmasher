@@ -77,10 +77,6 @@ namespace KeyboardSmasher
             }
 
             Dictionary<Language, Dictionary<Difficulty, char[]>> symbol_sets = new Dictionary<Language, Dictionary<Difficulty, char[]>>();
-            symbol_sets.Add(Language.RUSSIAN, new Dictionary<Difficulty, char[]>());
-            char[] ss = { 'ф', 'ы', 'в', 'а', 'о', 'л', 'д', 'ж' };
-            symbol_sets[Language.RUSSIAN].Add(Difficulty.EASY, ss);
-            // ----Тест---
             symbol_sets[Language.RUSSIAN] = new Dictionary<Difficulty, char[]>();
             symbol_sets[Language.RUSSIAN][Difficulty.EASY] = 
                 new char[] { 'й', 'ц', 'у', 'к', 'ф', 'ы', 'в', 'а', 'я', 'ч', 'с', 'м'};
@@ -97,7 +93,6 @@ namespace KeyboardSmasher
             symbol_sets[Language.ENGLISH][Difficulty.HARD] =
                 new char[] { 'q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c', 'p', 'o', 'i', 'l', 'k', 'j', 'm', 'n',
                     'r', 't', 'y', 'u', 'f', 'g', 'h', 'v', 'b' };
-            // ----Тест----
             SymbolStream.Init(symbol_sets);
         }
 
