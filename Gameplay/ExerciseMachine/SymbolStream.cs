@@ -35,7 +35,7 @@ namespace Gameplay.ExerciseMachine
         //время на одну букву. зависит от сложности
         public int SymbolSpeed { get; }
 
-        public int TimeForSymbolCreation { get; }
+        public int LettersInterval { get; }
 
         public SymbolStream(Language lang, Difficulty difficulty)
         {
@@ -46,7 +46,7 @@ namespace Gameplay.ExerciseMachine
             SymbolSet = SymbolStream.symbol_sets_for_langs[lang][difficulty];
             SymbolsCount = 13u * ((uint)difficulty + 1u);
             SymbolSpeed = 1 * (Difficulty.HARD - difficulty + 1);
-            TimeForSymbolCreation = 7 * ((int)difficulty + 1) / 6;
+            LettersInterval = (Difficulty.HARD - difficulty + 2);
         }
 
         //сам словарь формируется где-нибудь в main и сюда передается

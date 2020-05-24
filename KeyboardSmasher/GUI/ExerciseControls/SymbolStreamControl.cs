@@ -63,9 +63,15 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 "Ваша задача - нажимать на клавишу, буква которой находится в кольце. Успевайте вовремя, и вы победите! " +
                 "Нажмите клавишу 'Enter', чтобы начать.";
 
-        char[] symbols; // символы в очередь
-        int intervalNumb; // номер интервала: 1 - лёгкий, 2 - средний, 3 - сложный
+        char[] symbols; // символы, которые будут добавлены в очередь
+        int lettersInterval; // интервальный коэффициент между буквами
         
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="lang">Язык</param>
+        /// <param name="difficulty">Сложность</param>
+        /// <param name="result_handler">Указатель на переменную результата</param>
         public SymbolStreamControl(Language lang, Difficulty difficulty, SymbolStreamControlResultProc result_handler) {
             InitializeComponent();
             this.lang = lang;
@@ -83,7 +89,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
 
             // Заполняем Queue нужными символами с нужным интервалом
             int symbolCount = (int)symbolStream.SymbolsCount;
-            intervalNumb = symbolStream.TimeForSymbolCreation;
+            lettersInterval = symbolStream.LettersInterval;
             symbols = new char[symbolCount];
             for (int i = 0; i < symbolCount; i++) {
                 symbols[i] = symbolStream.getRandomSymbol();
@@ -109,12 +115,13 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             if (f_keyDown)
                 return;
             f_keyDown = true;
+
             Keys keyCode = e.KeyCode;
-            // Начинаем состязание, если после запуска нажат Enter
+            // Начинаем состязание, если после отображения тренажёра нажат Enter
             if (CurControlMode == ControlMode.ControlStarted && keyCode == Keys.Enter) {
-                symbolQueueControl.AddLettersToStream(symbols, intervalNumb);
+                symbolQueueControl.AddLettersToStream(symbols, lettersInterval); // добавляем символы в поток
+                CurControlMode = ControlMode.StreamStarted; // стартуем поток
                 lTaskText.Text = "Поток букв запущен!";
-                CurControlMode = ControlMode.StreamStarted;
                 symbolQueueControl.StartLettersStream(symbolStream.SymbolSpeed);
             }
             // Проверяем, не была ли нажата пауза
@@ -166,17 +173,20 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             f_keyDown = false;
         }
 
-
+        /// <summary>
+        /// Метод установки игровой паузы
+        /// </summary>
         public void Pause()
         {
-            //AddingSymbolTimer.Stop();
             symbolQueueControl.Pause();
             CurControlMode = ControlMode.StreamStoped;
         }
 
+        /// <summary>
+        /// Метод возврата из игровой паузы
+        /// </summary>
         public void Resume()
         {
-            //AddingSymbolTimer.Start();
             symbolQueueControl.Resume();
             CurControlMode = ControlMode.StreamStarted;
         }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Timers;
-using System.Linq;
 
 namespace KeyboardSmasher.GUI.ExerciseMachine
 {
@@ -25,7 +23,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         }
 
         /// <summary>
-        /// Двусвязный список отображаемых букв
+        /// Очередь отображаемых букв
         /// </summary>
         private Queue<Letter> LettersStream { get; set; }
 
@@ -75,15 +73,23 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         }
         // -----------------Параметры рисования------------------
 
-
+        /// <summary>
+        /// Объект класса Random
+        /// </summary>
         private static Random rand = new Random();
+        /// <summary>
+        /// Флаг, отвечающий на вопрос "Пуста ли очередь?"
+        /// </summary>
         private bool LetterStreamIsEmpty;
+        /// <summary>
+        /// Словарь кистей нужных цветов - для быстрого доступа к ним без необходимости создания новых
+        /// </summary>
         private readonly Dictionary<Color, SolidBrush> brushes = new Dictionary<Color, SolidBrush>();
 
         /// <summary>
         /// Свдинуть отображаемые буквы влево
         /// </summary>
-        /// <param name="pushValue">Величина сдвига (в пикселях). По умолчанию величина равна единице</param>
+        /// <param name="pushValue">Величина сдвига (в пикселях). По умолчанию величина равна двум</param>
         private void PushQueueForward(int pushValue = 2) {
             // Если отображаемых букв нет - двигать нечего, выходим
             if (!LetterStreamIsEmpty)
@@ -126,12 +132,14 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
 
         /// <summary>
         /// Обновить состояние элемента управления: добавить очередную букву из очереди ожидающих букв,
-        /// сдвинуть уже отображаемые буквы влево, отрисовать новое состояние
+        /// сдвинуть уже отображаемые буквы влево, отрисовать новое состояние. Подцепляется на исполнение
+        /// по таймеру
         /// </summary>
-        /// <param name="nullParam">Неиспользуемый параметр для соответствия делегату TimerCallback</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateState(object sender, EventArgs e) {
-            LetterStreamIsEmpty = LettersStream.Count == 0;
-            // Если менять нечего
+            LetterStreamIsEmpty = LettersStream.Count == 0; // проверяем, пуста ли очередь
+            // Если очередь пуста
             if (LetterStreamIsEmpty)
             {
                 // Отрисовываем новое состояние - букв в потоке нет
@@ -159,9 +167,9 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             InitializeComponent();
             // Инициализируем изображение, отображаемое контролом
             Image = new Bitmap(Size.Width, Size.Height);
-            // Инициализируем пустой список отображаемых букв
+            // Инициализируем пустую очередь отображаемых букв
             LettersStream = new Queue<Letter>();
-            // Задаём константные параметры рисования
+            // Вычисляем константные параметры рисования
             CalcDrawingParams();
             //заполняем словарь кистей кистями цветов раскраски букв
             foreach(var c in KeyboardHelper.Colors)
@@ -176,8 +184,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// <summary>
         /// Запуск потока букв
         /// </summary>
-        /// <param name="speedCoefficient">Коэффициент ускорения (мс). Ускорение при значении от нуля до единицы (не включая).
-        /// Замедление при значении больше единицы. Стандартное значение равняется единице</param>
+        /// <param name="SymbolSpeed">Временной интервал, с которым будут продвигаться буквы в потоке</param>
         public void StartLettersStream(double SymbolSpeed) {
             if (UpdatingStateTimer != null)
                 return;
@@ -190,18 +197,13 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
 
 
         /// <summary>
-        /// Добавление буквы в поток букв
+        /// Добавление букв в поток букв
         /// </summary>
-        /// <param name="letter">Символ добавляемой буквы</param>
-        public void AddLettersToStream(char[] letters, int intervalNumb) {
+        /// <param name="letters">Символы добавляемых букв</param>
+        /// <param name="interval">Коэффициент, задающий межбуквенный интервал в потоке (чем он меньше, тем меньше интервал)</param>
+        public void AddLettersToStream(char[] letters, int interval) {
             int circleRadius = Height / 2;
-            int interval = Height / 2;
-            if (intervalNumb == 1)
-                interval = 4 * circleRadius;
-            else if (intervalNumb == 2)
-                interval = 3 * circleRadius;
-            else if (intervalNumb == 3)
-                interval = 2 * circleRadius;
+            int intervalVal = interval * circleRadius; // = радиус кольца на интервальный коэффициент
             int curLetterX = Width;
             foreach (var c in letters) {
                 char letter = char.ToUpper(c);
@@ -212,7 +214,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 // Формируем новую букву и добавляем её
                 Letter addingLetter = new Letter(letter, new PointF(xPos, yPos), color);
                 LettersStream.Enqueue(addingLetter);
-                curLetterX += interval;
+                curLetterX += intervalVal;
             }
         }
 
@@ -228,7 +230,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         }
 
         /// <summary>
-        /// Получить символ, в данный момент находящийся в окружности выбора букв
+        /// Получить символ, в данный момент находящийся в окружности выбора букв (если такого нет - '\0')
         /// </summary>
         /// <returns>Символ, находящийся в окружности выбора букв. Если такой отсутствует, возвращается символ '\0'</returns>
         public char GetRoundedChar() {
@@ -242,11 +244,17 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 return '\0';
         }
 
+        /// <summary>
+        /// Остановка потока
+        /// </summary>
         public void Pause()
         {
             UpdatingStateTimer.Stop();
         }
 
+        /// <summary>
+        /// Возобновление потока
+        /// </summary>
         public void Resume()
         {
             UpdatingStateTimer.Start();
