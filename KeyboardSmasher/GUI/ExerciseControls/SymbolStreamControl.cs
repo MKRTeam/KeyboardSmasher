@@ -55,19 +55,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// </summary>
         private ControlMode CurControlMode { get; set; }
 
-        /// <summary>
-        /// Метод генерации следующей буквы (в верхнем регистре) заданного алфавита в заданном количестве для добавления в поток
-        /// </summary>
-        /// <param name="alphabet">Алфавит - массив допустимых символов для добавления в очередь</param>
-        /// <returns></returns>
-        private char GenerateRandomSymbol()
-        {
-            return char.ToUpper(symbolStream.getRandomSymbol());
-        }
-
-
         private SymbolStream symbolStream;
-        uint p_remainingSymbolsCount;
         private SymbolStreamStatistic curStatistic;
         private Language lang;
 
@@ -88,7 +76,6 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             // Создаём статистику
             curStatistic = new SymbolStreamStatistic();
             symbolStream = new SymbolStream(lang, difficulty);
-            p_remainingSymbolsCount = symbolStream.SymbolsCount;
             OnControlResultChanged += result_handler;
             // Подписываемся на события SymbolQueueControl
             symbolQueueControl.LetterMissedEvt += OnLetterMissed;
