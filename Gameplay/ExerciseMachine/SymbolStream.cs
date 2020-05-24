@@ -33,9 +33,9 @@ namespace Gameplay.ExerciseMachine
         private char[] SymbolSet { get; }
 
         //время на одну букву. зависит от сложности
-        public double SymbolSpeed { get; }
+        public int SymbolSpeed { get; }
 
-        public double TimeForSymbolCreation { get; }
+        public int TimeForSymbolCreation { get; }
 
         public SymbolStream(Language lang, Difficulty difficulty)
         {
@@ -46,7 +46,7 @@ namespace Gameplay.ExerciseMachine
             SymbolSet = SymbolStream.symbol_sets_for_langs[lang][difficulty];
             SymbolsCount = 13u * ((uint)difficulty + 1u);
             SymbolSpeed = 1 * (Difficulty.HARD - difficulty + 1);
-            TimeForSymbolCreation = 350.0 * (Difficulty.HARD - difficulty + 1);
+            TimeForSymbolCreation = 7 * ((int)difficulty + 1) / 6;
         }
 
         //сам словарь формируется где-нибудь в main и сюда передается
@@ -65,22 +65,6 @@ namespace Gameplay.ExerciseMachine
         {
             int index = rand.Next(0, SymbolSet.Length);
             return this.SymbolSet[index];
-        }
-
-        public char GetRandomEngSymbol(Difficulty difficulty) {
-            char[] symbolSet = symbol_sets_for_langs[Language.ENGLISH][difficulty];
-            return symbolSet[rand.Next(symbolSet.Length)];
-        }
-
-
-        public char GetRandomRusSymbol(Difficulty difficulty) {
-            char[] symbolSet = symbol_sets_for_langs[Language.RUSSIAN][difficulty];
-            return symbolSet[rand.Next(symbolSet.Length)];
-        }
-
-
-        public int GetSymbolsCountForDifficulty(Difficulty difficulty) {
-            return 13 * ((int)difficulty + 1);
         }
     }
 }

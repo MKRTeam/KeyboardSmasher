@@ -206,11 +206,11 @@ namespace KeyboardSmasher.GUI
                 default:
                     {
                         ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
-                        if (new_result == EventControlResult.ACTION0)
+                        if (type == ExerciseType.SYMBOL_STREAM)
                             difficulty = Difficulty.EASY;
-                        else if (new_result == EventControlResult.ACTION1)
+                        else if (type == ExerciseType.WORDS_ON_REACTION)
                             difficulty = Difficulty.NORMAL;
-                        else if (new_result == EventControlResult.ACTION2)
+                        else if (type == ExerciseType.MISTAKE_COUNT)
                             difficulty = Difficulty.HARD;
                         //создаем соответствующий тренажер
                         showSymbolStreamControl();
@@ -245,17 +245,12 @@ namespace KeyboardSmasher.GUI
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            //КОСТЫЛЬНО!!! Но по другому только переделывать класс UserControl
             currentVisibleControl.Control_KeyDown(sender, e);
-            //if (currentVisibleControl.GetType().Name == "EventControl")
-            //    ((EventControl)currentVisibleControl).EventControl_KeyDown(sender, e);
         }
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             currentVisibleControl.Control_KeyPress(sender, e);
-            //if (currentVisibleControl.GetType().Name == "EventControl")
-            //    ((EventControl)currentVisibleControl).EventControl_KeyPress(sender, e);
         }
     }
 }

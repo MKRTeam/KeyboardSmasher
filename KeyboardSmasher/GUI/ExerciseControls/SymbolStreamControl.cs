@@ -95,14 +95,11 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             symbolQueueControl.QueueEndEvt += OnQueueEnd;
 
             // Заполняем Queue нужными символами с нужным интервалом
-            int symbolCount = symbolStream.GetSymbolsCountForDifficulty(difficulty);
-            intervalNumb = (int)difficulty + 1;
+            int symbolCount = (int)symbolStream.SymbolsCount;
+            intervalNumb = symbolStream.TimeForSymbolCreation;
             symbols = new char[symbolCount];
             for (int i = 0; i < symbolCount; i++) {
-                if (lang == Language.RUSSIAN)
-                    symbols[i] = symbolStream.GetRandomRusSymbol(difficulty);
-                else if (lang == Language.ENGLISH)
-                    symbols[i] = symbolStream.GetRandomEngSymbol(difficulty);
+                symbols[i] = symbolStream.getRandomSymbol();
             }
             
         }
@@ -215,7 +212,5 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
             lTaskText.Invoke(new Action(() => lTaskText.Text = $"Поток завершён!\nВерных нажатий:{curStatistic.correctCount}\nОшибок: {curStatistic.missedCount}\nНажмите Enter чтобы пойти дальше"));
             CurControlMode = ControlMode.StreamFinished;
         }
-
-        // TODO: Настраиваемая сложность
     }
 }

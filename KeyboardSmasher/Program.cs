@@ -97,8 +97,6 @@ namespace KeyboardSmasher
             symbol_sets[Language.ENGLISH][Difficulty.HARD] =
                 new char[] { 'q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c', 'p', 'o', 'i', 'l', 'k', 'j', 'm', 'n',
                     'r', 't', 'y', 'u', 'f', 'g', 'h', 'v', 'b' };
-            // TODO: регулирование расстояний между буквами в потоке, в зависимости от сложности
-            // TODO: количество символов в потоке зависит от сложности
             // ----Тест----
             SymbolStream.Init(symbol_sets);
         }
