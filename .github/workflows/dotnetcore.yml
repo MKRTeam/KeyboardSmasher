@@ -20,4 +20,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build with MSBuild
-      run: msbuild KeyboardSmasher.sln -p:Configuration=Release
+      run: dotnet build KeyboardSmasher.sln --Configuration release --no-restore
