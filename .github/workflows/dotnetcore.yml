@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET Framework
+    - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 4.7.2
+        dotnet-version: 3.1.300
     - name: Install dependencies
       run: dotnet restore
     - name: Build
