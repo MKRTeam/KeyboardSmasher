@@ -30,61 +30,110 @@
         {
             this.rTBTextActionScene = new System.Windows.Forms.RichTextBox();
             this.pictureBoxScene = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.tLPActionButton = new System.Windows.Forms.TableLayoutPanel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScene)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // rTBTextActionScene
             // 
-            this.rTBTextActionScene.Location = new System.Drawing.Point(538, 3);
+            this.rTBTextActionScene.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rTBTextActionScene.Location = new System.Drawing.Point(0, 0);
             this.rTBTextActionScene.Name = "rTBTextActionScene";
-            this.rTBTextActionScene.Size = new System.Drawing.Size(232, 332);
+            this.rTBTextActionScene.ReadOnly = true;
+            this.rTBTextActionScene.Size = new System.Drawing.Size(285, 362);
             this.rTBTextActionScene.TabIndex = 0;
             this.rTBTextActionScene.Text = "";
+            this.rTBTextActionScene.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0); 
             // 
             // pictureBoxScene
             // 
-            this.pictureBoxScene.Location = new System.Drawing.Point(0, 3);
+            this.pictureBoxScene.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxScene.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxScene.Name = "pictureBoxScene";
-            this.pictureBoxScene.Size = new System.Drawing.Size(532, 332);
+            this.pictureBoxScene.Size = new System.Drawing.Size(484, 362);
             this.pictureBoxScene.TabIndex = 1;
             this.pictureBoxScene.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tLPActionButton);
-            this.panel1.Location = new System.Drawing.Point(6, 341);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(767, 215);
-            this.panel1.TabIndex = 2;
+            this.pictureBoxScene.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             // 
             // tLPActionButton
             // 
+            this.tLPActionButton.AutoScroll = true;
             this.tLPActionButton.AutoSize = true;
+            this.tLPActionButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tLPActionButton.ColumnCount = 1;
             this.tLPActionButton.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tLPActionButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tLPActionButton.Location = new System.Drawing.Point(0, 0);
             this.tLPActionButton.Name = "tLPActionButton";
             this.tLPActionButton.RowCount = 1;
-            this.tLPActionButton.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tLPActionButton.Size = new System.Drawing.Size(767, 215);
+            this.tLPActionButton.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tLPActionButton.Size = new System.Drawing.Size(773, 190);
             this.tLPActionButton.TabIndex = 0;
+            this.tLPActionButton.TabStop = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBoxScene);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.rTBTextActionScene);
+            this.splitContainer1.Size = new System.Drawing.Size(773, 362);
+            this.splitContainer1.SplitterDistance = 484;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.tLPActionButton);
+            this.splitContainer2.Size = new System.Drawing.Size(773, 556);
+            this.splitContainer2.SplitterDistance = 362;
+            this.splitContainer2.TabIndex = 3;
             // 
             // EventControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBoxScene);
-            this.Controls.Add(this.rTBTextActionScene);
+            this.Controls.Add(this.splitContainer2);
             this.Name = "EventControl";
             this.Size = new System.Drawing.Size(773, 556);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScene)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -93,7 +142,8 @@
 
         private System.Windows.Forms.RichTextBox rTBTextActionScene;
         private System.Windows.Forms.PictureBox pictureBoxScene;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tLPActionButton;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }

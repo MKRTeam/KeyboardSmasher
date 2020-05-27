@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PauseMenu));
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnContinueGame = new System.Windows.Forms.Button();
@@ -41,7 +40,7 @@
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.AutoEllipsis = true;
             this.btnExit.BackColor = System.Drawing.Color.FloralWhite;
-            this.btnExit.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(40, 326);
             this.btnExit.Margin = new System.Windows.Forms.Padding(8);
             this.btnExit.Name = "btnExit";
@@ -55,7 +54,7 @@
             // 
             this.btnSettings.AutoSize = true;
             this.btnSettings.BackColor = System.Drawing.Color.Ivory;
-            this.btnSettings.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSettings.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSettings.Location = new System.Drawing.Point(40, 214);
             this.btnSettings.Margin = new System.Windows.Forms.Padding(8);
@@ -70,7 +69,7 @@
             // 
             this.btnContinueGame.AutoEllipsis = true;
             this.btnContinueGame.BackColor = System.Drawing.Color.FloralWhite;
-            this.btnContinueGame.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContinueGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnContinueGame.Location = new System.Drawing.Point(193, 158);
             this.btnContinueGame.Margin = new System.Windows.Forms.Padding(8);
             this.btnContinueGame.Name = "btnContinueGame";
@@ -96,13 +95,13 @@
             this.btnExitToMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExitToMenu.AutoSize = true;
             this.btnExitToMenu.BackColor = System.Drawing.Color.FloralWhite;
-            this.btnExitToMenu.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitToMenu.Location = new System.Drawing.Point(193, 270);
+            this.btnExitToMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExitToMenu.Location = new System.Drawing.Point(180, 270);
             this.btnExitToMenu.Margin = new System.Windows.Forms.Padding(8);
             this.btnExitToMenu.Name = "btnExitToMenu";
-            this.btnExitToMenu.Size = new System.Drawing.Size(222, 40);
+            this.btnExitToMenu.Size = new System.Drawing.Size(235, 40);
             this.btnExitToMenu.TabIndex = 8;
-            this.btnExitToMenu.Text = "ВЫХОД В МЕНЮ";
+            this.btnExitToMenu.Text = "ВЫЙТИ В ГЛАВНОЕ МЕНЮ";
             this.btnExitToMenu.UseVisualStyleBackColor = false;
             this.btnExitToMenu.Click += new System.EventHandler(this.btnExitToMenu_Click);
             // 
@@ -110,7 +109,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.btnExitToMenu);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSettings);

@@ -2,15 +2,31 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace KeyboardSmasher.Localization
 {
+    class MyContractResolver : Newtonsoft.Json.Serialization.DefaultContractResolver
+    {
+        protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
+        {
+            var props = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                            .Select(p => base.CreateProperty(p, memberSerialization))
+                        .Union(type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                                   .Select(f => base.CreateProperty(f, memberSerialization)))
+                        .ToList();
+            props.ForEach(p => { p.Writable = true; p.Readable = true; });
+            return props;
+        }
+    }
+
+    [Serializable]
     public class Localization
     {
-        [XmlElement]
         Dictionary<string, string> localization;
 
         public Localization()
@@ -18,26 +34,28 @@ namespace KeyboardSmasher.Localization
             localization = new Dictionary<string, string>();
         }
 
+        private static JsonSerializerSettings settings = new JsonSerializerSettings()
+        {
+            ContractResolver = new MyContractResolver(),
+            Formatting = Formatting.Indented
+        };
+
         public static Localization Deserialize(string path)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Localization));
-            using (Stream reader = new FileStream(path, FileMode.Open))
-            {
-                return (Localization)serializer.Deserialize(reader);
-            }
+            string json = File.ReadAllText(path);
+            return (Localization)JsonConvert.DeserializeObject(json, settings);
         }
 
         public static void Serialize(Localization localization, string path)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Localization));
-            using (Stream writer = new FileStream(path, FileMode.Create))
-            {
-                serializer.Serialize(writer, localization);
-            }
+            string json = JsonConvert.SerializeObject(localization, settings);
+            File.WriteAllText(path, json);
         }
 
         public string getTranslatedString(string string_id)
         {
+            if (!localization.ContainsKey(string_id))
+                return null;
             return localization[string_id];
         }
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsControl));
             this.buttonBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(222, 40);
             this.buttonBack.TabIndex = 12;
+            this.buttonBack.Tag = "#BACK_BUTTON";
             this.buttonBack.Text = "НАЗАД";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -61,6 +61,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(263, 46);
             this.label1.TabIndex = 9;
+            this.label1.Tag = "#SETTINGS_LABEL";
             this.label1.Text = "НАСТРОЙКИ";
             // 
             // label2
@@ -72,6 +73,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 31);
             this.label2.TabIndex = 13;
+            this.label2.Tag = "#LANGUAGE_LABEL";
             this.label2.Text = "ЯЗЫК";
             // 
             // label3
@@ -83,6 +85,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(194, 31);
             this.label3.TabIndex = 14;
+            this.label3.Tag = "#DIFFICULTY_LABEL";
             this.label3.Text = "СЛОЖНОСТЬ";
             // 
             // comboBoxDifficulty
@@ -90,30 +93,32 @@
             this.comboBoxDifficulty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDifficulty.FormattingEnabled = true;
             this.comboBoxDifficulty.Items.AddRange(new object[] {
-            "ЛЕГКО",
-            "СРЕДНЕ",
-            "ТЯЖЕЛО"});
+            "#DIFFICULTY_EASY",
+            "#DIFFICULTY_NORMAL",
+            "#DIFFICULTY_HARD"});
             this.comboBoxDifficulty.Location = new System.Drawing.Point(252, 158);
             this.comboBoxDifficulty.Name = "comboBoxDifficulty";
             this.comboBoxDifficulty.Size = new System.Drawing.Size(130, 21);
             this.comboBoxDifficulty.TabIndex = 15;
+            this.comboBoxDifficulty.SelectedIndexChanged += new System.EventHandler(this.comboBoxDifficulty_SelectedIndexChanged);
             // 
             // comboBoxLanguage
             // 
             this.comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLanguage.FormattingEnabled = true;
             this.comboBoxLanguage.Items.AddRange(new object[] {
-            "РУССКИЙ"});
+            "#LANG_RUS",
+            "#LANG_ENG"});
             this.comboBoxLanguage.Location = new System.Drawing.Point(252, 217);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(130, 21);
             this.comboBoxLanguage.TabIndex = 16;
+            this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguage_SelectedIndexChanged);
             // 
             // SettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.Controls.Add(this.comboBoxLanguage);
             this.Controls.Add(this.comboBoxDifficulty);
             this.Controls.Add(this.label3);

@@ -24,7 +24,7 @@ namespace KeyboardSmasher.GUI.Controls
         SettingsControlResult result = SettingsControlResult.NO_RESULT;
         public delegate void SettingsControlResultProc(SettingsControlResult new_result);
         event SettingsControlResultProc OnControlResultChanged;
-        public Control LastControl { get; set; }
+        public UserControl LastControl { get; set; }
 
         public SettingsControl(SettingsControlResultProc result_handler)
         {
@@ -39,6 +39,7 @@ namespace KeyboardSmasher.GUI.Controls
         {
             get { return result; }
             set { result = value;
+                if (OnControlResultChanged != null)
                 OnControlResultChanged(result);
             }
         }
@@ -47,19 +48,31 @@ namespace KeyboardSmasher.GUI.Controls
         {
             get
             {
-                switch (comboBoxDifficulty.SelectedIndex)
-                {
-                    case 0: return Difficulty.EASY;
-                    case 1: return Difficulty.NORMAL;
-                    case 2: return Difficulty.HARD;
-                    default: return Difficulty.EASY;
-                }
+                return Difficulty.EASY + comboBoxDifficulty.SelectedIndex;
+            }
+        }
+
+        public Language Language
+        {
+            get
+            {
+                return Language.RUSSIAN + comboBoxLanguage.SelectedIndex;
             }
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
             Result = SettingsControlResult.BACK;
+        }
+
+        private void comboBoxDifficulty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Result = SettingsControlResult.CHANGE_DIFFICULTY;
+        }
+
+        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Result = SettingsControlResult.CHANGE_LANGUAGE;
         }
     }
 }
