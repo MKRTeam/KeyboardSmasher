@@ -21,12 +21,24 @@ namespace KeyboardSmasher.GUI.Controls
         public delegate void InfoControlResultProc(InfoControlResult new_result);
         event InfoControlResultProc OnControlResultChanged;
         public UserControl LastControl { get; set; }
+        private const string ABOUT_PROGRAMM = @"{\rtf1\ansi Программа \i KeySmasher  \i0 предназначена в качестве тренажера для обучения слепой печати в игровой форме. \line \line" +
+                                                @"\b Язык \b0 \line" +
+                                                @" В данной версии имеется поддержка лишь русского языка \line \line" +
+                                                @"\b Тренажеры \b0 \line" +
+                                                @"В игре имеется 3 типа тренажеров, которые зависят от выбранного варианта действия пользователем. После прохождения тренажера вы сможете посмотреть статистику выполнения. \line \line" +
+                                                @"\b Уровни \b0 \line" +
+                                                @"Имеется система сложности (4 уровня). При увеличении уровня расширяется набор используемых символов. Так на первом уровне используются сиволы «фывапролджэ», на 2-м - «йцукенгшщзхъ», на 3-м - «ячсмитьбю», на 4-м - «.,-!;()?:.» \line"+
+                                                @"}";
 
-        private const string ABOUT_PROGRAMM = "Программа KeySmasher предназначена в качестве тренажера для обучения слепой печати в игровой форме.";
         public InfoControl(InfoControlResultProc result_handler)
         {
             InitializeComponent();
             InitTree();
+            rtbInfo.RightMargin = rtbInfo.Size.Width - 10;
+            rtbInfo.SelectionIndent = 10;
+            rtbInfo.ReadOnly = true;
+            rtbInfo.BackColor = Color.White;
+            rtbInfo.Rtf = ABOUT_PROGRAMM;
             OnControlResultChanged += result_handler;
             LastControl = null;
         }
@@ -43,7 +55,7 @@ namespace KeyboardSmasher.GUI.Controls
         {
             switch (tvInfo.SelectedNode.Index)
             {
-                case 0: rtbInfo.Text = ABOUT_PROGRAMM; break;
+                case 0: rtbInfo.Rtf = ABOUT_PROGRAMM; break;
                 case 1: rtbInfo.Text = ""; break;
                 case 2: rtbInfo.Text = ""; break;
                 case 3: rtbInfo.Text = ""; break;

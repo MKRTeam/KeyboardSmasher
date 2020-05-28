@@ -50,15 +50,15 @@
             // 
             this.rtbInfo.Location = new System.Drawing.Point(161, 99);
             this.rtbInfo.Name = "rtbInfo";
-            this.rtbInfo.Size = new System.Drawing.Size(362, 290);
+            this.rtbInfo.Size = new System.Drawing.Size(355, 290);
             this.rtbInfo.TabIndex = 11;
             this.rtbInfo.Text = "";
             // 
             // tvInfo
             // 
-            this.tvInfo.Location = new System.Drawing.Point(8, 99);
+            this.tvInfo.Location = new System.Drawing.Point(3, 99);
             this.tvInfo.Name = "tvInfo";
-            this.tvInfo.Size = new System.Drawing.Size(147, 290);
+            this.tvInfo.Size = new System.Drawing.Size(152, 290);
             this.tvInfo.TabIndex = 12;
             this.tvInfo.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvInfo_AfterSelect);
             // 
@@ -68,7 +68,7 @@
             this.buttonBack.AutoEllipsis = true;
             this.buttonBack.BackColor = System.Drawing.Color.FloralWhite;
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBack.Location = new System.Drawing.Point(296, 400);
+            this.buttonBack.Location = new System.Drawing.Point(286, 400);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(8);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(222, 40);
@@ -87,7 +87,7 @@
             this.Controls.Add(this.rtbInfo);
             this.Controls.Add(this.label1);
             this.Name = "InfoControl";
-            this.Size = new System.Drawing.Size(526, 448);
+            this.Size = new System.Drawing.Size(516, 448);
             this.ResumeLayout(false);
             this.PerformLayout();
 
