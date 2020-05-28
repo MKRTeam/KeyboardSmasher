@@ -68,7 +68,7 @@
             this.buttonBack.AutoEllipsis = true;
             this.buttonBack.BackColor = System.Drawing.Color.FloralWhite;
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBack.Location = new System.Drawing.Point(286, 400);
+            this.buttonBack.Location = new System.Drawing.Point(466, 400);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(8);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(222, 40);
@@ -87,7 +87,7 @@
             this.Controls.Add(this.rtbInfo);
             this.Controls.Add(this.label1);
             this.Name = "InfoControl";
-            this.Size = new System.Drawing.Size(516, 448);
+            this.Size = new System.Drawing.Size(696, 448);
             this.ResumeLayout(false);
             this.PerformLayout();
 
