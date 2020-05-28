@@ -80,20 +80,18 @@ namespace KeyboardSmasher
             Dictionary<Language, Dictionary<Difficulty, char[]>> symbol_sets = new Dictionary<Language, Dictionary<Difficulty, char[]>>();
             symbol_sets[Language.RUSSIAN] = new Dictionary<Difficulty, char[]>();
             symbol_sets[Language.RUSSIAN][Difficulty.EASY] = 
-                new char[] { 'й', 'ц', 'у', 'к', 'ф', 'ы', 'в', 'а', 'я', 'ч', 'с', 'м'};
+                new char[] { 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э' };
             symbol_sets[Language.RUSSIAN][Difficulty.NORMAL] = 
-                new char[] { 'у', 'к', 'е', 'н', 'г', 'в', 'а', 'п', 'р', 'о', 'с',  'м', 'и', 'т', 'ь'};
+                new char[] { 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ' };
             symbol_sets[Language.RUSSIAN][Difficulty.HARD] =
-                new char[] { 'й', 'ц', 'у', 'к', 'ф', 'ы', 'в', 'а', 'я', 'ч', 'с', 'м', 'е', 'н', 'г', 'ш', 'п', 
-                    'р', 'о', 'л', 'и', 'т', 'ъ', 'х', 'з', 'щ', 'э', 'ж', 'д', 'ю', 'б', 'ь'};
+                new char[] { 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю' };
             symbol_sets[Language.ENGLISH] = new Dictionary<Difficulty, char[]>();
             symbol_sets[Language.ENGLISH][Difficulty.EASY] =
-                new char[] { 'q', 'w', 'e', 'r', 'a', 's', 'd', 'f', 'z', 'x', 'c', 'v' };
+                new char[] { 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l' };
             symbol_sets[Language.ENGLISH][Difficulty.NORMAL] =
-                new char[] { 'e', 'r', 't', 'y', 'u', 'd', 'f', 'g', 'h', 'j', 'c', 'v', 'b', 'n' };
+                new char[] { 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p' };
             symbol_sets[Language.ENGLISH][Difficulty.HARD] =
-                new char[] { 'q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c', 'p', 'o', 'i', 'l', 'k', 'j', 'm', 'n',
-                    'r', 't', 'y', 'u', 'f', 'g', 'h', 'v', 'b' };
+                new char[] { 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'z', 'x', 'c', 'v', 'b', 'n', 'm' };
             SymbolStream.Init(symbol_sets);
         }
 
