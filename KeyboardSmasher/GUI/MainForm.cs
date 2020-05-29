@@ -20,6 +20,7 @@ namespace KeyboardSmasher.GUI
         //контролы, которые всегда хранятся в памяти
         Controls.MainMenu main_menu;
         PauseMenu pause_menu;
+        InfoControl info_control;
         SettingsControl setting_control;
         //видимый контрол
         UserControl currentVisibleControl = null;
@@ -59,6 +60,14 @@ namespace KeyboardSmasher.GUI
             setting_control.Location = new Point(Size.Width / 2 - setting_control.Size.Width / 2,
                                             Size.Height / 2 - setting_control.Size.Height / 2);
             this.Controls.Add(setting_control);
+            #endregion
+            #region info_control
+            info_control = new InfoControl(OnInfoControlResultChanged);
+            info_control.Visible = false;
+            //info_control.Dock = DockStyle.Fill;
+            info_control.Location = new Point(Size.Width / 2 - info_control.Size.Width / 2,
+                                            Size.Height / 2 - info_control.Size.Height / 2);
+            this.Controls.Add(info_control);
             #endregion
             #region pause_menu
             pause_menu = new PauseMenu(OnPauseMenuResultChanged);
@@ -146,6 +155,12 @@ namespace KeyboardSmasher.GUI
                         showControl(setting_control);
                     }
                     break;
+                case MainMenuResult.INFO:
+                    {
+                        info_control.LastControl = main_menu;
+                        showControl(info_control);
+                    }
+                    break;
                 case MainMenuResult.EXIT: this.Close(); break;
                 default: { } break;
             }
@@ -172,6 +187,18 @@ namespace KeyboardSmasher.GUI
                 default: { } break;
             }
         }
+        private void OnInfoControlResultChanged(InfoControlResult new_result)
+        {
+            switch (new_result)
+            {
+                case InfoControlResult.BACK:
+                    {
+                        showControl(info_control.LastControl);
+                    }
+                    break;
+                default: { } break;
+            }
+        }
 
         private void OnPauseMenuResultChanged(PauseMenuResult new_result)
         {
@@ -185,6 +212,11 @@ namespace KeyboardSmasher.GUI
                         setting_control.LastControl = pause_menu;
                         showControl(setting_control);
                     } break;
+                case PauseMenuResult.INFO:
+                    {
+                        info_control.LastControl = pause_menu;
+                        showControl(info_control);
+                    }break;
                 case PauseMenuResult.NO_RESULT: { } break;
             }
         }
