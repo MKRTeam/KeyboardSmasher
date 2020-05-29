@@ -15,6 +15,8 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
         public WordsOnReactionControl()
         {
             InitializeComponent();
+            tB_Reading.BackColor = System.Drawing.Color.FromArgb(198, 178, 153);
+            tB_Reading.ForeColor = System.Drawing.Color.FromArgb(153, 134, 117);
         }
     }
 }

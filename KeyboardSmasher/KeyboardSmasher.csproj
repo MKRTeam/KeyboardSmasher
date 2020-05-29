@@ -160,6 +160,9 @@
     <EmbeddedResource Include="GUI\Controls\EventControl.resx">
       <DependentUpon>EventControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ExerciseControls\WordsOnReactionControl.resx">
+      <DependentUpon>WordsOnReactionControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
