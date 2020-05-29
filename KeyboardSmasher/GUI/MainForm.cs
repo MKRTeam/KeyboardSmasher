@@ -155,6 +155,12 @@ namespace KeyboardSmasher.GUI
                         showControl(setting_control);
                     }
                     break;
+                case MainMenuResult.INFO:
+                    {
+                        info_control.LastControl = main_menu;
+                        showControl(info_control);
+                    }
+                    break;
                 case MainMenuResult.EXIT: this.Close(); break;
                 default: { } break;
             }
