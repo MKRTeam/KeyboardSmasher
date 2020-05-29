@@ -80,9 +80,9 @@ namespace KeyboardSmasher
             Dictionary<Language, Dictionary<Difficulty, char[]>> symbol_sets = new Dictionary<Language, Dictionary<Difficulty, char[]>>();
             symbol_sets[Language.RUSSIAN] = new Dictionary<Difficulty, char[]>();
             symbol_sets[Language.RUSSIAN][Difficulty.EASY] = 
-                new char[] { 'й', 'ц', 'у', 'к', 'ф', 'ы', 'в', 'а', 'я', 'ч', 'с', 'м'};
+                new char[] { 'п', 'р', 'о', 'л', 'ф', 'ы', 'в', 'а', 'д', 'ж', 'э'};
             symbol_sets[Language.RUSSIAN][Difficulty.NORMAL] = 
-                new char[] { 'у', 'к', 'е', 'н', 'г', 'в', 'а', 'п', 'р', 'о', 'с',  'м', 'и', 'т', 'ь'};
+                new char[] { 'п', 'р', 'о', 'л', 'ф', 'ы', 'в', 'а', 'д', 'ж', 'э', 'й','у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ'};
             symbol_sets[Language.RUSSIAN][Difficulty.HARD] =
                 new char[] { 'й', 'ц', 'у', 'к', 'ф', 'ы', 'в', 'а', 'я', 'ч', 'с', 'м', 'е', 'н', 'г', 'ш', 'п', 
                     'р', 'о', 'л', 'и', 'т', 'ъ', 'х', 'з', 'щ', 'э', 'ж', 'д', 'ю', 'б', 'ь'};
