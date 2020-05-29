@@ -67,7 +67,7 @@ namespace KeyboardSmasher.GUI
             pause_menu.Location = new Point(Size.Width / 2 - pause_menu.Size.Width / 2,
                                             Size.Height / 2 - pause_menu.Size.Height / 2);
             this.Controls.Add(pause_menu);
-            #endregion
+            #endregion  
         }
 
         private void SetLanguage(Language language)
@@ -86,6 +86,7 @@ namespace KeyboardSmasher.GUI
                 control.Visible = true;
             else throw new Exception("Визуализируемый контрол был null");
             currentVisibleControl = control;
+            currentVisibleControl.Focus();
             //currentVisibleControl.Dock = DockStyle.Top;
             //currentVisibleControl.Anchor = AnchorStyles.
             translateControl(control, localization);
