@@ -8,7 +8,7 @@ namespace Gameplay.ExerciseMachine
 {
     /// <summary>
     /// Структура для хранения статистики задания SymbolStream
-    /// </summary>
+    /// </summary> 
     public struct SymbolStreamStatistic
     {
         /// <summary>
