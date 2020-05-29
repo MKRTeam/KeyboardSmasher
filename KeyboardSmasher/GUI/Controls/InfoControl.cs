@@ -8,19 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Контрол, отвечающий за справку в приложении
+/// </summary>
 namespace KeyboardSmasher.GUI.Controls
 {
+    /// <summary>
+    /// Возможные значения при использовании контрола 
+    /// </summary>
     public enum InfoControlResult
     {
         NO_RESULT,
-        BACK
+        BACK    //выход из окна через кнопку "НАЗАД"
     }
     public partial class InfoControl : UserControl
     {
+        //то же самое, что в SettingsControl
         InfoControlResult result = InfoControlResult.NO_RESULT;
         public delegate void InfoControlResultProc(InfoControlResult new_result);
         event InfoControlResultProc OnControlResultChanged;
         public UserControl LastControl { get; set; }
+
+        #region константы
         private const string ABOUT_PROGRAMM = @"{\rtf1\ansi Программа \i KeySmasher  \i0 предназначена в качестве тренажера для обучения слепой печати в игровой форме. \line \line" +
                                                 @"\b Язык \b0 \line" +
                                                 @" В данной версии имеется поддержка лишь русского языка \line \line" +
@@ -61,7 +70,7 @@ namespace KeyboardSmasher.GUI.Controls
             @"Связаться с нами можно в группе в вк #название: \line"+
             @"\u #ссылка на группу \u0"+
             @"}";
-
+        #endregion
 
         public InfoControl(InfoControlResultProc result_handler)
         {
@@ -76,14 +85,21 @@ namespace KeyboardSmasher.GUI.Controls
             LastControl = null;
         }
 
-
+        /// <summary>
+        /// Инициализация дерева
+        /// </summary>
         private void InitTree()
         {
             tvInfo.Nodes.Add("О программе");
             tvInfo.Nodes.Add("Рекомендации по обучению");
             tvInfo.Nodes.Add("Авторы");
         }
-
+        /// <summary>
+        /// Событие, возникающее при изменении выбора узла. 
+        /// Обновляет текст в RichTextBox, отвечающий за отображение инфы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TvInfo_AfterSelect(object sender, TreeViewEventArgs e)
         {
             switch (tvInfo.SelectedNode.Index)
@@ -94,6 +110,7 @@ namespace KeyboardSmasher.GUI.Controls
             }
         }
 
+        //то же, что и в SettingsControl
         private InfoControlResult Result
         {
             get { return result; }
@@ -104,7 +121,11 @@ namespace KeyboardSmasher.GUI.Controls
                     OnControlResultChanged(result);
             }
         }
-
+        /// <summary>
+        /// Событие, возникающие при нажатии кнопки "НАЗАД"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonBack_Click(object sender, EventArgs e)
         {
             Result = InfoControlResult.BACK;

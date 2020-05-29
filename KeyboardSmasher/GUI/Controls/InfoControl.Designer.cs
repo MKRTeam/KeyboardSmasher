@@ -39,7 +39,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(153, 33);
+            this.label1.Location = new System.Drawing.Point(239, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 46);
             this.label1.TabIndex = 10;
@@ -48,9 +48,9 @@
             // 
             // rtbInfo
             // 
-            this.rtbInfo.Location = new System.Drawing.Point(161, 99);
+            this.rtbInfo.Location = new System.Drawing.Point(211, 99);
             this.rtbInfo.Name = "rtbInfo";
-            this.rtbInfo.Size = new System.Drawing.Size(355, 290);
+            this.rtbInfo.Size = new System.Drawing.Size(451, 290);
             this.rtbInfo.TabIndex = 11;
             this.rtbInfo.Text = "";
             // 
@@ -58,7 +58,7 @@
             // 
             this.tvInfo.Location = new System.Drawing.Point(3, 99);
             this.tvInfo.Name = "tvInfo";
-            this.tvInfo.Size = new System.Drawing.Size(152, 290);
+            this.tvInfo.Size = new System.Drawing.Size(202, 290);
             this.tvInfo.TabIndex = 12;
             this.tvInfo.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TvInfo_AfterSelect);
             // 
@@ -68,7 +68,7 @@
             this.buttonBack.AutoEllipsis = true;
             this.buttonBack.BackColor = System.Drawing.Color.FloralWhite;
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBack.Location = new System.Drawing.Point(466, 400);
+            this.buttonBack.Location = new System.Drawing.Point(440, 400);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(8);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(222, 40);
@@ -87,7 +87,7 @@
             this.Controls.Add(this.rtbInfo);
             this.Controls.Add(this.label1);
             this.Name = "InfoControl";
-            this.Size = new System.Drawing.Size(696, 448);
+            this.Size = new System.Drawing.Size(670, 448);
             this.ResumeLayout(false);
             this.PerformLayout();
 
