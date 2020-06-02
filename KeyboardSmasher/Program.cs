@@ -93,6 +93,13 @@ namespace KeyboardSmasher
             symbol_sets[Language.ENGLISH][Difficulty.HARD] =
                 new char[] { 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'z', 'x', 'c', 'v', 'b', 'n', 'm' };
             SymbolStream.Init(symbol_sets);
+
+            var textsForMistakeCounting = new Dictionary<Language, Dictionary<Difficulty, string>>();
+            textsForMistakeCounting[Language.RUSSIAN] = new Dictionary<Difficulty, string>();
+            textsForMistakeCounting[Language.RUSSIAN][Difficulty.EASY] = "Мама мыла раму";
+            textsForMistakeCounting[Language.RUSSIAN][Difficulty.NORMAL] = "Сенсация поп яйца снес";
+            textsForMistakeCounting[Language.RUSSIAN][Difficulty.HARD] = "Течет море не ром течет";
+            MistakeCount.Init(textsForMistakeCounting);
         }
 
         private static Biom[] DeserializeGameData(string gamedata_path)
