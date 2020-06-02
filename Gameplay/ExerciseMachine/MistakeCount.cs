@@ -6,19 +6,30 @@ using System.Threading.Tasks;
 
 namespace Gameplay.ExerciseMachine
 {
-    struct MistakeCountStatistic
+    public struct MistakeCountStatistic
     {
-
+        public int errors;
+        public int correct;
     }
 
-    class MistakeCount : ExerciseMachine
+    public class MistakeCount : ExerciseMachine
     {
-        //текст который дадим писать пользователю
-        public string Text { get; }//зависит от сложности
-        
-        public MistakeCount(Difficulty difficulty)
-        {
+        // текст для печати
+        public string Text { get; private set; }
+        // набор текстов для печати. группировка по языку и по сложности
+        private static Dictionary<Language, Dictionary<Difficulty, string>> textsForLangs;
 
+        public MistakeCount(Language lang, Difficulty difficulty)
+        {
+            if (textsForLangs == null)
+                throw new Exception("Не хватает инициализации текстов");
+
+            Text = textsForLangs[lang][difficulty];
+        }
+
+        public static void Init(Dictionary<Language, Dictionary<Difficulty, string>> textsForLangs)
+        {
+            MistakeCount.textsForLangs = textsForLangs;
         }
 
         public bool check(object statistic)
