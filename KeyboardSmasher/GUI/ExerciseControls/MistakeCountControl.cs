@@ -96,6 +96,10 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
             else if (CurrentControlMode == ControlMode.TypingStarted)
             {
                 char middleChar = mistakeCountTextControl.GetLetterInTheMiddleOfControl();
+                if (middleChar == ' ')
+                {
+                     ;
+                }
                 char pressedSymbol = '\0';
                 switch (lang)
                 {

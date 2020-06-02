@@ -98,19 +98,16 @@ namespace KeyboardSmasher.GUI.ExerciseControls
                 UpdatingStateTimer.Stop();
                 UpdatingStateTimer.Dispose();
             }
-            else if (TextToTypeQueue.Peek().position.X <= this.Width / 2)
+            else if ((int)(TextToTypeQueue.Peek().position.X + 100) <= this.Width / 2)
             {
                 UpdatingStateTimer.Stop();
             }
             else 
             {
-                //UpdatingStateTimer.Start(); //////////////////////////////////////////////////////////////////////////////////////
                 PushQueueForward();
                 DrawNewState();
             }
         }
-
-        
 
         public void Start()
         {
@@ -118,7 +115,7 @@ namespace KeyboardSmasher.GUI.ExerciseControls
                 return;
             UpdatingStateTimer = new Timer
             {
-                Interval = 2
+                Interval = 4
             };
             UpdatingStateTimer.Tick += UpdateState;
             UpdatingStateTimer.Start();
@@ -131,7 +128,7 @@ namespace KeyboardSmasher.GUI.ExerciseControls
             {
                 char letter = char.ToUpper(character);
                 float xPos = curLetterX;
-                float yPos = Height / 2;
+                float yPos = this.Height / 2 - 30;
                 Color color = KeyboardHelper.GetKeyColorForChar(letter);
                 Letter newLetter = new Letter(letter, new PointF(xPos, yPos), color);
                 TextToTypeQueue.Enqueue(newLetter);
@@ -141,13 +138,7 @@ namespace KeyboardSmasher.GUI.ExerciseControls
 
         public char GetLetterInTheMiddleOfControl()
         {
-            if (TextToTypeQueue.Count == 0)
-                return '\0';
-            int letterX = (int)TextToTypeQueue.Peek().position.X + g_fontSize / 2; // получаем координату X серединки буквы 
-            if (letterX <= Width / 2)
-                return TextToTypeQueue.Peek().letter;
-            else
-                return '\0';
+            return TextToTypeQueue.Peek().letter;
         }
 
         public void DropFirstLetter()
