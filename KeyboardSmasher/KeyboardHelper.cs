@@ -17,6 +17,7 @@ namespace KeyboardSmasher
         /// <returns></returns>
         public static char GetUpperRusCharForKey(Keys keyCode) {
             switch (keyCode) {
+                case Keys.Space: return ' ';
                 case Keys.Q: return 'Й';
                 case Keys.W: return 'Ц';
                 case Keys.E: return 'У';
@@ -61,6 +62,7 @@ namespace KeyboardSmasher
         /// <returns></returns>
         public static char GetUpperEngCharForKey(Keys keyCode) {
             switch (keyCode) {
+                case Keys.Space: return ' ';
                 case Keys.Q: return 'Q';
                 case Keys.W: return 'W';
                 case Keys.E: return 'E';
