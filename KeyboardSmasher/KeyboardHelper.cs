@@ -18,6 +18,7 @@ namespace KeyboardSmasher
         public static char GetUpperRusCharForKey(Keys keyCode) {
             switch (keyCode) {
                 case Keys.Space: return ' ';
+                case Keys.Oemtilde: return 'Ё';
                 case Keys.Q: return 'Й';
                 case Keys.W: return 'Ц';
                 case Keys.E: return 'У';
