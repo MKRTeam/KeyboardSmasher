@@ -118,7 +118,7 @@
             this.splitContainer2.SplitterDistance = 362;
             this.splitContainer2.TabIndex = 3;
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.label1.Text = "F1 - настройки \t F2 - справка";
+            this.label1.Text = "ESC - выход в меню / пауза (на тренажерах) \t F1 - настройки \t F2 - справка";
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
