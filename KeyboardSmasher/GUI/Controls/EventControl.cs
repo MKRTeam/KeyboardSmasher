@@ -18,7 +18,9 @@ namespace KeyboardSmasher.GUI.Controls
         ACTION1,
         ACTION2,
         ACTION3,
-        ACTION4
+        ACTION4,
+        OPEN_SETTINGS,
+        OPEN_INFO
     }
 
     class NonSelectableButton : Button
@@ -54,7 +56,7 @@ namespace KeyboardSmasher.GUI.Controls
                             string textScene, 
                             EventControlResultProc result_handler)
         {
-            InitializeComponent();
+                        InitializeComponent();
             this.actions = actions;
             this.textScene = textScene;
             this.rTBTextActionScene.Font = new Font("Arial", 12, FontStyle.Regular);
@@ -96,6 +98,10 @@ namespace KeyboardSmasher.GUI.Controls
                 Result = EventControlResult.EXIT_TO_PAUSE_MENU;
             if (e.KeyCode == Keys.Enter)
                 Result = EventControlResult.SKIP_EVENT;
+            if (e.KeyCode == Keys.F1)   // настройки
+                Result = EventControlResult.OPEN_SETTINGS;
+            if (e.KeyCode == Keys.F2)   // справка
+                Result = EventControlResult.OPEN_INFO;
         }
         public override void Control_KeyPress(object sender, KeyPressEventArgs e)
         {
