@@ -82,10 +82,13 @@ namespace KeyboardSmasher.GUI
 
         private void SetLanguage(Language language)
         {
-            this.lang = language;
-            localization = Localization.Localization.Deserialize(localization_paths[language]);
-            if (currentVisibleControl != null)
-                translateControl(currentVisibleControl, localization);
+            MessageBox.Show("К сожалению, данная функция находится в разработке. Приносим свои извинения");
+            return;
+            //this.lang = language;
+
+            //localization = Localization.Localization.Deserialize(localization_paths[language]);
+            //if (currentVisibleControl != null)
+            //    translateControl(currentVisibleControl, localization);
         }
 
         private void showControl(UserControl control)
