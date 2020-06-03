@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
             this.rTBTextActionScene = new System.Windows.Forms.RichTextBox();
             this.pictureBoxScene = new System.Windows.Forms.PictureBox();
             this.tLPActionButton = new System.Windows.Forms.TableLayoutPanel();
@@ -116,6 +117,10 @@
             this.splitContainer2.Size = new System.Drawing.Size(773, 556);
             this.splitContainer2.SplitterDistance = 362;
             this.splitContainer2.TabIndex = 3;
+            this.splitContainer2.Panel2.Controls.Add(this.label1);
+            this.label1.Text = "F1 - настройки \t F2 - справка";
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EventControl
             // 
@@ -145,5 +150,6 @@
         private System.Windows.Forms.TableLayoutPanel tLPActionButton;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -246,13 +246,21 @@ namespace KeyboardSmasher.GUI
                     {
                         pause_menu.LastControl = currentVisibleControl;
                         showControl(pause_menu);
-                    }
-                    break;
+                    } break;
                 case EventControlResult.SKIP_EVENT:
                     {
                         showNewEventControl();
-                    }
-                    break;
+                    } break;
+                case EventControlResult.OPEN_INFO:
+                    {
+                        info_control.LastControl = currentVisibleControl;
+                        showControl(info_control);
+                    } break;
+                case EventControlResult.OPEN_SETTINGS:
+                    {
+                        setting_control.LastControl = currentVisibleControl;
+                        showControl(setting_control);
+                    } break;
                 default:
                     {
                         ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
@@ -268,8 +276,7 @@ namespace KeyboardSmasher.GUI
                         {
                             showMistakeCountControl();
                         }
-                    }
-                    break;
+                    } break;
 
             }
         }
