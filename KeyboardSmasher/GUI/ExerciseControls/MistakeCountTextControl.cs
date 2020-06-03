@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -14,7 +13,7 @@ namespace KeyboardSmasher.GUI.ExerciseControls
             public PointF position;         // левый верхний угол
             public Color color;             // цвет
 
-            public Letter(char letter, PointF position, Color color)
+            public Letter(char letter, PointF position, Color color)  // структура для букв: сам символ, позиция, цвет
             {
                 this.letter = letter;
                 this.position = position;
@@ -22,14 +21,14 @@ namespace KeyboardSmasher.GUI.ExerciseControls
             }
         }
 
-        private Queue<Letter> TextToTypeQueue { get; set; }
-        public Timer UpdatingStateTimer { get; private set; }
+        private Queue<Letter> TextToTypeQueue { get; set; } // очередь букв для печати
+        public Timer UpdatingStateTimer { get; private set; } // таймер обновления экрана
 
         private readonly object UpdatingStateLock = new object();
 
         public delegate void EventHandler();
-        public event EventHandler WrongLetterEvent;
-        public event EventHandler QueueIsEmptyEvent;
+        public event EventHandler WrongLetterEvent; // на неверное нажатие
+        public event EventHandler QueueIsEmptyEvent; // на окончание тренажера
 
         private int g_fontSize;     // размер шрифта, с учётом ширины полосы (равен половине высоты контрола)
         private Font g_font;        // шрифт
@@ -49,12 +48,31 @@ namespace KeyboardSmasher.GUI.ExerciseControls
             Invalidate();
         }
 
+        /// <summary>
+        /// Метод вычисления констант рисования на основе размеров элемента управления 
+        /// и ширины линии окружности выбора букв
+        /// </summary>
         private void CalcDrawingParams()
         {
             g_fontSize = Height / 2;
             g_font = new Font(FontFamily.GenericSansSerif, g_fontSize);
         }
 
+        /// <summary>
+        /// Метод для очистки экрана от букв в конце тренажера
+        /// </summary>
+        public void Clear()
+        {
+            using (Graphics g = Graphics.FromImage(Image))
+            {
+                g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 13, Width, 14 + g_fontSize));
+            }
+            Invalidate();
+        }
+
+        /// <summary>
+        /// Свдинуть отображаемые буквы влево
+        /// </summary>
         private void PushQueueForward()
         {
             int pushValue = g_fontSize;
@@ -63,22 +81,18 @@ namespace KeyboardSmasher.GUI.ExerciseControls
             {
                 foreach (var bukva in TextToTypeQueue)
                     bukva.position.X -= pushValue;
-
-                //if (TextToTypeQueue.Peek().position.X < 0)
-                //{
-                //    TextToTypeQueue.Dequeue();
-                //    WrongLetterEvent?.Invoke(); // выводим, что набрана не та буква
-                //}
             }
         }
 
+        /// <summary>
+        /// Отрисовать новое состояние элемента управления
+        /// </summary>
         private void DrawNewState()
         {
             using (Graphics g = Graphics.FromImage(Image))
             {
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-                g.Clear(Color.White);
-
+                g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0, 13, Width, 14 + g_fontSize));
                 foreach (var letter in TextToTypeQueue)
                 {
                     if (letter.position.X >= Width)
@@ -89,6 +103,13 @@ namespace KeyboardSmasher.GUI.ExerciseControls
             Invalidate();
         }
 
+        /// <summary>
+        /// Обновить состояние элемента управления: добавить очередную букву из очереди ожидающих букв,
+        /// сдвинуть уже отображаемые буквы влево, отрисовать новое состояние. Подцепляется на исполнение
+        /// по таймеру
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateState(object sender, EventArgs e)
         {
             if (TextToTypeQueue.Count == 0)
@@ -98,7 +119,7 @@ namespace KeyboardSmasher.GUI.ExerciseControls
                 UpdatingStateTimer.Stop();
                 UpdatingStateTimer.Dispose();
             }
-            else if ((int)(TextToTypeQueue.Peek().position.X + 100) <= this.Width / 2)
+            else if ((int)(TextToTypeQueue.Peek().position.X + g_fontSize * 4) <= Width / 2)
             {
                 UpdatingStateTimer.Stop();
             }
@@ -109,18 +130,25 @@ namespace KeyboardSmasher.GUI.ExerciseControls
             }
         }
 
+        /// <summary>
+        /// Метод запуска
+        /// </summary>
         public void Start()
         {
             if (UpdatingStateTimer != null)
                 return;
             UpdatingStateTimer = new Timer
             {
-                Interval = 4
+                Interval = 10
             };
             UpdatingStateTimer.Tick += UpdateState;
             UpdatingStateTimer.Start();
         }
 
+        /// <summary>
+        /// Добавление букв в очередь
+        /// </summary>
+        /// <param name="characters">Символы добавляемых букв</param>
         public void AddLettersOnControl(char[] characters)
         {
             int curLetterX = Width;
@@ -132,31 +160,30 @@ namespace KeyboardSmasher.GUI.ExerciseControls
                 Color color = KeyboardHelper.GetKeyColorForChar(letter);
                 Letter newLetter = new Letter(letter, new PointF(xPos, yPos), color);
                 TextToTypeQueue.Enqueue(newLetter);
-                curLetterX += 50;
+                curLetterX += 30;
             }
         }
 
+
+        /// <summary>
+        /// Получить символ, который нужно ввести
+        /// </summary>
+        /// <returns>Первый символ из очереди</returns>
         public char GetLetterInTheMiddleOfControl()
         {
             return TextToTypeQueue.Peek().letter;
         }
 
+        /// <summary>
+        /// Метод для удаления первой буквы в очереди
+        /// (в случае, если нужная клавиша была верно нажата)
+        /// </summary>
         public void DropFirstLetter()
         {
             lock (UpdatingStateLock)
             {
                 TextToTypeQueue.Dequeue();
             }
-        }
-
-        private void SymbolQueueControl_SizeChanged(object sender, EventArgs e)
-        {
-            Image = new Bitmap(Size.Width, Size.Height);
-            Invalidate();
-            // Перевычисляем параметры рисования
-            CalcDrawingParams();
-            // Отрисовываем новое состояние элемента управления
-            DrawNewState();
         }
     }
 }

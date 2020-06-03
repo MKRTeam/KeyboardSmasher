@@ -5,7 +5,7 @@ using Gameplay.ExerciseMachine;
 
 namespace KeyboardSmasher.ExerciseMachine.GUI
 {
-    public enum MistakeCountControlResult
+    public enum MistakeCountControlResult // результаты тренажера
     {
         NO_RESULT,
         PAUSE,
@@ -29,7 +29,7 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
             }
         }
 
-        private enum ControlMode
+        private enum ControlMode  // режимы работы тренажера
         {
             ControlStarted,
             TypingStarted,
@@ -43,8 +43,8 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
         private Language lang;
         private char[] symbols;
 
-        private static readonly string welcome_text = @"Добро пожаловать в тренажёр ""Подсчет ошибок""! На полосе сверху отображен текст. " +
-                "Ваша задача - набрать его с нименьшим количеством ошибок или опечаток. Время на задание неограничено. " +
+        private static readonly string welcome_text = @"Добро пожаловать в тренажёр ""Подсчет ошибок""! На полосе будет отображен текст. " +
+                "Ваша задача - набрать его с наименьшим количеством ошибок или опечаток. Время на задание неограничено. " +
                 "Нажмите клавишу 'Enter', чтобы начать.";
 
         public MistakeCountControl(Language lang, Difficulty difficulty, MistakeCountControlResultProc handler)
@@ -68,6 +68,7 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
 
         private bool isKeyPressed = false;
 
+        // обработчик нажатия клавиш. основная логика
         public void Control_KeyDown(object sender, KeyEventArgs e)
         {
             // Проверяем, было ли уже обработано событие - чтобы исключить учёт удержания клавиши
@@ -84,22 +85,17 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
                 lbTaskText.Text = "Поехали!";
                 mistakeCountTextControl.Start();
             }
-            else if (CurrentControlMode == ControlMode.TypingStarted && keyCode == Keys.Escape)
+            else if (CurrentControlMode == ControlMode.TypingStarted && keyCode == Keys.Escape) // на паузу
             {
                 Result = MistakeCountControlResult.PAUSE;
             }
-            else if (CurrentControlMode == ControlMode.TypingStopped && keyCode == Keys.Escape)
+            else if (CurrentControlMode == ControlMode.TypingStopped && keyCode == Keys.Escape) // на восстановление от паузы
             {
                 Result = MistakeCountControlResult.RESUME;
             }
-            // Если поток идёт - проверяем нажатую кнопку на соответствие символу в кольце
-            else if (CurrentControlMode == ControlMode.TypingStarted)
+            else if (CurrentControlMode == ControlMode.TypingStarted)   // при печатании
             {
-                char middleChar = mistakeCountTextControl.GetLetterInTheMiddleOfControl();
-                if (middleChar == ' ')
-                {
-                     ;
-                }
+                char middleSymbol = mistakeCountTextControl.GetLetterInTheMiddleOfControl();
                 char pressedSymbol = '\0';
                 switch (lang)
                 {
@@ -108,12 +104,12 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
                     case Language.RUSSIAN:
                         pressedSymbol = KeyboardHelper.GetUpperRusCharForKey(keyCode); break;
                 }
-                if (pressedSymbol == '\0' || pressedSymbol != middleChar)
+                if (pressedSymbol == '\0' || pressedSymbol != middleSymbol)
                 {
                     statistic.errors++;
                     lbTaskText.Text = "Неправильная клавиша!";
                 }
-                else if (pressedSymbol == middleChar)
+                else if (pressedSymbol == middleSymbol)
                 {
                     mistakeCountTextControl.DropFirstLetter();
                     statistic.correct++;
@@ -121,30 +117,36 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
                     lbTaskText.Text = "Верно";
                 }
             }
-            // Завершение работы элемента управления
-            else if (CurrentControlMode == ControlMode.TypingFinished && keyCode == Keys.Enter)
+            else if (CurrentControlMode == ControlMode.TypingFinished && keyCode == Keys.Enter) // при завершении работы
             {
                 Result = MistakeCountControlResult.EXIT;
             }
         }
 
+        // обработчик при отпускании клавиш
         public void Control_KeyUp(object sender, KeyEventArgs e)
         {
             isKeyPressed = false;
         }
 
+        /// <summary>
+        /// Метод для завершения работы тренажера: вывод статистики
+        /// </summary>
         private void OnQueueIsEmpty()
         {
-            lbTaskText.Invoke(new Action(() => lbTaskText.Text = $"Поток завершён!\nВерных нажатий:{statistic.correct}" +
+            lbTaskText.Invoke(new Action(() => lbTaskText.Text = $"Набор текста завершён!\nВерных нажатий:{statistic.correct}" +
                     $"\nНеверных нажатий: {statistic.errors}\nНажмите Enter чтобы пойти дальше"));
+            mistakeCountTextControl.Clear();
             CurrentControlMode = ControlMode.TypingFinished;
         }
 
+        /// <summary>
+        /// Метод для обработки нажатия неверной клавиши
+        /// </summary>
         private void OnWrongLetter()
         {
             statistic.errors++;
-            // Запускаем изменение текста лейбла в том же потоке, в котором работает элемент управления
-            lbTaskText.Invoke(new Action(() => lbTaskText.Text = "Неправильно набран номер!"));
+            lbTaskText.Invoke(new Action(() => lbTaskText.Text = "Неверная буква!"));
         }
     }
 }

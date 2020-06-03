@@ -269,7 +269,7 @@ namespace KeyboardSmasher.GUI
                     } break;
                 case MistakeCountControlResult.PAUSE:
                     {
-                        ;
+                        
                     } break;
                 case MistakeCountControlResult.RESUME:
                     {

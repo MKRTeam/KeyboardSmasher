@@ -25,6 +25,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -87,6 +89,12 @@
     <Compile Include="GUI\ExerciseControls\MistakeCountControl.Designer.cs">
       <DependentUpon>MistakeCountControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ExerciseControls\MistakeCountTextControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\ExerciseControls\MistakeCountTextControl.Designer.cs">
+      <DependentUpon>MistakeCountTextControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ExerciseControls\SymbolQueueControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -142,6 +150,9 @@
     <Compile Include="UserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <EmbeddedResource Include="GUI\ExerciseControls\MistakeCountControl.resx">
+      <DependentUpon>MistakeCountControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\ExerciseControls\SymbolQueueControl.resx">
       <DependentUpon>SymbolQueueControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +182,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
@@ -197,6 +209,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\%24this.BackgroundImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\keys.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mistakeCountArrows.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

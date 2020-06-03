@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gameplay.ExerciseMachine
 {
@@ -27,6 +24,10 @@ namespace Gameplay.ExerciseMachine
             Text = textsForLangs[lang][difficulty];
         }
 
+        /// <summary>
+        /// Инициализация тренажера
+        /// </summary>
+        /// <param name="textsForLangs"></param>
         public static void Init(Dictionary<Language, Dictionary<Difficulty, string>> textsForLangs)
         {
             MistakeCount.textsForLangs = textsForLangs;
