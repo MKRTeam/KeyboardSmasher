@@ -27,6 +27,7 @@ namespace KeyboardSmasher.GUI
         EventControl currentEventControl = null;
         Event currentEvent = null;
         SymbolStreamControl currentSymbolStreamControl = null;
+        MistakeCountControl curMistakeCC = null;
 
         //игровые данные
         Difficulty difficulty;
@@ -132,6 +133,19 @@ namespace KeyboardSmasher.GUI
             this.Controls.Add(currentSymbolStreamControl);
             currentSymbolStreamControl.Dock = DockStyle.Fill;
             showControl(currentSymbolStreamControl);
+        }
+
+        private void showMistakeCountControl()
+        {
+            if (curMistakeCC != null)
+                {
+                this.Controls.Remove(curMistakeCC);
+                curMistakeCC.Dispose();
+            }
+            curMistakeCC = new MistakeCountControl(lang, difficulty, OnMistakeCountControlChanged);
+            Controls.Add(curMistakeCC);
+            curMistakeCC.Dock = DockStyle.Fill;
+            showControl(curMistakeCC);
         }
 
         public void showMainMenu()
@@ -240,13 +254,17 @@ namespace KeyboardSmasher.GUI
                     {
                         ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
                         if (type == ExerciseType.SYMBOL_STREAM)
-                            difficulty = Difficulty.EASY;
+                        {
+                            showSymbolStreamControl();
+                        }  
                         else if (type == ExerciseType.WORDS_ON_REACTION)
-                            difficulty = Difficulty.NORMAL;
+                        {
+                            ;
+                        }
                         else if (type == ExerciseType.MISTAKE_COUNT)
-                            difficulty = Difficulty.HARD;
-                        //создаем соответствующий тренажер
-                        showSymbolStreamControl();
+                        {
+                            showMistakeCountControl();
+                        }
                     }
                     break;
 
@@ -272,6 +290,26 @@ namespace KeyboardSmasher.GUI
                 default: { } break;
             }
 
+        }
+
+        private void OnMistakeCountControlChanged(MistakeCountControlResult result)
+        {
+            switch (result)
+            {
+                case MistakeCountControlResult.EXIT:
+                    {
+                        showNewEventControl();
+                    } break;
+                case MistakeCountControlResult.PAUSE:
+                    {
+                        
+                    } break;
+                case MistakeCountControlResult.RESUME:
+                    {
+                        ;
+                    } break;
+                default: { } break;
+            }
         }
 
         #endregion
