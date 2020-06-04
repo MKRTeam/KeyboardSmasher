@@ -94,11 +94,45 @@ namespace KeyboardSmasher
                 new char[] { 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'z', 'x', 'c', 'v', 'b', 'n', 'm' };
             SymbolStream.Init(symbol_sets);
 
-            var textsForMistakeCounting = new Dictionary<Language, Dictionary<Difficulty, string>>();
-            textsForMistakeCounting[Language.RUSSIAN] = new Dictionary<Difficulty, string>();
-            textsForMistakeCounting[Language.RUSSIAN][Difficulty.EASY] = "Мама мыла раму";
-            textsForMistakeCounting[Language.RUSSIAN][Difficulty.NORMAL] = "Сенсация поп яйца снес";
-            textsForMistakeCounting[Language.RUSSIAN][Difficulty.HARD] = "Течет море не ром течет";
+            var textsForMistakeCounting = new Dictionary<Language, Dictionary<Difficulty, List<string>>>();
+            textsForMistakeCounting[Language.RUSSIAN] = new Dictionary<Difficulty, List<string>>();
+
+            var easyTexts = Directory.GetFiles("../texts/easy/").ToList();
+            var mediumTexts = Directory.GetFiles("../texts/medium").ToList();
+            var hardTexts = Directory.GetFiles("../texts/hard").ToList();
+
+            textsForMistakeCounting[Language.RUSSIAN][Difficulty.EASY] = new List<string>();
+            textsForMistakeCounting[Language.RUSSIAN][Difficulty.NORMAL] = new List<string>();
+            textsForMistakeCounting[Language.RUSSIAN][Difficulty.HARD] = new List<string>();
+
+
+            foreach(var et in easyTexts)
+            {
+                using (var fin = new StreamReader(et, System.Text.Encoding.Default))
+                {
+                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("\r", "").Trim();
+                    textsForMistakeCounting[Language.RUSSIAN][Difficulty.EASY].Add(text);
+                }
+            }
+
+            foreach (var mt in mediumTexts)
+            {
+                using (var fin = new StreamReader(mt, System.Text.Encoding.Default))
+                {
+                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("\r", "").Trim();
+                    textsForMistakeCounting[Language.RUSSIAN][Difficulty.NORMAL].Add(text);
+                }
+            }
+
+            foreach (var ht in hardTexts)
+            {
+                using (var fin = new StreamReader(ht, System.Text.Encoding.Default))
+                {
+                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("\r", "").Trim();
+                    textsForMistakeCounting[Language.RUSSIAN][Difficulty.HARD].Add(text);
+                }
+            }
+
             MistakeCount.Init(textsForMistakeCounting);
         }
 
