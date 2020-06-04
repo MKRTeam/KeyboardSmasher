@@ -33,6 +33,7 @@ namespace KeyboardSmasher.GUI.Controls
             comboBoxLanguage.SelectedIndex = 0;
             OnControlResultChanged += result_handler;
             LastControl = null;
+            errorProvider.Clear();
         }
 
         private SettingsControlResult Result
@@ -47,8 +48,11 @@ namespace KeyboardSmasher.GUI.Controls
         // метод на время отсутсвия английского языка
         public void SetInitialLanguage()
         {
-            comboBoxLanguage.SelectedIndex = 0;
-            errorProvider.SetError(comboBoxLanguage, "Данная функция находится в разработке");
+            if (comboBoxLanguage.SelectedIndex != 0)
+            {
+                comboBoxLanguage.SelectedIndex = 0; 
+                errorProvider.SetError(comboBoxLanguage, "Данная функция находится в разработке");
+            }
         }
 
         public Difficulty Difficulty
@@ -70,6 +74,7 @@ namespace KeyboardSmasher.GUI.Controls
         private void buttonBack_Click(object sender, EventArgs e)
         {
             Result = SettingsControlResult.BACK;
+            errorProvider.Clear();
         }
 
         private void comboBoxDifficulty_SelectedIndexChanged(object sender, EventArgs e)
