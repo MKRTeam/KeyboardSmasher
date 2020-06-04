@@ -82,7 +82,7 @@ namespace KeyboardSmasher.GUI
 
         private void SetLanguage(Language language)
         {
-            MessageBox.Show("К сожалению, данная функция находится в разработке. Приносим свои извинения");
+            setting_control.SetInitialLanguage();
             return;
             //this.lang = language;
 

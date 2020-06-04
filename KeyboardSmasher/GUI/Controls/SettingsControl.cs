@@ -44,6 +44,13 @@ namespace KeyboardSmasher.GUI.Controls
             }
         }
 
+        // метод на время отсутсвия английского языка
+        public void SetInitialLanguage()
+        {
+            comboBoxLanguage.SelectedIndex = 0;
+            errorProvider.SetError(comboBoxLanguage, "Данная функция находится в разработке");
+        }
+
         public Difficulty Difficulty
         {
             get
