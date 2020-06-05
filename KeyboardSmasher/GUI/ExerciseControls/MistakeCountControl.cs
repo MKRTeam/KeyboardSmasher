@@ -45,7 +45,7 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
 
         private static readonly string welcome_text = @"Добро пожаловать в тренажёр ""Подсчет ошибок""! На полосе будет отображен текст. " +
                 "Ваша задача - набрать его с наименьшим количеством ошибок или опечаток. Время на задание неограничено. " +
-                "Нажмите клавишу 'Enter', чтобы начать.";
+                "\nНажмите клавишу 'Enter', чтобы начать.";
 
         public MistakeCountControl(Language lang, Difficulty difficulty, MistakeCountControlResultProc handler)
         {
@@ -134,8 +134,8 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
         /// </summary>
         private void OnQueueIsEmpty()
         {
-            lbTaskText.Invoke(new Action(() => lbTaskText.Text = $"Набор текста завершён!\nВерных нажатий:{statistic.correct}" +
-                    $"\nНеверных нажатий: {statistic.errors}\nНажмите Enter чтобы пойти дальше"));
+            lbTaskText.Invoke(new Action(() => lbTaskText.Text = $"Набор текста завершён!\nВерных нажатий:{statistic.correct} " +
+                    $"Неверных нажатий: {statistic.errors}\nНажмите Enter чтобы пойти дальше"));
             mistakeCountTextControl.Clear();
             CurrentControlMode = ControlMode.TypingFinished;
         }
