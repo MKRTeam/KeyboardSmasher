@@ -95,7 +95,7 @@
             // 
             this.lbTaskText.AutoSize = true;
             this.lbTaskText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbTaskText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbTaskText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbTaskText.Location = new System.Drawing.Point(2, 309);
             this.lbTaskText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTaskText.Name = "lbTaskText";
