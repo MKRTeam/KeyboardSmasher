@@ -28,6 +28,7 @@ namespace KeyboardSmasher.GUI
         Event currentEvent = null;
         SymbolStreamControl currentSymbolStreamControl = null;
         MistakeCountControl curMistakeCC = null;
+        WordsOnReactionControl curWordsOnReactionControl = null;
 
         //игровые данные
         Difficulty difficulty;
@@ -151,6 +152,19 @@ namespace KeyboardSmasher.GUI
             showControl(curMistakeCC);
         }
 
+        private void showWordsOnReactionControl()
+        {
+            if (curWordsOnReactionControl != null)
+            {
+                this.Controls.Remove(curWordsOnReactionControl);
+                curWordsOnReactionControl.Dispose();
+            }
+            curWordsOnReactionControl = new WordsOnReactionControl(lang, difficulty, OnWordsOnReactionControlChanged);
+            Controls.Add(curWordsOnReactionControl);
+            curWordsOnReactionControl.Dock = DockStyle.Fill;
+            showControl(curWordsOnReactionControl);
+        }
+
         public void showMainMenu()
         {
             showControl(main_menu);
@@ -270,7 +284,7 @@ namespace KeyboardSmasher.GUI
                         }  
                         else if (type == ExerciseType.WORDS_ON_REACTION)
                         {
-                            ;
+                            showWordsOnReactionControl();
                         }
                         else if (type == ExerciseType.MISTAKE_COUNT)
                         {
@@ -318,6 +332,29 @@ namespace KeyboardSmasher.GUI
                     {
                         ;
                     } break;
+                default: { } break;
+            }
+        }
+
+        private void OnWordsOnReactionControlChanged(WordsOnReactionControlResult result)
+        {
+            switch (result)
+            {
+                case WordsOnReactionControlResult.EXIT:
+                    {
+                        showNewEventControl();
+                    }
+                    break;
+                case WordsOnReactionControlResult.PAUSE:
+                    {
+
+                    }
+                    break;
+                case WordsOnReactionControlResult.RESUME:
+                    {
+                        ;
+                    }
+                    break;
                 default: { } break;
             }
         }
