@@ -78,10 +78,10 @@
             this.buttonStartEnd.BackColor = System.Drawing.SystemColors.ControlLight;
             this.buttonStartEnd.FlatAppearance.BorderSize = 2;
             this.buttonStartEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStartEnd.Font = new System.Drawing.Font("Noto Sans", 14.25F);
-            this.buttonStartEnd.Location = new System.Drawing.Point(327, 263);
+            this.buttonStartEnd.Font = new System.Drawing.Font("Noto Sans", 18F);
+            this.buttonStartEnd.Location = new System.Drawing.Point(307, 263);
             this.buttonStartEnd.Name = "buttonStartEnd";
-            this.buttonStartEnd.Size = new System.Drawing.Size(139, 53);
+            this.buttonStartEnd.Size = new System.Drawing.Size(176, 53);
             this.buttonStartEnd.TabIndex = 0;
             this.buttonStartEnd.Text = "СТАРТ";
             this.buttonStartEnd.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
             // labelResults
             // 
             this.labelResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelResults.Font = new System.Drawing.Font("Noto Serif Cond", 12F);
+            this.labelResults.Font = new System.Drawing.Font("Noto Sans", 12F);
             this.labelResults.Location = new System.Drawing.Point(71, 487);
             this.labelResults.Name = "labelResults";
             this.labelResults.Size = new System.Drawing.Size(647, 54);
@@ -101,13 +101,13 @@
             // labelTimer
             // 
             this.labelTimer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelTimer.Font = new System.Drawing.Font("Noto Mono", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTimer.Location = new System.Drawing.Point(650, 263);
+            this.labelTimer.Font = new System.Drawing.Font("Noto Mono", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTimer.Location = new System.Drawing.Point(656, 263);
             this.labelTimer.Name = "labelTimer";
-            this.labelTimer.Size = new System.Drawing.Size(68, 53);
+            this.labelTimer.Size = new System.Drawing.Size(62, 53);
             this.labelTimer.TabIndex = 4;
             this.labelTimer.Text = "100";
-            this.labelTimer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelTimer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timerToDisplay
             // 

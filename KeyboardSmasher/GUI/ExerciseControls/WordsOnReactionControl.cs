@@ -83,13 +83,12 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
             if (currentControlMode == ControlMode.ControlStarted) {
                 currentControlMode = ControlMode.TypingStarted;
                 Result = WordsOnReactionControlResult.NO_RESULT;
-                
+
                 writingMode(1);
                 tB_Reading.Text = wordsOnReaction.Text;
                 tB_writing.Text = "";
                 labelResults.Text = "";
-                buttonStartEnd.Enabled = false;
-                buttonStartEnd.BackColor = Color.FromArgb(198, 178, 153);
+                buttonStartEnd.Text = m_lang == Language.RUSSIAN ? "ЗАКОНЧИТЬ" : "FINISH";
 
                 // no need in mouse events anymore
                 buttonStartEnd.MouseMove -= buttonStartEnd_MouseMove;
@@ -97,6 +96,16 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
                 
                 timerForExercise.Start();
                 timerToDisplay.Start();
+            }
+            else if (currentControlMode == ControlMode.TypingStarted) {
+                timerForExercise.Stop();
+                timerToDisplay.Stop();
+                currentControlMode = ControlMode.TypingFinished;
+                writingMode(0);
+                buttonStartEnd.Enabled = false;
+                buttonStartEnd.BackColor = Color.FromArgb(198, 178, 153);
+
+                showResultsAndFinish();
             }
             else if (currentControlMode == ControlMode.TypingFinished) {
                 Result = WordsOnReactionControlResult.EXIT;
@@ -127,17 +136,8 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
             labelTimer.Text = seconds.ToString();
         }
 
-        private void timerForExercise_Tick(object sender, EventArgs e)
+        private void showResultsAndFinish()
         {
-            timerForExercise.Stop();
-            timerToDisplay.Stop();
-            labelTimer.Text = "0";
-            currentControlMode = ControlMode.TypingFinished;
-            writingMode(0);
-
-            string text_to_show = m_lang == Language.RUSSIAN ? "Время вышло!" : "Time is up!";
-            MessageBox.Show(text_to_show);
-            
             buttonStartEnd.Enabled = true;
             buttonStartEnd.Text = m_lang == Language.RUSSIAN ? "ДАЛЬШЕ" : "MOVE ON";
             buttonStartEnd.BackColor = Color.WhiteSmoke;
@@ -152,6 +152,19 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
                 "Your text is " + statistic.identity_percents + "% like the original one. Press ENTER or " +
                 "the button to move on.";
             labelResults.Visible = true;
+        }
+        private void timerForExercise_Tick(object sender, EventArgs e)
+        {
+            timerForExercise.Stop();
+            timerToDisplay.Stop();
+            labelTimer.Text = "0";
+            currentControlMode = ControlMode.TypingFinished;
+            writingMode(0);
+
+            string text_to_show = m_lang == Language.RUSSIAN ? "Время вышло!" : "Time is up!";
+            MessageBox.Show(text_to_show);
+
+            showResultsAndFinish();
         }
     }
 }
