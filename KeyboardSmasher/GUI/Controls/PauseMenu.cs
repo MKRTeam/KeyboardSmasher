@@ -15,6 +15,7 @@ namespace KeyboardSmasher.GUI.Controls
             NO_RESULT,
             CONTINUE_GAME,
             SETTINGS,
+            INFO,
             EXIT_TO_MENU,
             EXIT
         }
@@ -61,6 +62,11 @@ namespace KeyboardSmasher.GUI.Controls
         private void btnExit_Click(object sender, EventArgs e)
         {
             Result = PauseMenuResult.EXIT;
+        }
+
+        private void BtnInfo_Click(object sender, EventArgs e)
+        {
+            Result = PauseMenuResult.INFO;
         }
     }
 }

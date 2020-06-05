@@ -209,7 +209,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
                 char letter = char.ToUpper(c);
                 // Добавляемая буква появляется на правой границе элемента управления
                 float xPos = curLetterX;
-                float yPos = (circleRadius - 5) - rand.Next(circleRadius - 15);
+                float yPos = (circleRadius + 15) - rand.Next(circleRadius - 10);
                 Color color = KeyboardHelper.GetKeyColorForChar(letter);
                 // Формируем новую букву и добавляем её
                 Letter addingLetter = new Letter(letter, new PointF(xPos, yPos), color);

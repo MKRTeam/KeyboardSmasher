@@ -20,12 +20,15 @@ namespace KeyboardSmasher.GUI
         //контролы, которые всегда хранятся в памяти
         Controls.MainMenu main_menu;
         PauseMenu pause_menu;
+        InfoControl info_control;
         SettingsControl setting_control;
         //видимый контрол
         UserControl currentVisibleControl = null;
         EventControl currentEventControl = null;
         Event currentEvent = null;
         SymbolStreamControl currentSymbolStreamControl = null;
+        MistakeCountControl curMistakeCC = null;
+        WordsOnReactionControl curWordsOnReactionControl = null;
 
         //игровые данные
         Difficulty difficulty;
@@ -60,6 +63,14 @@ namespace KeyboardSmasher.GUI
                                             Size.Height / 2 - setting_control.Size.Height / 2);
             this.Controls.Add(setting_control);
             #endregion
+            #region info_control
+            info_control = new InfoControl(OnInfoControlResultChanged);
+            info_control.Visible = false;
+            //info_control.Dock = DockStyle.Fill;
+            info_control.Location = new Point(Size.Width / 2 - info_control.Size.Width / 2,
+                                            Size.Height / 2 - info_control.Size.Height / 2);
+            this.Controls.Add(info_control);
+            #endregion
             #region pause_menu
             pause_menu = new PauseMenu(OnPauseMenuResultChanged);
             pause_menu.Visible = false;
@@ -67,15 +78,18 @@ namespace KeyboardSmasher.GUI
             pause_menu.Location = new Point(Size.Width / 2 - pause_menu.Size.Width / 2,
                                             Size.Height / 2 - pause_menu.Size.Height / 2);
             this.Controls.Add(pause_menu);
-            #endregion
+            #endregion  
         }
 
         private void SetLanguage(Language language)
         {
-            this.lang = language;
-            localization = Localization.Localization.Deserialize(localization_paths[language]);
-            if (currentVisibleControl != null)
-                translateControl(currentVisibleControl, localization);
+            setting_control.SetInitialLanguage();
+            return;
+            //this.lang = language;
+
+            //localization = Localization.Localization.Deserialize(localization_paths[language]);
+            //if (currentVisibleControl != null)
+            //    translateControl(currentVisibleControl, localization);
         }
 
         private void showControl(UserControl control)
@@ -86,6 +100,7 @@ namespace KeyboardSmasher.GUI
                 control.Visible = true;
             else throw new Exception("Визуализируемый контрол был null");
             currentVisibleControl = control;
+            currentVisibleControl.Focus();
             //currentVisibleControl.Dock = DockStyle.Top;
             //currentVisibleControl.Anchor = AnchorStyles.
             translateControl(control, localization);
@@ -124,6 +139,32 @@ namespace KeyboardSmasher.GUI
             showControl(currentSymbolStreamControl);
         }
 
+        private void showMistakeCountControl()
+        {
+            if (curMistakeCC != null)
+                {
+                this.Controls.Remove(curMistakeCC);
+                curMistakeCC.Dispose();
+            }
+            curMistakeCC = new MistakeCountControl(lang, difficulty, OnMistakeCountControlChanged);
+            Controls.Add(curMistakeCC);
+            curMistakeCC.Dock = DockStyle.Fill;
+            showControl(curMistakeCC);
+        }
+
+        private void showWordsOnReactionControl()
+        {
+            if (curWordsOnReactionControl != null)
+            {
+                this.Controls.Remove(curWordsOnReactionControl);
+                curWordsOnReactionControl.Dispose();
+            }
+            curWordsOnReactionControl = new WordsOnReactionControl(lang, difficulty, OnWordsOnReactionControlChanged);
+            Controls.Add(curWordsOnReactionControl);
+            curWordsOnReactionControl.Dock = DockStyle.Fill;
+            showControl(curWordsOnReactionControl);
+        }
+
         public void showMainMenu()
         {
             showControl(main_menu);
@@ -143,6 +184,12 @@ namespace KeyboardSmasher.GUI
                     {
                         setting_control.LastControl = main_menu;
                         showControl(setting_control);
+                    }
+                    break;
+                case MainMenuResult.INFO:
+                    {
+                        info_control.LastControl = main_menu;
+                        showControl(info_control);
                     }
                     break;
                 case MainMenuResult.EXIT: this.Close(); break;
@@ -171,6 +218,18 @@ namespace KeyboardSmasher.GUI
                 default: { } break;
             }
         }
+        private void OnInfoControlResultChanged(InfoControlResult new_result)
+        {
+            switch (new_result)
+            {
+                case InfoControlResult.BACK:
+                    {
+                        showControl(info_control.LastControl);
+                    }
+                    break;
+                default: { } break;
+            }
+        }
 
         private void OnPauseMenuResultChanged(PauseMenuResult new_result)
         {
@@ -184,6 +243,11 @@ namespace KeyboardSmasher.GUI
                         setting_control.LastControl = pause_menu;
                         showControl(setting_control);
                     } break;
+                case PauseMenuResult.INFO:
+                    {
+                        info_control.LastControl = pause_menu;
+                        showControl(info_control);
+                    }break;
                 case PauseMenuResult.NO_RESULT: { } break;
             }
         }
@@ -196,26 +260,37 @@ namespace KeyboardSmasher.GUI
                     {
                         pause_menu.LastControl = currentVisibleControl;
                         showControl(pause_menu);
-                    }
-                    break;
+                    } break;
                 case EventControlResult.SKIP_EVENT:
                     {
                         showNewEventControl();
-                    }
-                    break;
+                    } break;
+                case EventControlResult.OPEN_INFO:
+                    {
+                        info_control.LastControl = currentVisibleControl;
+                        showControl(info_control);
+                    } break;
+                case EventControlResult.OPEN_SETTINGS:
+                    {
+                        setting_control.LastControl = currentVisibleControl;
+                        showControl(setting_control);
+                    } break;
                 default:
                     {
                         ExerciseType type = currentEvent.getActionResult((uint)(new_result - EventControlResult.ACTION0));
                         if (type == ExerciseType.SYMBOL_STREAM)
-                            difficulty = Difficulty.EASY;
+                        {
+                            showSymbolStreamControl();
+                        }  
                         else if (type == ExerciseType.WORDS_ON_REACTION)
-                            difficulty = Difficulty.NORMAL;
+                        {
+                            showWordsOnReactionControl();
+                        }
                         else if (type == ExerciseType.MISTAKE_COUNT)
-                            difficulty = Difficulty.HARD;
-                        //создаем соответствующий тренажер
-                        showSymbolStreamControl();
-                    }
-                    break;
+                        {
+                            showMistakeCountControl();
+                        }
+                    } break;
 
             }
         }
@@ -239,6 +314,49 @@ namespace KeyboardSmasher.GUI
                 default: { } break;
             }
 
+        }
+
+        private void OnMistakeCountControlChanged(MistakeCountControlResult result)
+        {
+            switch (result)
+            {
+                case MistakeCountControlResult.EXIT:
+                    {
+                        showNewEventControl();
+                    } break;
+                case MistakeCountControlResult.PAUSE:
+                    {
+                        
+                    } break;
+                case MistakeCountControlResult.RESUME:
+                    {
+                        ;
+                    } break;
+                default: { } break;
+            }
+        }
+
+        private void OnWordsOnReactionControlChanged(WordsOnReactionControlResult result)
+        {
+            switch (result)
+            {
+                case WordsOnReactionControlResult.EXIT:
+                    {
+                        showNewEventControl();
+                    }
+                    break;
+                case WordsOnReactionControlResult.PAUSE:
+                    {
+
+                    }
+                    break;
+                case WordsOnReactionControlResult.RESUME:
+                    {
+                        ;
+                    }
+                    break;
+                default: { } break;
+            }
         }
 
         #endregion

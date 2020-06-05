@@ -108,7 +108,7 @@ namespace KeyboardSmasher.GUI.ExerciseMachine
         /// </summary>
         /// <param name="sender">Объект, вызвавший событие</param>
         /// <param name="e">Параметры события</param>
-        public void Control_KeyDown(object sender, KeyEventArgs e) {
+        public override void Control_KeyDown(object sender, KeyEventArgs e) {
             // ! Подписан на событие самого контрола
 
             // Проверяем, было ли уже обработано событие - чтобы исключить учёт удержания клавиши

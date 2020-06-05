@@ -8,7 +8,7 @@ namespace Gameplay.ExerciseMachine
 {
     /// <summary>
     /// Структура для хранения статистики задания SymbolStream
-    /// </summary>
+    /// </summary> 
     public struct SymbolStreamStatistic
     {
         /// <summary>
@@ -45,8 +45,8 @@ namespace Gameplay.ExerciseMachine
             //здесь происходит определение того, какой набор букв будет в испытании, сколько символов будет
             SymbolSet = SymbolStream.symbol_sets_for_langs[lang][difficulty];
             SymbolsCount = 13u * ((uint)difficulty + 1u);
-            SymbolSpeed = 1 * (Difficulty.HARD - difficulty + 1);
-            LettersInterval = (Difficulty.HARD - difficulty + 2);
+            SymbolSpeed = 1 * (Difficulty.HARD - Difficulty.EASY + 1);
+            LettersInterval = (Difficulty.HARD - Difficulty.EASY + 2);
         }
 
         //сам словарь формируется где-нибудь в main и сюда передается

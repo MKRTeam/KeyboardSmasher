@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxDifficulty = new System.Windows.Forms.ComboBox();
             this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -69,33 +72,33 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label2.Location = new System.Drawing.Point(127, 207);
+            this.label2.Location = new System.Drawing.Point(72, 218);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 31);
+            this.label2.Size = new System.Drawing.Size(81, 31);
             this.label2.TabIndex = 13;
             this.label2.Tag = "#LANGUAGE_LABEL";
-            this.label2.Text = "ЯЗЫК";
+            this.label2.Text = "Язык";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label3.Location = new System.Drawing.Point(33, 148);
+            this.label3.Location = new System.Drawing.Point(72, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(194, 31);
+            this.label3.Size = new System.Drawing.Size(148, 62);
             this.label3.TabIndex = 14;
             this.label3.Tag = "#DIFFICULTY_LABEL";
-            this.label3.Text = "СЛОЖНОСТЬ";
+            this.label3.Text = "Уровень\r\nсложности";
             // 
             // comboBoxDifficulty
             // 
             this.comboBoxDifficulty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDifficulty.FormattingEnabled = true;
             this.comboBoxDifficulty.Items.AddRange(new object[] {
-            "#DIFFICULTY_EASY",
-            "#DIFFICULTY_NORMAL",
-            "#DIFFICULTY_HARD"});
+            "НИЗКИЙ",
+            "СРЕДНИЙ",
+            "ВЫСОКИЙ"});
             this.comboBoxDifficulty.Location = new System.Drawing.Point(252, 158);
             this.comboBoxDifficulty.Name = "comboBoxDifficulty";
             this.comboBoxDifficulty.Size = new System.Drawing.Size(130, 21);
@@ -107,13 +110,17 @@
             this.comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLanguage.FormattingEnabled = true;
             this.comboBoxLanguage.Items.AddRange(new object[] {
-            "#LANG_RUS",
-            "#LANG_ENG"});
-            this.comboBoxLanguage.Location = new System.Drawing.Point(252, 217);
+            "РУССКИЙ",
+            "ENGLISH"});
+            this.comboBoxLanguage.Location = new System.Drawing.Point(252, 228);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(130, 21);
             this.comboBoxLanguage.TabIndex = 16;
             this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBoxLanguage_SelectedIndexChanged);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // SettingsControl
             // 
@@ -127,6 +134,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SettingsControl";
             this.Size = new System.Drawing.Size(460, 430);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +147,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxDifficulty;
         private System.Windows.Forms.ComboBox comboBoxLanguage;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
