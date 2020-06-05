@@ -110,7 +110,7 @@ namespace KeyboardSmasher
             {
                 using (var fin = new StreamReader(et, System.Text.Encoding.Default))
                 {
-                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("\r", "").Trim();
+                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("  ", " ").Replace("\r", "").Trim();
                     textsForMistakeCounting[Language.RUSSIAN][Difficulty.EASY].Add(text);
                 }
             }
@@ -119,7 +119,7 @@ namespace KeyboardSmasher
             {
                 using (var fin = new StreamReader(mt, System.Text.Encoding.Default))
                 {
-                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("\r", "").Trim();
+                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("  ", " ").Replace("\r", "").Trim();
                     textsForMistakeCounting[Language.RUSSIAN][Difficulty.NORMAL].Add(text);
                 }
             }
@@ -128,7 +128,7 @@ namespace KeyboardSmasher
             {
                 using (var fin = new StreamReader(ht, System.Text.Encoding.Default))
                 {
-                    string text = fin.ReadToEnd().Replace("\n", " ").Replace("\r", "").Trim();
+                    string text = fin.ReadToEnd().Replace("\n", " ".Replace("  ", " ")).Replace("\r", "").Trim();
                     textsForMistakeCounting[Language.RUSSIAN][Difficulty.HARD].Add(text);
                 }
             }
