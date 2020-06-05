@@ -134,8 +134,8 @@ namespace KeyboardSmasher.ExerciseMachine.GUI
         /// </summary>
         private void OnQueueIsEmpty()
         {
-            lbTaskText.Invoke(new Action(() => lbTaskText.Text = $"Набор текста завершён!\nВерных нажатий:{statistic.correct}" +
-                    $"\nНеверных нажатий: {statistic.errors}\nНажмите Enter чтобы пойти дальше"));
+            lbTaskText.Invoke(new Action(() => lbTaskText.Text = $"Набор текста завершён!\nВерных нажатий:{statistic.correct} " +
+                    $"Неверных нажатий: {statistic.errors}\nНажмите Enter чтобы пойти дальше"));
             mistakeCountTextControl.Clear();
             CurrentControlMode = ControlMode.TypingFinished;
         }
