@@ -72,33 +72,33 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label2.Location = new System.Drawing.Point(127, 207);
+            this.label2.Location = new System.Drawing.Point(72, 218);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 31);
+            this.label2.Size = new System.Drawing.Size(81, 31);
             this.label2.TabIndex = 13;
             this.label2.Tag = "#LANGUAGE_LABEL";
-            this.label2.Text = "ЯЗЫК";
+            this.label2.Text = "Язык";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.label3.Location = new System.Drawing.Point(33, 148);
+            this.label3.Location = new System.Drawing.Point(72, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(194, 31);
+            this.label3.Size = new System.Drawing.Size(148, 62);
             this.label3.TabIndex = 14;
             this.label3.Tag = "#DIFFICULTY_LABEL";
-            this.label3.Text = "СЛОЖНОСТЬ";
+            this.label3.Text = "Уровень\r\nсложности";
             // 
             // comboBoxDifficulty
             // 
             this.comboBoxDifficulty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDifficulty.FormattingEnabled = true;
             this.comboBoxDifficulty.Items.AddRange(new object[] {
-            "ЛЕГКАЯ",
-            "СРЕДНЯЯ",
-            "СЛОЖНАЯ"});
+            "НИЗКИЙ",
+            "СРЕДНИЙ",
+            "ВЫСОКИЙ"});
             this.comboBoxDifficulty.Location = new System.Drawing.Point(252, 158);
             this.comboBoxDifficulty.Name = "comboBoxDifficulty";
             this.comboBoxDifficulty.Size = new System.Drawing.Size(130, 21);
@@ -112,7 +112,7 @@
             this.comboBoxLanguage.Items.AddRange(new object[] {
             "РУССКИЙ",
             "ENGLISH"});
-            this.comboBoxLanguage.Location = new System.Drawing.Point(252, 217);
+            this.comboBoxLanguage.Location = new System.Drawing.Point(252, 228);
             this.comboBoxLanguage.Name = "comboBoxLanguage";
             this.comboBoxLanguage.Size = new System.Drawing.Size(130, 21);
             this.comboBoxLanguage.TabIndex = 16;
